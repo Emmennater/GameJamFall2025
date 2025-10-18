@@ -4,8 +4,9 @@ class Scene {
     this.scene = null;
     this.dialogue = new DialogueManager();
     this.dialogue.scheduleDialogue([
-      new DialogueBox("Player", "Hello World! This is a test!"),
-      new Prompt("What is your name?", [{text: "Bob"}, {text: "Alice"}]),
+      new DialogueBox("Player", "Hello World! This is a test!",
+        new Prompt("What is your name?", [{text: "Bob"}, {text: "Alice"}])
+      ),
     ]);
   }
   

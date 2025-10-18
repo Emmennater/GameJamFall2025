@@ -1,5 +1,5 @@
 class DialogueBox {
-  constructor(charName, text) {
+  constructor(charName, text, prompt = null) {
     this.text = "";
     this.charName = "";
     this.displayedText = "";
@@ -9,6 +9,7 @@ class DialogueBox {
     this.textTime = 0;
     this.nextPauseIdx = -1;
     this.continue = false;
+    this.prompt = prompt;
 
     document.addEventListener('mousedown', () => {
       const unpaused = this.updatePauseIdx();
@@ -17,7 +18,7 @@ class DialogueBox {
         this.textSpeed = this.defaultTextSpeed + 0.5;
         this.textSpeedTimer = 4 * 60; // 4 seconds
       }
-      if (this.endOfText()) this.continue = true;
+      if (this.endOfText() && !this.prompt) this.continue = true;
     });
 
     this.showText(charName, text);
@@ -46,6 +47,10 @@ class DialogueBox {
 
   endOfText() {
     return this.textTime >= this.text.length + 1;
+  }
+
+  promptIsDone() {
+    return this.prompt.isDone();
   }
 
   isDone() {
@@ -79,6 +84,14 @@ class DialogueBox {
       this.textSpeedTimer -= dt;
       if (this.textSpeedTimer <= 0) {
         this.textSpeed = this.defaultTextSpeed;
+      }
+    }
+
+    if (this.endOfText()) {
+      this.prompt.run(dt);
+
+      if (this.promptIsDone()) {
+        this.continue = true;
       }
     }
   }
@@ -126,6 +139,10 @@ class DialogueBox {
     fill(0);
     noStroke();
     text(name, nameLeft + 10, nameTop + 5);
+
+    if (this.endOfText()) {
+      this.prompt.draw();
+    }
   }
 }
 

@@ -1,3 +1,40 @@
 {
-  
+  "characters": [
+    {
+      "name": "Lionfish",
+      "color": "#ff0000",
+      "likes": ["blue", "shiny", "sea shells"],
+      "dialogues": {
+        "greeting": [
+          {
+            "speaker": "Lionfish",
+            "text": "Hi how are you?",
+            "options": [
+              {
+                "text": "I'm fine, how about you?",
+                "score": 1,
+                "next": "greeting2"
+              },
+              {
+                "text": "I'm doing great! Who are you?",
+                "score": 2,
+                "next": "greeting2"
+              },
+              {
+                "text": "I'm okay.",
+                "score": 0,
+                "next": "greeting2"
+              }
+            ]
+          }
+        ],
+        "greeting2": [
+          {
+            "speaker": "Lionfish",
+            "text": "I'm a lionfish!"
+          }
+        ]
+      }
+    }
+  ]
 }

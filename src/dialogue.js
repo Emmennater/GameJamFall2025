@@ -1,3 +1,133 @@
+class DialogueBox {
+  constructor(charName, text) {
+    this.text = "";
+    this.charName = "";
+    this.displayedText = "";
+    this.defaultTextSpeed = 0.5;
+    this.textSpeed = this.defaultTextSpeed;
+    this.textSpeedTimer = 0;
+    this.textTime = 0;
+    this.nextPauseIdx = -1;
+    this.continue = false;
+
+    document.addEventListener('mousedown', () => {
+      const unpaused = this.updatePauseIdx();
+      if (!unpaused) {
+        // Speed up the text
+        this.textSpeed = this.defaultTextSpeed + 0.5;
+        this.textSpeedTimer = 4 * 60; // 4 seconds
+      }
+      if (this.endOfText()) this.continue = true;
+    });
+
+    this.showText(charName, text);
+  }
+
+  updatePauseIdx() {
+    this.nextPauseIdx = this.text.indexOf('@', this.textTime);
+
+    // If we are already at a pause, remove it from the text
+    if (this.nextPauseIdx == this.textTime) {
+      this.text = this.text.substring(0, this.textTime) + this.text.substring(this.textTime + 1);
+      this.nextPauseIdx = this.text.indexOf('@', this.textTime);
+      return true;
+    }
+
+    return false;
+  }
+
+  showText(charName, text) {
+    this.charName = charName || "Null";
+    this.text = text || "Null";
+    this.displayedText = "";
+    this.textTime = 0;
+    this.updatePauseIdx();
+  }
+
+  endOfText() {
+    return this.textTime >= this.text.length + 1;
+  }
+
+  isDone() {
+    return this.endOfText() && this.continue;
+  }
+
+  reset() {
+    this.charName = "";
+    this.text = "";
+    this.displayedText = "";
+    this.textTime = 0;
+    this.updatePauseIdx();
+  }
+
+  restart() {
+    this.textTime = 0;
+    this.updatePauseIdx();
+  }
+
+  run(dt) {
+    if (this.textTime < this.text.length + 1) {
+      this.displayedText = this.text.substring(0, floor(this.textTime));
+      this.textTime += this.textSpeed * dt;
+    }
+
+    if (this.textTime > this.nextPauseIdx && this.nextPauseIdx != -1) {
+      this.textTime = this.nextPauseIdx;
+    }
+
+    if (this.textSpeedTimer > 0) {
+      this.textSpeedTimer -= dt;
+      if (this.textSpeedTimer <= 0) {
+        this.textSpeed = this.defaultTextSpeed;
+      }
+    }
+  }
+
+  draw() {
+    // Dialogue box
+    const fontSize = 20;
+    textSize(fontSize);
+    textAlign(LEFT, TOP);
+    
+    const boxLeft = width * 0.2;
+    const boxTop = height * 0.7;
+    const boxW = width * 0.6;
+    const boxH = height * 0.2;
+    const textX = boxLeft + fontSize;
+    const textY = boxTop + fontSize;
+    const maxTextWidth = boxW - fontSize * 2;
+    
+    fill(255);
+    stroke(0);
+    strokeWeight(4);
+    rect(boxLeft, boxTop, boxW, boxH, 20);
+    
+    // Wrap text
+    fill(0);
+    noStroke();
+    const wrappedText = wrapText(this.displayedText, maxTextWidth);
+    text(wrappedText, textX, textY);
+
+    // Name box
+    const nameSize = 30;
+    textSize(nameSize);
+    textAlign(LEFT, TOP);
+    
+    const name = this.charName;
+    const nameLeft = boxLeft + 20;
+    const nameTop = boxTop - nameSize;
+    const nameW = textWidth(name) + 20;
+    const nameH = nameSize + 10;
+    fill(255);
+    stroke(0);
+    strokeWeight(4);
+    rect(nameLeft, nameTop, nameW, nameH, 10);
+    
+    fill(0);
+    noStroke();
+    text(name, nameLeft + 10, nameTop + 5);
+  }
+}
 
 class Prompt {
   constructor(text, options) {
@@ -105,13 +235,6 @@ class DialogueManager {
   constructor() {
     this.schedule = [];
     this.currentIdx = 0;
-
-    document.addEventListener('mousedown', () => {
-      if (this.isDone()) return;
-      if (this.schedule[this.currentIdx].isDone()) {
-        this.currentIdx += 1;
-      }
-    });
   }
 
   isDone() {
@@ -125,6 +248,11 @@ class DialogueManager {
 
   run(dt) {
     if (this.currentIdx >= this.schedule.length) {
+      return;
+    }
+
+    if (this.schedule[this.currentIdx].isDone()) {
+      this.currentIdx += 1;
       return;
     }
 

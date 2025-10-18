@@ -1,5 +1,5 @@
 class DialogueBox {
-  constructor(charName, text, prompt = null) {
+  constructor(charName, text, prompt = null, finished = () => {}) {
     this.text = "";
     this.charName = "";
     this.displayedText = "";
@@ -10,6 +10,14 @@ class DialogueBox {
     this.nextPauseIdx = -1;
     this.continue = false;
     this.prompt = prompt;
+
+    this.onDone = () => {
+      if (this.prompt) {
+        finished(this.prompt.getChoice());
+      } else {
+        finished();
+      }
+    }
 
     document.addEventListener('mousedown', () => {
       const unpaused = this.updatePauseIdx();
@@ -87,7 +95,7 @@ class DialogueBox {
       }
     }
 
-    if (this.endOfText()) {
+    if (this.endOfText() && this.prompt) {
       this.prompt.run(dt);
 
       if (this.promptIsDone()) {
@@ -140,14 +148,14 @@ class DialogueBox {
     noStroke();
     text(name, nameLeft + 10, nameTop + 5);
 
-    if (this.endOfText()) {
+    if (this.endOfText() && this.prompt) {
       this.prompt.draw();
     }
   }
 }
 
 class Prompt {
-  constructor(text, options) {
+  constructor(text, options, onChoice = () => {}) {
     this.text = text;
     this.options = options;
     this.selected = 0; // index of the currently selected option
@@ -165,8 +173,13 @@ class Prompt {
       } else if (e.key === 'Enter') {
         this.done = true;
         this.choice = this.options[this.selected];
+        onChoice(this.choice);
       }
     });
+  }
+
+  getChoice() {
+    return this.choice;
   }
 
   restart() {
@@ -205,25 +218,29 @@ class Prompt {
       totalHeight += optionHeight + marginY;
     }
 
+    const middleY = height * 0.4;
+
     // Draw prompt text above the options
-    const promptFontSize = 24;
-    const promptText = wrapText(this.text, optionWidth);
-    const promptHeight = promptText.split('\n').length * promptFontSize;
-    const promptBoxH = promptHeight + 20;
-    const promptTop = height / 2 - totalHeight / 2 - promptBoxH - marginY;
-    
-    textSize(promptFontSize);
-    fill(255);
-    stroke(0);
-    strokeWeight(4);
-    rect(optionLeft, promptTop, optionWidth, promptBoxH, 20);
-    
-    noStroke();
-    fill(0);
-    text(promptText, optionLeft + paddingX, promptTop + paddingY);
+    if (this.text) {
+      const promptFontSize = 24;
+      const promptText = wrapText(this.text, optionWidth);
+      const promptHeight = promptText.split('\n').length * promptFontSize;
+      const promptBoxH = promptHeight + 20;
+      const promptTop = middleY - totalHeight / 2 - promptBoxH - marginY;
+      
+      textSize(promptFontSize);
+      fill(255);
+      stroke(0);
+      strokeWeight(2);
+      rect(optionLeft, promptTop, optionWidth, promptBoxH, 20);
+      
+      noStroke();
+      fill(0);
+      text(promptText, optionLeft + paddingX, promptTop + paddingY);
+    }
 
     // Draw options
-    let optionTop = height / 2 - totalHeight / 2;
+    let optionTop = middleY - totalHeight / 2;
     for (let i = 0; i < this.options.length; i++) {
       const option = this.options[i];
       const txt = wrapText(option.text, optionWidth - paddingX * 2);
@@ -235,7 +252,7 @@ class Prompt {
       }
 
       stroke(0);
-      strokeWeight(4);
+      strokeWeight(2);
       rect(optionLeft, optionTop, optionWidth, optionHeights[i], 20);
 
       noStroke();
@@ -263,13 +280,18 @@ class DialogueManager {
     this.currentIdx = 0;
   }
 
+  nextDialogue() {
+    this.schedule[this.currentIdx].onDone();
+    this.currentIdx += 1;
+  }
+
   run(dt) {
     if (this.currentIdx >= this.schedule.length) {
       return;
     }
 
     if (this.schedule[this.currentIdx].isDone()) {
-      this.currentIdx += 1;
+      this.nextDialogue();
       return;
     }
 

@@ -3,25 +3,26 @@
   "color": "#ff0000",
   "likes": ["blue", "shiny", "sea shells"],
   "dialogues": {
-    "greeting": [
+    "first-greeting": [
       {
         "speaker": "Lionfish",
-        "text": "Hi how are you?",
+        "sprite": "neutral",
+        "text": "Oh? A surface-dweller wandering this deep? You're either brave or foolish.",
         "options": [
           {
-            "text": "I'm fine, how about you?",
-            "score": 1,
-            "next": "greeting2"
-          },
-          {
-            "text": "I'm doing great! Who are you?",
+            "text": "Maybe both. Who are you?",
             "score": 2,
-            "next": "greeting2"
+            "next": "intro1"
           },
           {
-            "text": "I'm okay.",
+            "text": "I'm just exploring. Why? Who are you?",
+            "score": 1,
+            "next": "intro1"
+          },
+          {
+            "text": "Should I be scared?",
             "score": 0,
-            "next": "greeting2"
+            "next": "explain1"
           }
         ]
       }
@@ -29,7 +30,291 @@
     "greeting2": [
       {
         "speaker": "Lionfish",
-        "text": "I'm a lionfish!"
+        "sprite": "neutral",
+        "text": "Oh... It's you again.",
+        "options": [
+          {
+            "text": "Who are you?",
+            "score": 2,
+            "next": "intro1"
+          },
+          {
+            "text": "Am I in danger?",
+            "score": 0,
+            "next": "explain1"
+          }
+        ]
+      }
+    ],
+    "explain1": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "neutral",
+        "text": "These waters have many branching paths. Those unfamiliar don't tend to last long."
+      },
+      {
+        "speaker": "Lionfish",
+        "sprite": "neutral",
+        "text": "Without a proper guide you'll likely parish if you dare explore to far."
+      },
+      {
+        "speaker": "Lionfish",
+        "sprite": "neutral",
+        "text": "You'd stay put if you know whats best for you.",
+        "options": [
+          {
+            "text": "Who are you?",
+            "score": 0,
+            "next": "intro1"
+          },
+          {
+            "text": "It can't be that bad if cute fish like you are down here.",
+            "score": 0,
+            "next": "fluster1"
+          }
+        ]
+      }
+    ],
+    "intro1": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "neutral",
+        "text": "They call me the Bubbles… but names don't matter much down here.",
+        "options": [
+          {
+            "text": "I think Bubbles is a beautiful name.",
+            "score": 2,
+            "next": "fluster1"
+          },
+          {
+            "text": "Bubbles suits you.",
+            "score": 1,
+            "next": "fluster1"
+          }
+        ]
+      }
+    ],
+    "fluster1": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "blush",
+        "text": "W-what?@ Don't say things like that so easily… it's embarrassing.",
+        "options": [
+          {
+            "text": "Did I make you blush?",
+            "score": 3,
+            "next": "tease2"
+          },
+          {
+            "text": "Sorry, I didn't mean to.",
+            "score": 1,
+            "next": "soft1"
+          },
+          {
+            "text": "Heh. You're cute when you're flustered.",
+            "score": 4,
+            "next": "tease3"
+          }
+        ]
+      }
+    ],
+    "soft1": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "upset",
+        "text": "Well you better watch what you say, ok!"
+      },
+      {
+        "speaker": "Lionfish",
+        "sprite": "blush",
+        "text": "...You cant just say things like that.",
+        "options": [
+          {
+            "text": "Can you help me find my way around here?",
+            "score": -2,
+            "next": "norizz1"
+          }
+        ]
+      }
+    ],
+    "norizz1": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "upset",
+        "text": "W-what?@ I barely know you.@ What do I look like to you? some sort of tour guide?"
+      },
+      {
+        "speaker": "Lionfish",
+        "sprite": "neutral",
+        "text": "I'm not just going to stand around giving directions all day. I've got better things to do then wast anymore time no you.@ Get lost."
+      }
+    ],
+    "tease2": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "blush",
+        "text": "N-no! Fish don't blush!@ It's just… the reflection of the coral, okay?",
+        "options": [
+          {
+            "text": "If you say so, coral cheeks.",
+            "score": 4,
+            "next": "bond1"
+          },
+          {
+            "text": "Alright, alright. Coral reflection. Got it.",
+            "score": 2,
+            "next": "bond1"
+          }
+        ]
+      }
+    ],
+    "tease3": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "flustered",
+        "text": "C-cute...@ How can you say something like that?@ I'm not flustered!!!",
+        "options": [
+          {
+            "text": "Alright, alright. not flustered. Got it.",
+            "score": 2,
+            "next": "bond1"
+          }
+        ]
+      }
+    ],
+    "bond1": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "flustered",
+        "text": "Hmph. You're insufferable… but maybe not entirely unpleasant.",
+        "options": [
+          {
+            "text": "I'll take that as a compliment.",
+            "score": 3,
+            "next": "introhint"
+          },
+          {
+            "text": "Coming from you, that's high praise.",
+            "score": 2,
+            "next": "introhint"
+          }
+        ]
+      }
+    ],
+    "introhint": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "neutral",
+        "text": "You keep talking about compliments. Do you think words are all it takes to impress me?",
+        "options": [
+          {
+            "text": "Then what *does* impress you?",
+            "score": 2,
+            "next": "{item}hint"
+          },
+          {
+            "text": "I bet I could find something shiny enough to change your mind.",
+            "score": 4,
+            "next": "{item}hint"
+          }
+        ]
+      }
+    ],
+    "pearlhint": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "neutral",
+        "text": "Shiny things... maybe@ ...N-not that I care about that sort of thing. Pearls, maybe. But only because they reflect the moonlight nicely. That's all!",
+        "options": [
+          {
+            "text": "So you *do* like pearls.",
+            "score": 4,
+            "next": "fluster2"
+          },
+          {
+            "text": "Moonlight and pearls… sounds poetic.",
+            "score": 3,
+            "next": "soft2"
+          }
+        ]
+      }
+    ],
+    "rubyhint": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "neutral",
+        "text": "Shiny things... maybe@ ...N-not that I care about that sort of thing. Rubies, maybe. But only because there reflective red glow goes nicely with my fins. That's all!",
+        "options": [
+          {
+            "text": "So you *do* like rubies.",
+            "score": 4,
+            "next": "fluster2"
+          },
+          {
+            "text": "I can imagine rubies would go nicely with your style.",
+            "score": 3,
+            "next": "soft2"
+          }
+        ]
+      }
+    ],
+    "soft2": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "neutral",
+        "text": "Don't think you can charm me with shiny talk, surface-dweller. I'm not that easy."
+      },
+      {
+        "speaker": "Lionfish",
+        "sprite": "flustered",
+        "text": "But… keep talking like that, and I might start to believe you mean it.",
+        "options": [
+          {
+            "text": "Maybe you like me more than you think.",
+            "score": 5,
+            "next": "ending_hint"
+          }
+        ]
+      }
+    ],
+    "fluster2": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "angryBlush",
+        "text": "I-I didn't say that! Stop twisting my words! It's not like I like you or your dumb gifts or anything!",
+        "options": [
+          {
+            "text": "Sure, sure. Totally not.",
+            "score": 4,
+            "next": "bond2"
+          }
+        ]
+      }
+    ],
+    "bond2": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "eyeroll",
+        "text": "You're impossible… maybe that's why I can't stop talking to you.",
+        "options": [
+          {
+            "text": "Maybe you like me more than you think.",
+            "score": 5,
+            "next": "ending_hint"
+          },
+          {
+            "text": "That sounds like a compliment.",
+            "score": 3,
+            "next": "ending_hint"
+          }
+        ]
+      }
+    ],
+    "ending_hint": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "flustered",
+        "text": "Hmph. Don't get cocky.@ Bring me something that I like, and *maybe* I'll help you get around…"
       }
     ]
   }

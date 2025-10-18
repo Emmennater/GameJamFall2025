@@ -48,6 +48,8 @@ class SoundPlayer {
 class SoundManager {
   constructor() {
     this.sounds = new Map(); // name → SoundPlayer
+    this.globalVolume = 1.0;
+    this.setGlobalVolume(0); // mute
   }
 
   add(name, src, options = {}) {
@@ -56,6 +58,7 @@ class SoundManager {
     }
     const player = new SoundPlayer(src, options);
     this.sounds.set(name, player);
+    player.setVolume(this.globalVolume);
     return player;
   }
 
@@ -89,6 +92,7 @@ class SoundManager {
   }
 
   setGlobalVolume(volume) {
+    this.globalVolume = volume;
     for (const sound of this.sounds.values()) sound.setVolume(volume);
   }
 

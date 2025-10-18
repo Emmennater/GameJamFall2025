@@ -316,6 +316,20 @@
         "sprite": "flustered",
         "text": "Hmph. Don't get cocky.@ Bring me something that I like, and *maybe* I'll help you get around…"
       }
+    ],
+    "dead_pearl": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "neutral",
+        "text": "What is this?! A PEARL!@ I hate pearls!@ I don't want to hear anything you have to say! Get lost"
+      }
+    ],
+    "dead_end": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "neutral",
+        "text": "Get lost!@ I dont want to hear anything you have to say!"
+      }
     ]
   }
 }

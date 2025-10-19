@@ -1,10 +1,9 @@
 {
   "name": "Lion-chan",
-  "state": "neutral",
   "color": "#ff0000",
   "likes": ["blue", "shiny", "sea shells"],
   "dialogues": {
-    "first-greeting": [
+    "first-greeting-old": [
       {
         "speaker": "Lion-chan",
         "sprite": "shy",
@@ -18,7 +17,7 @@
         ]
       }
     ],
-    "info": [
+    "info-old": [
       {
         "speaker": "Lion-chan",
         "sprite": "",

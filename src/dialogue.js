@@ -72,6 +72,7 @@ class DialogueBox {
   }
 
   restart() {
+    if (this.prompt) this.prompt.restart();
     this.textTime = 0;
     this.textSpeed = this.defaultTextSpeed;
     this.textSpeedTimer = 0;
@@ -80,7 +81,7 @@ class DialogueBox {
   }
 
   runInput() {
-    const notAtStart = this.textTime > 5;
+    const notAtStart = this.textTime > 1;
     if ((mouse.clicked || keys['Enter']) && notAtStart) {
       const unpaused = this.updatePauseIdx();
       if (!unpaused) {
@@ -339,6 +340,7 @@ class DialogueManager {
 
   nextDialogue() {
     this.schedule[this.currentIdx].onDone();
+    this.schedule[this.currentIdx].restart();
     this.currentIdx += 1;
   }
 

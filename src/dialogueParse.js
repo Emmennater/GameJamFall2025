@@ -8,19 +8,42 @@ function getCharacters() {
       characters[name] = new Character(name, json.likes, {});
     }
 
+    const character = characters[name];
+
     for (const [dialogueName, dialogue] of Object.entries(json.dialogues)) {
       let dialogueList = [];
-      characters[name].dialogues[dialogueName] = dialogueList;
+      character.dialogues[dialogueName] = dialogueList;
       for (const obj of dialogue) {
         const speaker = obj.speaker;
         const sprite = obj.sprite;
         const text = obj.text;
         const options = obj.options;
-        const enterDialogue = obj.enterDialogue;
+        const enterDialogue = obj["enter-dialogue"];
+        const give = obj.give;
+        const remove = obj.remove;
+        const check = obj.check; // List of necessary items
+        const checkTrue = obj["check-true"]; // Next diagouge
+        const checkFalse = obj["check-false"]; // Next dialogue
+        
+        // Executes just before the next dialogue
         const onFinish = (choice) => {
-          characters[name].updateFromChoice(choice);
-          // if (enterDialogue) characters[name].setEnterDialogue(enterDialogue);
+          character.updateFromChoice(choice);
+          if (enterDialogue) character.setEnterDialogue(enterDialogue);
+          
+          if (check) {
+            const checkPassed = player.hasItems(check);
+  
+            if (checkPassed) {
+              character.setNextDialogue(checkTrue);
+            } else {
+              character.setNextDialogue(checkFalse);
+            }
+          }
+
+          if (give) player.addItem(give);
+          if (remove) player.removeItem(remove);
         };
+        
         if (options) {
           dialogueList.push(new DialogueBox(speaker, sprite, text, new Prompt("", options), onFinish));
         } else {

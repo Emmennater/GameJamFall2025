@@ -34,25 +34,32 @@ class Scene {
     this.characterEntities.push(entity);
   }
 
-  addScene(scene, relativeX, relativeY) {
-    const transform = () => {
-      const {x, y} = this.worldToScreen(relativeX, relativeY);
-      const w = 100;
-      const h = 100;
-      return {x, y, w, h};
+  addScene(scenes, relativeX, relativeY, count=1) {
+    for (let i = 0; i < count; i++) {
+      // Pop random scene
+      const idx = Math.floor(Math.random() * scenes.length);
+      const SceneClass = scenes.splice(idx, 1)[0];
+      const scene = new SceneClass(this);
+
+      const transform = () => {
+        const {x, y} = this.worldToScreen(relativeX, relativeY);
+        const w = 100;
+        const h = 100;
+        return {x, y, w, h};
+      }
+      const entity = new SceneEntity(scene, transform);
+      this.scenes.push(entity);
     }
-    const entity = new SceneEntity(scene, transform);
-    this.scenes.push(entity);
   }
 
-  addItem(item, relativeX, relativeY) {
+  addItem(item, relativeX, relativeY, tags={}) {
     const transform = () => {
       const {x, y} = this.worldToScreen(relativeX, relativeY);
       const w = 50;
       const h = 50;
       return {x, y, w, h};
     }
-    const entity = new ItemEntity(item, transform);
+    const entity = new ItemEntity(item, transform, tags);
     this.items.push(entity);
   }
 
@@ -218,6 +225,26 @@ class Menu extends Scene {
   }
 }
 
+class EndScreen extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.empty_floor);
+  }
+
+  draw(layer) {
+    super.draw(layer);
+
+    if (layer == 5) {
+      // Menu Text
+      fill(255);
+      textAlign(CENTER, CENTER);
+      textSize(width*0.05);
+      textFont(fonts.main);
+      text("Game Over", width/2, height/2 - 100);
+    }
+  }
+}
+
 class StartingArea extends Scene {
   constructor(parent) {
     super(parent);
@@ -225,10 +252,11 @@ class StartingArea extends Scene {
   }
   
   addScenes() {
-    this.addScene(this.createRandomScene([CaveArea, ShipArea, ShipArriving]), 0.3, 0.3);
-    this.addScene(this.createRandomScene([CaveArea, ShipArea, ShipArriving]), 0.86, 0.32);
-    this.addScene(this.createRandomScene([CaveArea]), 0.57, 0.78);
-    this.addScene(this.createRandomScene([ShipArriving, ShipArea]), 0.15, 0.78);
+    let areas = [CaveArea, ShipArea, ShipArriving, ShipArea]
+    this.addScene(areas, 0.3, 0.3);
+    this.addScene(areas, 0.86, 0.32);
+    this.addScene(areas, 0.57, 0.78);
+    this.addScene(areas, 0.15, 0.78);
     // this.addScene(this.createRandomScene([ShopDistance]), 0.15, 0.78);
   }
 }
@@ -242,7 +270,7 @@ class CaveArea extends Scene {
   }
 
   addScenes() {
-    this.addScene(this.createRandomScene([CaveOpening]), 0.37, 0.72);
+    this.addScene([CaveOpening], 0.37, 0.72);
   }
 }
 
@@ -253,7 +281,7 @@ class CaveOpening extends Scene {
   }
 
   addScenes() {
-    this.addScene(this.createRandomScene([ShipArea, CaveFloorDark]), 0.49, 0.57);
+    this.addScene([ShipArea, CaveFloorDark], 0.49, 0.57);
   }
 }
 
@@ -264,8 +292,9 @@ class CaveFloorDark extends Scene {
   }
 
   addScenes() {
-    this.addScene(this.createRandomScene([CaveArea, ShipArea, ShopDistance]), 0.79, 0.19);
-    this.addScene(this.createRandomScene([CaveArea, ShipArea, ShopDistance]), 0.14, 0.26);
+    let areas = [ShipArea, ShopDistance]
+    this.addScene(areas, 0.79, 0.19);
+    this.addScene(areas, 0.14, 0.26);
   }
 }
 
@@ -276,8 +305,8 @@ class ShipArriving extends Scene {
   }
 
   addScenes() {
-    this.addScene(new ShipArea2(this), 0.36, 0.86);
-    this.addScene(this.createRandomScene([CaveArea, CaveFloorDark]), 0.11, 0.33);
+    this.addScene([ShipArea2], 0.36, 0.86);
+    this.addScene([CaveArea, CaveFloorDark], 0.11, 0.33);
   }
 }
 
@@ -288,8 +317,8 @@ class ShipArea extends Scene {
   }
 
   addScenes() {
-    this.addScene(new ShipArea2(this), 0.73, 0.46);
-    this.addScene(new CaveArea(this), 0.85, 0.12);
+    this.addScene([ShipArea2], 0.73, 0.46);
+    this.addScene([CaveArea], 0.85, 0.12);
   }
 }
 
@@ -304,6 +333,20 @@ class ShipArea2 extends Scene {
   }
 }
 
+class CoralArea extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.coral1);
+  }
+}
+
+class CoralArea2 extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.coral2);
+  }
+}
+
 class ShopDistance extends Scene {
   constructor(parent) {
     super(parent);
@@ -311,14 +354,20 @@ class ShopDistance extends Scene {
   }
 
   addScenes() {
-    this.addScene(new Shop(this), 0.63, 0.46);
+    this.addScene([Shop], 0.63, 0.46);
   }
 }
 
 class Shop extends Scene {
   constructor(parent) {
     super(parent);
+    let tags = {forSale: true};
     this.setBackground(images.shop);
+    this.addItem("ruby", 0.39, 0.52, tags);
+    this.addItem("ruby", 0.46, 0.52, tags);
+    this.addItem("ruby", 0.53, 0.52, tags);
+    this.addItem("ruby", 0.61, 0.52, tags);
+    this.addCharacter("Nerissa", null, 0.85, 0.6);
   }
 }
 

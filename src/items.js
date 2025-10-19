@@ -10,13 +10,24 @@
 // - poison drink
 
 class ItemEntity extends Entity {
-  constructor(name, getTransform) {
+  constructor(name, getTransform, tags) {
     super(getTransform);
     this.name = name;
+    this.tags = tags;
+  }
+
+  buy() {
+    const shopkeeper = characters["Nerissa"];
+
+    if (shopkeeper.nextDialogue === "first-greeting") return;
+
+    // shopkeeper.setEnterDialogue("collector" + this.name);
+    shopkeeper.startSpeaking("collector" + this.name);
   }
 
   onClick() {
     if (busy["dialogue"]) return;
+    if (this.tags.forSale) return this.buy();
     player.addItem(this.name);
     this.destroy();
   }

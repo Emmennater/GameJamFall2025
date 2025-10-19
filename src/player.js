@@ -18,4 +18,8 @@ class Player {
   hasItem(item) {
     return this.items.includes(item);
   }
+
+  hasItems(items) {
+    return items.every(item => this.hasItem(item));
+  }
 }

@@ -15,14 +15,29 @@ class Character {
     return this.speaking;
   }
 
-  startSpeaking() {
-    // this.currentDialogue = this.enterDialogue; // Overwrite
-    if (!this.dialogues[this.currentDialogue]) return;
+  startSpeaking(dialogueName) {
+    if (dialogueName) {
+      this.currentDialogue = dialogueName;
+    } else {
+      this.currentDialogue = this.enterDialogue; // Overwrite
+    }
+    
+    if (!this.dialogues[this.currentDialogue]) {
+      print("Dialogue not found: " + this.currentDialogue);
+      return;
+    }
+    this.updateDialogue();
     this.speaking = true;
   }
 
   getRandomLike() {
     return this.likes[Math.floor(Math.random() * this.likes.length)];
+  }
+
+  setNextDialogue(next) {
+    next = next.replace("{likes}", this.getRandomLike());
+    this.currentDialogue = next;
+    this.speaking = true;
   }
 
   updateFromChoice(choice) {
@@ -33,18 +48,14 @@ class Character {
       return;
     }
 
-    // Variable substitution
-    let next = choice.next;
-    next = choice.next.replace("{likes}", this.getRandomLike());
-    
-    this.currentDialogue = next;
-    this.speaking = true;
+    this.setNextDialogue(choice.next);
   }
 
   updateDialogue() {
     const nextDialogue = this.dialogues[this.currentDialogue];
     if (nextDialogue) {
       this.dialogue.scheduleDialogue(nextDialogue);
+      this.dialogue.restart();
     } else {
       this.speaking = false;
       return null;
@@ -69,11 +80,13 @@ class CharacterEntity extends Entity {
   }
 
   onClick() {
-    this.character.startSpeaking();
+    if (!busy["dialogue"]) {
+      this.character.startSpeaking();
+    }
   }
 
   render(x, y, w, h) {
-    fill(0);
+    fill(50);
     noStroke();
     rect(x - w / 2, y - h / 2, w, h);
   }

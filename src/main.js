@@ -8,6 +8,12 @@ function preload() {
   images.menu = loadImage("images/menu.png");
   images.empty_floor = loadImage("images/empty_floor.png");
   images.cave = loadImage("images/cave.png");
+  images.cave_cavern = loadImage("images/cave_cavern.png");
+  images.cave_floor_dark = loadImage("images/cave_floor_dark.png");
+  images.cave_opening = loadImage("images/cave_opening.png");
+  images.cave_lit = loadImage("images/cave_lit.png");
+  images.ship = loadImage("images/ship.png");
+  images.ship2 = loadImage("images/ship2.png");
   
   // gifs = {};
   // gifs.shipwreck = loadImage("images/shipwreck.gif");
@@ -16,6 +22,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   debug = false;
+  hovered = {};
   mouse = { clicked: false };
   keys = {};
   characters = getCharacters();
@@ -27,10 +34,10 @@ function setup() {
 function draw() {
   const dt = min(frameRate() / 60, 1);
   sceneManager.run(dt);
+  hovered = {};
   sceneManager.draw();
   mouse.clicked = false;
-  
-  for (const key in keys) delete keys[key];
+  keys = {};
 }
 
 function windowResized() {

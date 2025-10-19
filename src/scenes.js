@@ -33,7 +33,13 @@ class Scene {
     this.characterEntities.push(entity);
   }
 
-  addScene(scene, relativeLeft, relativeRight, relativeTop, relativeBottom) {
+  addScene(scene, relativeX, relativeY) {
+    let relativeW = 0.2;
+    let relativeH = 0.2;
+    let relativeLeft = relativeX - relativeW / 2;
+    let relativeRight = relativeX + relativeW / 2;
+    let relativeTop = relativeY - relativeH / 2;
+    let relativeBottom = relativeY + relativeH / 2;
     const transform = () => {
       const {x: left, y: top} = this.worldToScreen(relativeLeft, relativeTop);
       const {x: right, y: bottom} = this.worldToScreen(relativeRight, relativeBottom);
@@ -59,6 +65,11 @@ class Scene {
 
   getLastScene() {
     return this.lastScene;
+  }
+
+  createRandomScene(sceneList) {
+    const Scene = sceneList[Math.floor(Math.random() * sceneList.length)];
+    return new Scene(this);
   }
 
   worldToScreenScale(x) {
@@ -116,7 +127,10 @@ class Scene {
 
     // if (debug) {
     //   if (mouse.clicked) {
-    //     print(this.screenToWorld(mouseX, mouseY));
+    //     let { x, y } = this.screenToWorld(mouseX, mouseY);
+    //     x = Math.round(x * 100) / 100;
+    //     y = Math.round(y * 100) / 100;
+    //     print(x, y);
     //   }
     // }
   }
@@ -159,7 +173,9 @@ class StartingArea extends Scene {
   }
   
   addScenes() {
-    this.addScene(new CaveArea(this), 0.2, 0.4, 0.0, 0.2);
+    // this.addScene(this.createRandomScene([CaveArea, ShipArea]), 0.3, 0.3);
+    // this.addScene(this.createRandomScene([CaveArea, ShipArea]), 0.86, 0.32);
+    this.addScene(this.createRandomScene([CaveArea]), 0.57, 0.78);
   }
 }
 
@@ -171,7 +187,53 @@ class CaveArea extends Scene {
   }
 
   addScenes() {
-    this.addScene(new StartingArea(this), 0.25, 0.5, 0.5, 0.87);
+    this.addScene(this.createRandomScene([CaveOpening, CaveFloorDark]), 0.37, 0.72);
+  }
+}
+
+class CaveOpening extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.cave_opening);
+  }
+
+  addScenes() {
+    this.addScene(this.createRandomScene([ShipArea, CaveFloorDark]), 0.49, 0.57);
+  }
+}
+
+class CaveFloorDark extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.cave_floor_dark);
+  }
+
+  addScenes() {
+    this.addScene(this.createRandomScene([CaveArea, ShipArea]), 0.79, 0.19);
+    this.addScene(this.createRandomScene([CaveArea, ShipArea]), 0.14, 0.26);
+  }
+}
+
+class ShipArea extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.ship);
+  }
+
+  addScenes() {
+    this.addScene(new ShipArea2(this), 0.73, 0.46);
+    this.addScene(new CaveArea(this), 0.85, 0.12);
+  }
+}
+
+class ShipArea2 extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.ship2);
+  }
+
+  addScenes() {
+    // this.addScene(new ShipArea2(this), 0.73, 0.46);
   }
 }
 
@@ -182,6 +244,7 @@ class SceneEntity extends Entity {
   }
 
   onClick() {
+    if (hovered["dialogue"]) return;
     sceneManager.transitionToScene(this.scene);
   }
 

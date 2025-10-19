@@ -5,6 +5,7 @@ class Character {
     this.dialogues = dialogues;
     this.sprite = new Sprite(name);
     this.currentDialogue = "first-greeting";
+    // this.currentDialogue = "done";
     this.speaking = false;
     this.dialogue = new DialogueManager(this);
   }
@@ -26,6 +27,7 @@ class Character {
     if (!choice || !choice.next) {
       this.currentDialogue = "done";
       this.speaking = false;
+      this.dialogue.restart();
       return;
     }
 
@@ -35,17 +37,17 @@ class Character {
     this.speaking = true;
   }
 
-  getDialogue() {
-    if (this.dialogue.isDone()) {
-      const nextDialogue = this.dialogues[this.currentDialogue];
-      if (nextDialogue) {
-        this.dialogue.scheduleDialogue(nextDialogue);
-      } else {
-        this.speaking = false;
-        return null;
-      }
+  updateDialogue() {
+    const nextDialogue = this.dialogues[this.currentDialogue];
+    if (nextDialogue) {
+      this.dialogue.scheduleDialogue(nextDialogue);
+    } else {
+      this.speaking = false;
+      return null;
     }
+  }
 
+  getDialogue() {
     return this.dialogue;
   }
 }

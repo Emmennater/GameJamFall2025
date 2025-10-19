@@ -66,11 +66,15 @@ class DialogueBox {
 
   restart() {
     this.textTime = 0;
+    this.textSpeed = this.defaultTextSpeed;
+    this.textSpeedTimer = 0;
+    this.continue = false;
     this.updatePauseIdx();
   }
 
   runInput() {
-    if (mouse.clicked) {
+    const notAtStart = this.textTime > 5;
+    if (mouse.clicked && notAtStart) {
       const unpaused = this.updatePauseIdx();
       if (!unpaused) {
         // Speed up the text
@@ -109,7 +113,31 @@ class DialogueBox {
     this.runInput();
   }
 
+  drawCharacter() {
+    if (this.sprite && images[this.sprite]) {
+      const img = images[this.sprite];
+      const aspect = img.width / img.height;
+      const w = width * 0.2;
+      const h = w / aspect;
+      const x = width * 0.5;
+      const y = height * 0.5;
+      imageMode(CENTER);
+      image(img, x, y, w, h);
+    } else {
+      const aspect = 0.6;
+      const w = width * 0.2;
+      const h = w / aspect;
+      const x = width * 0.5 - w * 0.5;
+      const y = height * 0.5 - h * 0.5;
+      fill(0, 255, 0);
+      noStroke();
+      rect(x, y, w, h);
+    }
+  }
+
   draw() {
+    this.drawCharacter();
+
     // Dialogue box
     const fontSize = 20;
     textSize(fontSize);
@@ -127,6 +155,7 @@ class DialogueBox {
     stroke(0);
     strokeWeight(4);
     rect(boxLeft, boxTop, boxW, boxH, 20);
+    busyIfHovering(boxLeft, boxTop, boxW, boxH, "dialogue");
     
     // Wrap text
     fill(0);
@@ -148,6 +177,7 @@ class DialogueBox {
     stroke(0);
     strokeWeight(4);
     rect(nameLeft, nameTop, nameW, nameH, 10);
+    busyIfHovering(nameLeft, nameTop, nameW, nameH, "dialogue");
     
     fill(0);
     noStroke();
@@ -238,6 +268,7 @@ class Prompt {
       stroke(0);
       strokeWeight(2);
       rect(optionLeft, promptTop, optionWidth, promptBoxH, 20);
+      busyIfHovering(optionLeft, promptTop, optionWidth, promptBoxH, "dialogue");
       
       noStroke();
       fill(0);
@@ -259,6 +290,7 @@ class Prompt {
       stroke(0);
       strokeWeight(2);
       rect(optionLeft, optionTop, optionWidth, optionHeights[i], 20);
+      busyIfHovering(optionLeft, optionTop, optionWidth, optionHeights[i], "dialogue");
 
       noStroke();
       fill(0);
@@ -286,6 +318,13 @@ class DialogueManager {
     return this.currentIdx >= this.schedule.length;
   }
 
+  restart() {
+    this.currentIdx = 0;
+    for (const dialogueBox of this.schedule) {
+      dialogueBox.restart();
+    }
+  }
+
   scheduleDialogue(dialogueBoxes) {
     this.schedule = dialogueBoxes;
     this.currentIdx = 0;
@@ -309,10 +348,12 @@ class DialogueManager {
   }
 
   draw() {
-    if (this.isDone()) return;
+    if (this.isDone()) {
+      this.character.updateDialogue();
+    }
 
     const currentDialogue = this.schedule[this.currentIdx];
-    currentDialogue.draw();
+    if (currentDialogue) currentDialogue.draw();
   }
 }
 
@@ -331,4 +372,10 @@ function wrapText(str, maxWidth) {
   }
   output += line.trim();
   return output;
+}
+
+function busyIfHovering(x, y, w, h, flag = "dialogue") {
+  if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
+    hovered[flag] = true;
+  }
 }

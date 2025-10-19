@@ -330,6 +330,13 @@
         "sprite": "neutral",
         "text": "Get lost!@ I dont want to hear anything you have to say!"
       }
+    ],
+    "done": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "neutral",
+        "text": "What do you want now?"
+      }
     ]
   }
 }

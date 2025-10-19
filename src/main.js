@@ -73,7 +73,7 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  debug = true;
+  debug = false;
   fonts = {main:"Arial"}
   busy = {};
   mouse = { clicked: false };
@@ -83,7 +83,7 @@ function setup() {
   soundManager = getSoundManager();
   sceneManager = new SceneManager();
   sceneManager.setScene(new Menu());
-  // sceneManager.setScene(new GameOverKill());
+  // sceneManager.setScene(new CaveArea());
 }
 
 function draw() {

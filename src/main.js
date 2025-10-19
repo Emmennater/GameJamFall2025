@@ -1,5 +1,18 @@
+function preload() {
+  dialogueJSON = {};
+  dialogueJSON.lionfish = loadJSON("dialogue/lionfish.json");
+  dialogueJSON.lionfishItem = loadJSON("dialogue/lionfishItem.json");
+  dialogueJSON.lionfishLove = loadJSON("dialogue/lionfishLove.json");
+
+  images = {};
+  images.menu = loadImage("images/menu.png");
+  images.empty_floor = loadImage("images/empty_floor.png");
+  images.cave = loadImage("images/cave.png");
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  debug = false;
   mouse = { clicked: false };
   keys = {};
   characters = getCharacters();
@@ -13,7 +26,8 @@ function draw() {
   sceneManager.run(dt);
   sceneManager.draw();
   mouse.clicked = false;
-  keys[keyCode] = false;
+  
+  for (const key in keys) delete keys[key];
 }
 
 function windowResized() {
@@ -27,5 +41,5 @@ function mousePressed() {
 }
 
 function keyPressed() {
-  keys[keyCode] = true;
+  keys[key] = true;
 }

@@ -2,7 +2,7 @@ class SceneManager {
   constructor() {
     this.currentScene = null;
     this.nextScene = null;
-    this.dialogue = new DialogueManager();
+    this.dialogue = null;
     this.transition = 1; // 0 - 1 (0 = transparent, 1 = opaque)
     this.fadeSpeed = 1/60; // 1 / # frames
     this.nlayers = 10;
@@ -11,6 +11,10 @@ class SceneManager {
       // On Click
       this.transitionToScene(this.currentScene.getLastScene(), true);
     });
+    this.returnArrow = new ReturnArrow(() => {
+      // On Click
+      if (this.dialogue) this.dialogue.exit();
+    })
   }
 
   setScene(scene) {
@@ -27,16 +31,11 @@ class SceneManager {
   }
 
   runSpeaking() {
+    this.dialogue = null;
     for (const characterEntity of this.currentScene.characterEntities) {
       const character = characterEntity.character;
       if (!character.speaking) continue;
-      
-      const dialogue = character.getNextDialogue();
-
-      if (dialogue) {
-        this.dialogue.scheduleDialogue(dialogue);
-        break;
-      }
+      this.dialogue = character.getDialogue();
     }
   }
 
@@ -53,14 +52,21 @@ class SceneManager {
   }
 
   run(dt) {
+    if (this.transition > 0.5 && this.currentScene.getLastScene() != null) {
+      this.backArrow.run(dt);
+    }
+
+    if (this.dialogue) this.returnArrow.run(dt);
+
     this.runTransitions(dt);
-    this.backArrow.run(dt);
     this.currentScene.run(dt);
     this.runSpeaking();
-    this.dialogue.run(dt);
+    if (this.dialogue) this.dialogue.run(dt);
   }
   
   draw() {
+    background(0);
+    
     const fade = (1 - abs(this.transition - 0.5) * 2);
     
     // Draw each layer
@@ -68,11 +74,13 @@ class SceneManager {
       this.currentScene.draw(layer);
     }
 
-    this.dialogue.draw();
+    if (this.dialogue) this.dialogue.draw();
 
     if (this.transition > 0.5 && this.currentScene.getLastScene() != null) {
       this.backArrow.draw();
     }
+
+    if (this.dialogue) this.returnArrow.draw();
 
     background(0, 0, 0, fade * 255);
   }

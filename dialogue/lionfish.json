@@ -1,7 +1,7 @@
 {
   "name": "Lionfish",
   "color": "#ff0000",
-  "likes": ["blue", "shiny", "sea shells"],
+  "likes": ["pearl", "ruby"],
   "dialogues": {
     "first-greeting": [
       {
@@ -210,12 +210,12 @@
           {
             "text": "Then what *does* impress you?",
             "score": 2,
-            "next": "{item}hint"
+            "next": "{likes}hint"
           },
           {
             "text": "I bet I could find something shiny enough to change your mind.",
             "score": 4,
-            "next": "{item}hint"
+            "next": "{likes}hint"
           }
         ]
       }

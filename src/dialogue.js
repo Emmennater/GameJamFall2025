@@ -1,7 +1,8 @@
 class DialogueBox {
-  constructor(charName, text, prompt = null, finished = () => {}) {
-    this.text = "";
+  constructor(charName, sprite, text, prompt = null, finished = () => {}) {
     this.charName = "";
+    this.sprite = sprite;
+    this.text = "";
     this.displayedText = "";
     this.defaultTextSpeed = 0.5;
     this.textSpeed = this.defaultTextSpeed;
@@ -18,16 +19,6 @@ class DialogueBox {
         finished();
       }
     }
-
-    document.addEventListener('mousedown', () => {
-      const unpaused = this.updatePauseIdx();
-      if (!unpaused) {
-        // Speed up the text
-        this.textSpeed = this.defaultTextSpeed + 0.5;
-        this.textSpeedTimer = 4 * 60; // 4 seconds
-      }
-      if (this.endOfText() && !this.prompt) this.continue = true;
-    });
 
     this.showText(charName, text);
   }
@@ -78,6 +69,18 @@ class DialogueBox {
     this.updatePauseIdx();
   }
 
+  runInput() {
+    if (mouse.clicked) {
+      const unpaused = this.updatePauseIdx();
+      if (!unpaused) {
+        // Speed up the text
+        this.textSpeed = this.defaultTextSpeed + 0.5;
+        this.textSpeedTimer = 4 * 60; // 4 seconds
+      }
+      if (this.endOfText() && !this.prompt) this.continue = true;
+    }
+  }
+  
   run(dt) {
     if (this.textTime < this.text.length + 1) {
       this.displayedText = this.text.substring(0, floor(this.textTime));
@@ -102,6 +105,8 @@ class DialogueBox {
         this.continue = true;
       }
     }
+
+    this.runInput();
   }
 
   draw() {
@@ -161,21 +166,7 @@ class Prompt {
     this.selected = 0; // index of the currently selected option
     this.done = false;
     this.choice = null; // stores the chosen option
-
-    // Input handling
-    document.addEventListener('keydown', e => {
-      if (this.done) return;
-
-      if (e.key === 'ArrowUp') {
-        this.selected = (this.selected - 1 + this.options.length) % this.options.length;
-      } else if (e.key === 'ArrowDown') {
-        this.selected = (this.selected + 1) % this.options.length;
-      } else if (e.key === 'Enter') {
-        this.done = true;
-        this.choice = this.options[this.selected];
-        onChoice(this.choice);
-      }
-    });
+    this.onChoice = onChoice;
   }
 
   getChoice() {
@@ -192,8 +183,22 @@ class Prompt {
     return this.done;
   }
 
+  runKeys() {
+    if (this.done) return;
+
+    if (keys['ArrowUp']) {
+      this.selected = (this.selected - 1 + this.options.length) % this.options.length;
+    } else if (keys['ArrowDown']) {
+      this.selected = (this.selected + 1) % this.options.length;
+    } else if (keys['Enter']) {
+      this.done = true;
+      this.choice = this.options[this.selected];
+      this.onChoice(this.choice);
+    }
+  }
+
   run(dt) {
-    // no time-dependent animation for now, but could add one later
+    this.runKeys();
   }
 
   draw() {
@@ -266,12 +271,18 @@ class Prompt {
 }
 
 class DialogueManager {
-  constructor() {
+  constructor(character) {
     this.schedule = [];
     this.currentIdx = 0;
+    this.character = character;
+  }
+
+  exit() {
+    this.character.speaking = false;
   }
 
   isDone() {
+    if (!this.schedule) return true;
     return this.currentIdx >= this.schedule.length;
   }
 
@@ -286,9 +297,7 @@ class DialogueManager {
   }
 
   run(dt) {
-    if (this.currentIdx >= this.schedule.length) {
-      return;
-    }
+    if (this.isDone()) return;
 
     if (this.schedule[this.currentIdx].isDone()) {
       this.nextDialogue();
@@ -300,9 +309,7 @@ class DialogueManager {
   }
 
   draw() {
-    if (this.currentIdx >= this.schedule.length) {
-      return;
-    }
+    if (this.isDone()) return;
 
     const currentDialogue = this.schedule[this.currentIdx];
     currentDialogue.draw();

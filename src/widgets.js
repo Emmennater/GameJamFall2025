@@ -26,6 +26,7 @@ class TextBox {
   }
 
   draw() {
+    if (!this.transform) return;
     const x = this.transform.x;
     const y = this.transform.y;
     const w = this.transform.w;
@@ -61,17 +62,7 @@ class Button extends TextBox {
       if (transform && this.isHovered()) transform.backgroundColor = color(200);
       return transform;
     });
-    
-    document.addEventListener('mousedown', () => {
-      // Check if the mouse is inside the button
-      const x = this.transform.x;
-      const y = this.transform.y;
-      const w = this.transform.w;
-      const h = this.transform.h;
-      if (this.isHovered()) {
-        onClick(this.text);
-      }
-    });
+    this.onClick = onClick;
   }
 
   isHovered() {
@@ -85,6 +76,17 @@ class Button extends TextBox {
 
   run(dt) {
     super.run(dt);
+
+    if (mouse.clicked) {
+      // Check if the mouse is inside the button
+      const x = this.transform.x;
+      const y = this.transform.y;
+      const w = this.transform.w;
+      const h = this.transform.h;
+      if (this.isHovered()) {
+        this.onClick(this.text);
+      }
+    }
   }
 }
 
@@ -115,6 +117,38 @@ class BackArrow extends Button {
   }
 
   draw() {
+    super.draw();
+  }
+}
+
+class ReturnArrow extends Button {
+  constructor(onClick) {
+    super(
+      () => "Return",
+      () => {
+        return {
+          x: width - 105,
+          y: 10,
+          w: 100,
+          h: 40,
+          marginX: 10,
+          marginY: 10,
+          paddingX: 20,
+          paddingY: 10,
+          fontSize: 20,
+          strokeWeight: 2
+        };
+      },
+      onClick
+    );
+  }
+
+  run(dt) {
+    super.run(dt);
+  }
+  
+  draw() {
+
     super.draw();
   }
 }

@@ -199,7 +199,7 @@ class CaveArea extends Scene {
   }
 
   addScenes() {
-    this.addScene(this.createRandomScene([CaveOpening, CaveFloorDark]), 0.37, 0.72);
+    this.addScene(this.createRandomScene([CaveOpening]), 0.37, 0.72);
   }
 }
 

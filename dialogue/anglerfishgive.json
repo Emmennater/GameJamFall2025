@@ -156,19 +156,7 @@
       {
         "speaker": "Lumi",
         "sprite": "lumi-blush",
-        "text": "I don't know what happens next…@ but… if you're here, I think I'll be okay."
-      },
-      {
-        "speaker": "Lumi",
-        "sprite": "lumi-smile",
-        "give": "glowrod",
-        "text": "Here,@ take this.@ Its a glowrod."
-      },
-      {
-        "speaker": "Lumi",
-        "sprite": "lumi-smile",
-        "give": "glowrod",
-        "text": "It will allow you to say in the dark like me...",
+        "text": "I don't know what happens next…@ but… if you're here, I think I'll be okay.",
         "next": "get-item"
       }
     ],

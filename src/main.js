@@ -14,6 +14,9 @@ function preload() {
   images.cave_lit = loadImage("images/cave_lit.png");
   images.ship = loadImage("images/ship.png");
   images.ship2 = loadImage("images/ship2.png");
+  images.ship_arriving = loadImage("images/ship_arriving.png");
+  images.shop_distance = loadImage("images/shop_distance.png");
+  images.shop = loadImage("images/shop.png");
   
   // gifs = {};
   // gifs.shipwreck = loadImage("images/shipwreck.gif");
@@ -22,6 +25,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   debug = false;
+  fonts = {main:"Arial"}
   busy = {};
   mouse = { clicked: false };
   keys = {};
@@ -29,7 +33,7 @@ function setup() {
   characters = getCharacters();
   soundManager = getSoundManager();
   sceneManager = new SceneManager();
-  sceneManager.setScene(new StartingArea());
+  sceneManager.setScene(new Menu());
 }
 
 function draw() {
@@ -53,4 +57,5 @@ function mousePressed() {
 
 function keyPressed() {
   keys[key] = true;
+  keys.pressed = true;
 }

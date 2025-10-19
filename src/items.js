@@ -16,6 +16,7 @@ class ItemEntity extends Entity {
   }
 
   onClick() {
+    if (busy["dialogue"]) return;
     player.addItem(this.name);
     this.destroy();
   }

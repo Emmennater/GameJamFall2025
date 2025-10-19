@@ -1,4 +1,4 @@
-const MAX_DEPTH = 5;
+const MAX_DEPTH = 10;
 
 class Scene {
   constructor(parent) {
@@ -176,6 +176,48 @@ class Scene {
   }
 }
 
+class Menu extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.menu);
+    this.nameText = "";
+  }
+
+  run(dt) {
+    if (keys.pressed) {
+      const k = key.toLowerCase();
+      if (k == "backspace") {
+        this.nameText = this.nameText.slice(0, -1);
+      } else if (k == "enter") {
+        player.name = this.nameText;
+        sceneManager.transitionToScene(new StartingArea(), true);
+      } else if (k.length == 1) {
+        this.nameText += key;
+      }
+    }
+  }
+
+  draw(layer) {
+    super.draw(layer);
+
+    if (layer == 5) {
+      // Menu Text
+      fill(255);
+      textAlign(CENTER, CENTER);
+      textSize(width*0.05);
+      textFont(fonts.main);
+      text("Plenty of Fish in the Sea", width/2, height/2 - 100);
+      
+      // Enter name
+      const cursor = frameCount % 60 < 30 ? "_" : " ";
+      textSize(width*0.02);
+      textAlign(CENTER, CENTER);
+      textFont("monospace");
+      text("Enter name: " + this.nameText + cursor, width/2, height/2);
+    }
+  }
+}
+
 class StartingArea extends Scene {
   constructor(parent) {
     super(parent);
@@ -183,10 +225,11 @@ class StartingArea extends Scene {
   }
   
   addScenes() {
-    this.addScene(this.createRandomScene([CaveArea, ShipArea]), 0.3, 0.3);
-    this.addScene(this.createRandomScene([CaveArea, ShipArea]), 0.86, 0.32);
+    this.addScene(this.createRandomScene([CaveArea, ShipArea, ShipArriving]), 0.3, 0.3);
+    this.addScene(this.createRandomScene([CaveArea, ShipArea, ShipArriving]), 0.86, 0.32);
     this.addScene(this.createRandomScene([CaveArea]), 0.57, 0.78);
-    this.addScene(this.createRandomScene([ShipArea]), 0.15, 0.78);
+    this.addScene(this.createRandomScene([ShipArriving, ShipArea]), 0.15, 0.78);
+    // this.addScene(this.createRandomScene([ShopDistance]), 0.15, 0.78);
   }
 }
 
@@ -221,8 +264,20 @@ class CaveFloorDark extends Scene {
   }
 
   addScenes() {
-    this.addScene(this.createRandomScene([CaveArea, ShipArea]), 0.79, 0.19);
-    this.addScene(this.createRandomScene([CaveArea, ShipArea]), 0.14, 0.26);
+    this.addScene(this.createRandomScene([CaveArea, ShipArea, ShopDistance]), 0.79, 0.19);
+    this.addScene(this.createRandomScene([CaveArea, ShipArea, ShopDistance]), 0.14, 0.26);
+  }
+}
+
+class ShipArriving extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.ship_arriving);
+  }
+
+  addScenes() {
+    this.addScene(new ShipArea2(this), 0.36, 0.86);
+    this.addScene(this.createRandomScene([CaveArea, CaveFloorDark]), 0.11, 0.33);
   }
 }
 
@@ -249,6 +304,24 @@ class ShipArea2 extends Scene {
   }
 }
 
+class ShopDistance extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.shop_distance);
+  }
+
+  addScenes() {
+    this.addScene(new Shop(this), 0.63, 0.46);
+  }
+}
+
+class Shop extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.shop);
+  }
+}
+
 class SceneEntity extends Entity {
   constructor(scene, getTransform) {
     super(getTransform);
@@ -261,13 +334,14 @@ class SceneEntity extends Entity {
   }
 
   render(x, y, w, h) {
-    if (debug) {
-      noFill();
-      stroke(255, 0, 0);
-      strokeWeight(1);
-      rect(x - w / 2, y - h / 2, w, h);
-    }
+    // if (debug) {
+    //   noFill();
+    //   stroke(255, 0, 0);
+    //   strokeWeight(1);
+    //   rect(x - w / 2, y - h / 2, w, h);
+    // }
 
+    textFont(fonts.main)
     textSize(60);
     fill(255, 40);
     noStroke();

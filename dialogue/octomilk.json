@@ -1,6 +1,7 @@
 {
   "name": "Takara",
   "color": "#6b1f3f",
+  "likes": ["poisonedcoralmilk"],
   "dialogues": {
     "coralmilk_intro": [
       {

@@ -30,7 +30,6 @@ class SceneManager {
     if (!isBack) scene.setLastScene(this.currentScene);
     this.nextScene = scene;
     this.transition = 0;
-    soundManager.play('transition');
   }
 
   runSpeaking() {

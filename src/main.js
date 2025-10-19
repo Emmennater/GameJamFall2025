@@ -47,10 +47,11 @@ function preload() {
   images["lion-talk"] = loadImage("images/lion-talk.png");
   images["lumi-neutral"] = loadImage("images/lumi-neutral.png");
   images["lumi-smile"] = loadImage("images/lumi-smile.png");
-  // images["lumi-shy"] = loadImage("images/lumi-shy.png");
+  images["lumi-shy"] = loadImage("images/lumi-shy.png");
   images["lumi-talk"] = loadImage("images/lumi-talk.png");
-  images["takara-neutral"] = loadImage("images/takara-neutral.png");
-  images["takara-intense"] = loadImage("images/takara-intense.png");
+  images["octo-neutral"] = loadImage("images/takara-neutral.png");
+  images["octo-intense"] = loadImage("images/takara-intense.png");
+  images["octo-intense"] = loadImage("images/takara-intense.png");
 
   // Items
   images.driftglass = loadImage("images/driftglass.png");
@@ -88,7 +89,7 @@ function setup() {
   soundManager = getSoundManager();
   sceneManager = new SceneManager();
   sceneManager.setScene(new Menu());
-  // sceneManager.setScene(new CaveArea());
+  // sceneManager.setScene(new CoralArea());
 }
 
 function draw() {

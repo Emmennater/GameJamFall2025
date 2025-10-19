@@ -4,7 +4,7 @@ function getCharacters() {
   let defaultSprites = {
     "Lion-chan": "lion-neutral",
     "Lumi": "lumi-neutral",
-    "Takara": "takara-neutral"
+    "Takara": "octo-neutral"
   }
 
   for (const [filename, json] of Object.entries(dialogueJSON)) {

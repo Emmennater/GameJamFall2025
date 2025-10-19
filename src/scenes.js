@@ -475,7 +475,7 @@ class CoralArea extends Scene {
     this.setBackground(images.coral1);
     this.addItem(["pearl"], 0.9, 0.75, {}, 0.1);
     // this.addItem(["pearl"], 0.26, 0.74, {}, 0.1);
-    this.addCharacter("Takara", "takara-neutral", 0.23, 0.7);
+    this.addCharacter("Takara", "octo-neutral", 0.23, 0.7);
   }
 
   addScenes() {

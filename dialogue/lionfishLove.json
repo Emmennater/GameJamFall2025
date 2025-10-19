@@ -1,37 +1,196 @@
 {
   "name": "Lion-chan",
-  "state": "neutral",
-  "color": "#ff0000",
-  "likes": ["blue", "shiny", "sea shells"],
+  "color": "#ff4d4d",
+  "likes": ["pearl", "ruby"],
   "dialogues": {
-    "first-greeting": [
+    "greeting": [
       {
         "speaker": "Lion-chan",
-        "sprite": "shy",
-        "text": "Oh! h-hi...@ what brings you here?",
+        "sprite": "softSmile",
+        "text": "Oh... it's you again.@ I was just... polishing the {likes} you gave me.@ It still catches the light so perfectly.",
         "options": [
           {
-            "text": "Can you tell me about dangerous areas nearby?",
-            "score": 2,
-            "next": "info"
+            "text": "It looks good on you.",
+            "score": 4,
+            "next": "flusterlove"
+          },
+          {
+            "text": "You seem happy to see me.",
+            "score": 3,
+            "next": "playful1"
+          },
+          {
+            "text": "Can I ask you something about this area?",
+            "score": 0,
+            "next": "askhint"
           }
         ]
       }
     ],
-    "info": [
+    "flusterlove": [
       {
         "speaker": "Lion-chan",
-        "sprite": "",
-        "text": "Oh! h-hi...@ what brings you here?",
+        "sprite": "flustered",
+        "text": "S-stop saying things like that!@ You can't just... compliment me out of nowhere like that!@ You'll make me lose focus!",
         "options": [
           {
-            "text": "Can you tell me about dangerous areas nearby?",
-            "score": 2,
-            "next": "info"
+            "text": "Guess I'm good at distracting you.",
+            "score": 5,
+            "next": "softbond"
+          },
+          {
+            "text": "Sorry... you're just beautiful, that's all.",
+            "score": 6,
+            "next": "softbond"
           }
         ]
       }
+    ],
+    "playful1": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "blush",
+        "text": "Hmph...@ D-don't read too much into it.@ I just don't hate having you around anymore, that's all.",
+        "options": [
+          {
+            "text": "That's progress.",
+            "score": 3,
+            "next": "softbond"
+          },
+          {
+            "text": "I'll take that as a compliment.",
+            "score": 2,
+            "next": "softbond"
+          }
+        ]
+      }
+    ],
+    "softbond": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "softSmile",
+        "text": "You really are persistent...@ But maybe that's what I like about you.",
+        "options": [
+          {
+            "text": "Can you tell me about dangerous places around here?",
+            "score": 0,
+            "next": "askhint"
+          },
+          {
+            "text": "What areas are safe to explore?",
+            "score": 0,
+            "next": "safehint"
+          }
+        ]
+      }
+    ],
+    "askhint": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "neutral",
+        "text": "Dangerous places, huh?@ You sure know how to pick your adventures.",
+        "options": [
+          {
+            "text": "I like a challenge.",
+            "score": 2,
+            "next": "dangerhint1"
+          },
+          {
+            "text": "I'd rather not die down here.",
+            "score": 1,
+            "next": "dangerhint1"
+          }
+        ]
+      }
+    ],
+    "dangerhint1": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "serious",
+        "text": "Listen carefully, okay?@ The deeper zones — the ones where the light fades — aren't for the unprepared."
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "serious",
+        "text": "If you go into the dark without something that glows...@ you won't come back.@ The creatures there hunt by sound and motion."
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "softBlush",
+        "text": "So promise me you won't do anything stupid.@ Not unless you have a light or... me by your side.",
+        "options": [
+          {
+            "text": "I promise.",
+            "score": 4,
+            "next": "bondfinal"
+          },
+          {
+            "text": "Would you really come with me?",
+            "score": 5,
+            "next": "bondfluster"
+          }
+        ]
+      }
+    ],
+    "bondfluster": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "flustered",
+        "text": "W-what?! I didn't say that!@ I just mean... someone should keep an eye on you so you don't get yourself killed!"
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "softSmile",
+        "text": "Besides...@ if you disappeared down there...@ things would get a lot quieter around here. And I... don't want that.",
+        "options": [
+          {
+            "text": "I'll stay safe — for you.",
+            "score": 6,
+            "next": "bondfinal"
+          }
+        ]
+      }
+    ],
+    "safehint": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "neutral",
+        "text": "The coral fields near the east ridge are calm.@ Even small fish drift there to rest.@ If you need to recover, that's your best bet."
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "softSmile",
+        "text": "Stay where the light reaches the sand.@ The current's weaker there... and I can keep an eye on you from the reef."
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "blush",
+        "text": "N-not because I care that much!@ I just don't want to waste a perfectly good {likes} on someone who can't swim straight.",
+        "options": [
+          {
+            "text": "You really do care.",
+            "score": 4,
+            "next": "bondfinal"
+          },
+          {
+            "text": "I'll take that as 'be careful.'",
+            "score": 2,
+            "next": "bondfinal"
+          }
+        ]
+      }
+    ],
+    "bondfinal": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "shySmile",
+        "text": "Hmph... you're impossible.@ But... maybe that's what makes you interesting."
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "softBlush",
+        "text": "Just don't make me regret caring about you, alright?"
+      }
     ]
-
   }
 }

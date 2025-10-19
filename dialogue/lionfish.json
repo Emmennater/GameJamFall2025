@@ -318,11 +318,12 @@
         "text": "Hmph. Don't get cocky.@ Bring me something that I like, and *maybe* I'll help you get around…"
       }
     ],
-    "dead_pearl": [
+    "bad_item": [
       {
         "speaker": "Lion-chan",
         "sprite": "neutral",
-        "text": "What is this?! A PEARL!@ I hate pearls!@ I don't want to hear anything you have to say! Get lost"
+        "text": "What is this?! A {item}!@ Why would you think I want that?@ Get lost",
+        "score": -20
       }
     ],
     "dead_end": [

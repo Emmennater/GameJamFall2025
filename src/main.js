@@ -8,10 +8,10 @@ function preload() {
   dialogueJSON.lionfishLove = loadJSON("dialogue/lionfishLove.json");
   dialogueJSON.nolight = loadJSON("dialogue/nolight.json");
   dialogueJSON.octo = loadJSON("dialogue/octo.json");
+  dialogueJSON.octokill = loadJSON("dialogue/octokill.json");
   dialogueJSON.octolion = loadJSON("dialogue/octolion.json");
   dialogueJSON.octolumi = loadJSON("dialogue/octolumi.json");
   dialogueJSON.octomilk = loadJSON("dialogue/octomilk.json");
-  dialogueJSON.octokill = loadJSON("dialogue/octokill.json");
   dialogueJSON.shopkeeper = loadJSON("dialogue/shopkeeper.json");
 
   images = {};

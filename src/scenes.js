@@ -575,13 +575,14 @@ class ShopDistance extends Scene {
 class Shop extends Scene {
   constructor(parent) {
     super(parent);
-    let tags = {forSale: true};
+    // let tags = {forSale: true};
+    let tags = {};
     this.setBackground(images.shop);
-    this.addItem(["ruby"], 0.39, 0.52, tags, 1);
-    this.addItem(["moonjellycandy"], 0.46, 0.52, tags, 1);
-    this.addItem(["magicscroll", "driftglass"], 0.53, 0.52, tags, 1);
-    this.addItem(["pearl", "poisonedcoralmilk"], 0.61, 0.52, tags, 1);
-    this.addCharacter("Nerissa", null, 0.85, 0.6);
+    this.addItem(["ruby"], 0.39, 0.52, tags, 0.5);
+    this.addItem(["moonjellycandy"], 0.46, 0.52, tags, 0.5);
+    this.addItem(["magicscroll", "driftglass"], 0.53, 0.52, tags, 0.5);
+    this.addItem(["pearl", "poisonedcoralmilk"], 0.61, 0.52, tags, 0.5);
+    // this.addCharacter("Nerissa", null, 0.85, 0.6);
   }
 }
 

@@ -2,6 +2,7 @@ class Character {
   constructor(name, likes, dialogues) {
     this.name = name;
     this.likes = likes;
+    this.like = this.getRandomLike();
     this.dialogues = dialogues;
     this.sprite = new Sprite(name);
     this.currentDialogue = "first-greeting";
@@ -35,7 +36,7 @@ class Character {
   }
 
   setNextDialogue(next) {
-    next = next.replace("{likes}", this.getRandomLike());
+    next = next.replace("{likes}", this.like);
     this.currentDialogue = next;
     this.speaking = true;
   }
@@ -86,9 +87,14 @@ class CharacterEntity extends Entity {
   }
 
   render(x, y, w, h) {
-    fill(50);
-    noStroke();
-    rect(x - w / 2, y - h / 2, w, h);
+    if (this.img) {
+      imageMode(CENTER);
+      image(this.img, x, y, w, h);
+    } else {
+      fill(50);
+      noStroke();
+      rect(x - w / 2, y - h / 2, w, h);
+    }
   }
 }
 

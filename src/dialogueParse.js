@@ -1,6 +1,10 @@
 function getCharacters() {
   let characters = {};
 
+  let defaultSprites = {
+    "Lion-chan": "lion_chan_2",
+  }
+
   for (const [filename, json] of Object.entries(dialogueJSON)) {
     const name = json.name;
 
@@ -15,7 +19,6 @@ function getCharacters() {
       character.dialogues[dialogueName] = dialogueList;
       for (const obj of dialogue) {
         const speaker = obj.speaker;
-        const sprite = obj.sprite;
         const text = obj.text;
         const options = obj.options;
         const enterDialogue = obj["enter-dialogue"];
@@ -24,6 +27,9 @@ function getCharacters() {
         const check = obj.check; // List of necessary items
         const checkTrue = obj["check-true"]; // Next diagouge
         const checkFalse = obj["check-false"]; // Next dialogue
+        
+        let sprite = defaultSprites[speaker];
+        if (obj.sprite && images[obj.sprite]) sprite = obj.sprite;
         
         // Executes just before the next dialogue
         const onFinish = (choice) => {

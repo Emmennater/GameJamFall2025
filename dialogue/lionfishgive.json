@@ -220,7 +220,8 @@
       {
         "speaker": "Lion-chan",
         "sprite": "lion-blush",
-        "text": "Just...@ use it if you don't feel safe"
+        "text": "Just...@ use it if you don't feel safe",
+        "enter-dialogue": "love-greeting"
       }
     ],
 
@@ -420,7 +421,28 @@
       {
         "speaker": "Lion-chan",
         "sprite": "smile",
-        "text": "Just...@ use it if you don't feel safe"
+        "text": "Just...@ use it if you don't feel safe",
+        "enter-dialogue": "love-greeting"
+      }
+    ],
+
+
+
+
+    "bad-item": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion-neutral",
+        "text": "What is this?! A {item}!@ Why would you think I want that?@ Get lost",
+        "enter-dialogue": "dead-end",
+        "score": -20
+      }
+    ],
+    "dead-end": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion-neutral",
+        "text": "Get lost!@ I dont want to hear anything you have to say!"
       }
     ]
   }

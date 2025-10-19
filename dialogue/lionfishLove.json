@@ -3,7 +3,7 @@
   "color": "#ff4d4d",
   "likes": ["pearl", "ruby"],
   "dialogues": {
-    "greeting": [
+    "love-greeting": [
       {
         "speaker": "Lion-chan",
         "sprite": "lion-neutral",

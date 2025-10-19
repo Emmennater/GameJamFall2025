@@ -183,6 +183,7 @@
         "speaker": "Lumi",
         "sprite": "lumi-soft-smile",
         "text": "It will allow you to say in the dark like me...",
+        "enter-dialogue": "after-love-visit",
         "next": "ending"
       }
     ],
@@ -333,7 +334,102 @@
         "speaker": "Lumi",
         "sprite": "lumi-soft-smile",
         "text": "You… really changed something in me.@ Thank you, for reminding me that broken things can shine again.",
+        "enter-dialogue": "after-love-visit",
         "next": "ending"
+      }
+    ],
+
+
+
+
+
+
+
+    "bad-item": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-neutral",
+        "text": "Oh…@ you brought me something?",
+        "remove": "{item}",
+        "enter-dialogue": "wrong-end",
+        "options": [
+          {
+            "text": "Yeah, thought you'd like it.",
+            "score": -7,
+            "next": "wrong1"
+          }
+        ]
+      }
+    ],
+    "wrong1": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-shy",
+        "text": "I…@ see.@ It's… not what I expected.",
+        "options": [
+          {
+            "text": "You don't like it?",
+            "score": -3,
+            "next": "wrong2"
+          },
+          {
+            "text": "Come on, it's not that bad.",
+            "score": -5,
+            "next": "wrong3"
+          }
+        ]
+      }
+    ],
+    "wrong2": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-hurt",
+        "text": "It's not just that.@ It's…@ this thing… it hurts to look at.@ It feels… wrong."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-hurt",
+        "text": "Did you even think before bringing it here?"
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-neutral",
+        "text": "I thought… maybe you understood me.@ I guess I was wrong.",
+        "next": "wrong-end"
+      }
+    ],
+    "wrong3": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-hurt",
+        "text": "You don't get it…@ do you?@ It's not about whether it's ‘that bad'.@ It's about what it *means*."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-neutral",
+        "text": "You brought the deep into my light and called it a gift.@ I… can't do this anymore."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-hurt",
+        "text": "Please… just go."
+      },
+      {
+        "speaker": "System",
+        "text": "[Your bond with Lumi has been broken.]",
+        "score": -10
+      }
+    ],
+    "wrong-end": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-shy",
+        "text": "I…@ need some time alone.@ Please."
+      },
+      {
+        "speaker": "System",
+        "text": "[Your bond with Lumi has been broken.]",
+        "score": -10
       }
     ]
   }

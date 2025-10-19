@@ -3,6 +3,7 @@ class DialogueBox {
     this.charName = "";
     this.sprite = sprite;
     this.text = "";
+    this.rawText = "";
     this.displayedText = "";
     this.defaultTextSpeed = 0.5;
     this.textSpeed = this.defaultTextSpeed;
@@ -38,7 +39,8 @@ class DialogueBox {
 
   showText(charName, text) {
     this.charName = charName || "Null";
-    this.text = text || "Null";
+    this.rawText = text || "Null";
+    this.text = "";
     this.displayedText = "";
     this.textTime = 0;
     this.updatePauseIdx();
@@ -46,6 +48,10 @@ class DialogueBox {
 
   endOfText() {
     return this.textTime >= this.text.length + 1;
+  }
+
+  formatText() {
+    this.text = substituteText(this.rawText);
   }
 
   promptIsDone() {
@@ -324,6 +330,10 @@ class DialogueManager {
   scheduleDialogue(dialogueBoxes) {
     this.schedule = dialogueBoxes;
     this.currentIdx = 0;
+
+    for (const dialogueBox of this.schedule) {
+      dialogueBox.formatText();
+    }
   }
 
   nextDialogue() {
@@ -375,4 +385,10 @@ function busyIfHovering(x, y, w, h, flag = "dialogue") {
   if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
     busy[flag] = true;
   }
+}
+
+function substituteText(text) {
+  // {player} -> player.name
+  let newText = text.replace(/\{player\}/g, player.name);
+  return newText;
 }

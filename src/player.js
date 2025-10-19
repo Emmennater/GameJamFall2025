@@ -1,5 +1,5 @@
 class Player {
-  constructor(name) {
+  constructor(name = "Player") {
     this.name = name;
     this.items = [];
   }

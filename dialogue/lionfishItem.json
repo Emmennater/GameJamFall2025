@@ -3,29 +3,6 @@
   "color": "#ff0000",
   "likes": ["blue", "shiny", "sea shells"],
   "dialogues": {
-    "first-greeting": [
-      {
-        "speaker": "Lionfish",
-        "sprite": "neutral",
-        "text": "Oh? A surface-dweller wandering this deep? You're either brave or foolish.",
-        "options": [
-          {
-            "text": "Maybe both. Who are you?",
-            "score": 2,
-            "next": "intro1"
-          },
-          {
-            "text": "I'm just exploring. Why? Who are you?",
-            "score": 1,
-            "next": "intro1"
-          },
-          {
-            "text": "Should I be scared?",
-            "score": 0,
-            "next": "explain1"
-          }
-        ]
-      }
-    ]
+    
   }
 }

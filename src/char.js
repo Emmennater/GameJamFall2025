@@ -31,8 +31,10 @@ class Character {
       return;
     }
 
-    // Check for {likes} in choice.next
-    const next = choice.next.replace("{likes}", this.getRandomLike());
+    // Variable substitution
+    let next = choice.next;
+    next = choice.next.replace("{likes}", this.getRandomLike());
+    
     this.currentDialogue = next;
     this.speaking = true;
   }

@@ -8,6 +8,7 @@
         "speaker": "Lion-chan",
         "sprite": "neutral",
         "text": "Oh? A surface-dweller wandering this deep? You're either brave or foolish.",
+        "enter-dialogue": "greeting2",
         "options": [
           {
             "text": "Maybe both. Who are you?",

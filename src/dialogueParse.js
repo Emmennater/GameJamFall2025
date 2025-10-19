@@ -16,8 +16,10 @@ function getCharacters() {
         const sprite = obj.sprite;
         const text = obj.text;
         const options = obj.options;
+        const enterDialogue = obj.enterDialogue;
         const onFinish = (choice) => {
           characters[name].updateFromChoice(choice);
+          // if (enterDialogue) characters[name].setEnterDialogue(enterDialogue);
         };
         if (options) {
           dialogueList.push(new DialogueBox(speaker, sprite, text, new Prompt("", options), onFinish));

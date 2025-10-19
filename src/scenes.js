@@ -236,7 +236,7 @@ class StartingArea extends Scene {
 class CaveArea extends Scene {
   constructor(parent) {
     super(parent);
-    this.addCharacter("Lionfish", null, 0.8, 0.6);
+    this.addCharacter("Lion-chan", null, 0.8, 0.6);
     this.setBackground(images.cave);
     this.addItem("ruby", 0.08, 0.85);
   }

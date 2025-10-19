@@ -5,6 +5,7 @@ class Character {
     this.dialogues = dialogues;
     this.sprite = new Sprite(name);
     this.currentDialogue = "first-greeting";
+    this.enterDialogue = "first-greeting";
     // this.currentDialogue = "done";
     this.speaking = false;
     this.dialogue = new DialogueManager(this);
@@ -15,6 +16,7 @@ class Character {
   }
 
   startSpeaking() {
+    // this.currentDialogue = this.enterDialogue; // Overwrite
     if (!this.dialogues[this.currentDialogue]) return;
     this.speaking = true;
   }
@@ -52,6 +54,11 @@ class Character {
   getDialogue() {
     return this.dialogue;
   }
+
+  setEnterDialogue(dialogue) {
+    if (!dialogue) print("Invalid dialogue");
+    this.enterDialogue = dialogue;
+  }
 }
 
 class CharacterEntity extends Entity {
@@ -73,5 +80,9 @@ class CharacterEntity extends Entity {
 }
 
 function getCharacter(characterName) {
-  return characters[characterName];
+  const character = characters[characterName];
+
+  if (!character) print("Invalid character (getCharacter): " + characterName);
+
+  return character;
 }

@@ -52,6 +52,7 @@ class DialogueBox {
 
   formatText() {
     this.text = substituteText(this.rawText);
+    this.updatePauseIdx();
   }
 
   promptIsDone() {

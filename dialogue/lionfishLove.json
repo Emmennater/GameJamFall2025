@@ -1,11 +1,12 @@
 {
-  "name": "Lionfish",
+  "name": "Lion-chan",
+  "state": "neutral",
   "color": "#ff0000",
   "likes": ["blue", "shiny", "sea shells"],
   "dialogues": {
     "first-greeting": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "shy",
         "text": "Oh! h-hi...@ what brings you here?",
         "options": [
@@ -19,7 +20,7 @@
     ],
     "info": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "",
         "text": "Oh! h-hi...@ what brings you here?",
         "options": [

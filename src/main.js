@@ -1,7 +1,6 @@
 function preload() {
   dialogueJSON = {};
   dialogueJSON.lionfish = loadJSON("dialogue/lionfish.json");
-  dialogueJSON.lionfishItem = loadJSON("dialogue/lionfishItem.json");
   dialogueJSON.lionfishLove = loadJSON("dialogue/lionfishLove.json");
 
   images = {};

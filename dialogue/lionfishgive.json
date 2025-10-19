@@ -1,0 +1,425 @@
+{
+  "name": "Lion-chan",
+  "color": "#ff0000",
+  "likes": ["pearl", "ruby"],
+  "dialogues": {
+    "receive-pearl": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion_neutral",
+        "text": "W-what's this?@ A pearl?@ You actually… brought it?",
+        "options": [
+          {
+            "text": "I thought you might like it.",
+            "score": 4,
+            "next": "pearlreaction1"
+          },
+          {
+            "text": "You said they reflect moonlight nicely, right?",
+            "score": 3,
+            "next": "pearlreaction1"
+          }
+        ]
+      }
+    ],
+    "pearlreaction1": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion_flustered",
+        "text": "I-I never said I wanted one!@ You really don't listen, do you?",
+        "options": [
+          {
+            "text": "Then I'll take it back.",
+            "score": 0,
+            "next": "pearlreaction2"
+          },
+          {
+            "text": "You're holding onto it awfully tight for someone who doesn't care.",
+            "score": 5,
+            "next": "pearlreaction3"
+          }
+        ]
+      }
+    ],
+    "pearlreaction2": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion_blush",
+        "text": "W-wait!@ I mean—@ you already gave it to me.@ It'd be rude to just— take it back now!@ Right?!"
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion_flustered",
+        "text": "Ugh, you're so annoying...@ Fine, I'll keep it. But only because it'd be a waste to throw it away."
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion_blush",
+        "text": "It's...@ actually kind of pretty.",
+        "options": [
+          {
+            "text": "It looks good with your fins.",
+            "score": 4,
+            "next": "pearlreaction4"
+          },
+          {
+            "text": "I'm glad you like it.",
+            "score": 3,
+            "next": "pearlreaction4"
+          }
+        ]
+      }
+    ],
+    "pearlreaction3": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion_flustered",
+        "text": "Wha— I— No!@ I'm just—!@ It's slippery, okay?! I'm holding it so it doesn't float away!",
+        "options": [
+          {
+            "text": "Right… slippery. Sure.",
+            "score": 4,
+            "next": "pearlreaction4"
+          },
+          {
+            "text": "You're adorable when you try to lie.",
+            "score": 5,
+            "next": "flusterlove1"
+          }
+        ]
+      }
+    ],
+    "pearlreaction4": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion_blush",
+        "text": "It's...@ smooth.@ And the way it catches the light...@ kind of like...@ the moon through the water.",
+        "options": [
+          {
+            "text": "I picked it just for you.",
+            "score": 5,
+            "next": "flusterlove1"
+          },
+          {
+            "text": "I knew you'd appreciate the shine.",
+            "score": 4,
+            "next": "flusterlove1"
+          }
+        ]
+      }
+    ],
+    "flusterlove1": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion_angryBlush",
+        "text": "Y-you really don't know when to stop, do you!?@ I'm not blushing! It's the coral again!@ The coral!!",
+        "options": [
+          {
+            "text": "If you say so, coral cheeks.",
+            "score": 5,
+            "next": "bondfinal1"
+          },
+          {
+            "text": "You're cute when you get defensive.",
+            "score": 5,
+            "next": "bondfinal1"
+          }
+        ]
+      }
+    ],
+    "bondfinal1": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion_blush",
+        "text": "Hmph…@ You're impossible.@ But...@ maybe you're not completely terrible to be around.",
+        "options": [
+          {
+            "text": "I'll take that as a confession.",
+            "score": 6,
+            "next": "confession_denial"
+          },
+          {
+            "text": "That's the nicest thing you've said to me.",
+            "score": 4,
+            "next": "confession_denial"
+          }
+        ]
+      }
+    ],
+    "confession_denial": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion_angryBlush",
+        "text": "C-confession?!@ Don't make me laugh!@ As if I'd fall for some clueless surface-dweller like you!"
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion_blush",
+        "text": "I mean...@ even if you *did* bring me a gift.@ A perfect one.@ And said all those stupid, nice things...",
+        "options": [
+          {
+            "text": "You're smiling, you know.",
+            "score": 5,
+            "next": "lovehint"
+          },
+          {
+            "text": "You don't have to hide it.",
+            "score": 4,
+            "next": "lovehint"
+          }
+        ]
+      }
+    ],
+    "lovehint": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion_blush",
+        "text": "I...@ I said stop looking at me like that.@ It makes my fins twitch.",
+        "options": [
+          {
+            "text": "You're beautiful when you're flustered.",
+            "score": 6,
+            "next": "loveend1"
+          },
+          {
+            "text": "I can't help it—you're glowing.",
+            "score": 5,
+            "next": "loveend1"
+          }
+        ]
+      }
+    ],
+    "loveend1": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion_blush",
+        "text": "G-glowing?@ I...@ maybe it's just the pearl's reflection...@ yeah, that's it."
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion_flustered",
+        "text": "Still...@ I...@ No ones ever done something like this for me before..."
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion_blush",
+        "give": "magic scroll",
+        "text": "Here.@ Just take this magic scroll."
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion_blush",
+        "text": "N-not because I want it or anything!@ I just...@ I don't want you get hurt...@ But only so your gems stay intact!@ That's all!"
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion_neutral",
+        "text": "You can use the scroll to see if there is danger down a pathway."
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "lion_blush",
+        "text": "Just...@ use it if you don't feel safe"
+      }
+    ],
+
+
+
+
+    "receive-ruby": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "neutral",
+        "text": "Huh...?@ What's this supposed to be?@ A ruby?@ You actually found one down here?",
+        "options": [
+          {
+            "text": "I thought the color would suit you.",
+            "score": 4,
+            "next": "rubyreaction1"
+          },
+          {
+            "text": "You said you liked red jewels, right?",
+            "score": 3,
+            "next": "rubyreaction1"
+          },
+          {
+            "text": "Just thought it looked valuable.",
+            "score": 1,
+            "next": "rubytease"
+          }
+        ]
+      }
+    ],
+    "rubyreaction1": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "flustered",
+        "text": "S-suit me?!@ Don't be ridiculous!@ It's just... a shiny rock!",
+        "options": [
+          {
+            "text": "Then why are you staring at it like that?",
+            "score": 5,
+            "next": "rubyreaction2"
+          },
+          {
+            "text": "Guess I'll just take it back, then.",
+            "score": 0,
+            "next": "rubyreaction3"
+          }
+        ]
+      }
+    ],
+    "rubyreaction2": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "angryBlush",
+        "text": "W-wha—! I'm not staring!@ I just...@ it's rare to see one this pure, that's all!@ It's craftsmanship, not sentiment!"
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "softBlush",
+        "text": "Still...@ the way it catches the light...@ kinda reminds me of my fins when the current hits just right...",
+        "options": [
+          {
+            "text": "Exactly why I thought of you.",
+            "score": 5,
+            "next": "rubyflusterlove"
+          },
+          {
+            "text": "So you *do* like it, then?",
+            "score": 4,
+            "next": "rubyflusterlove"
+          }
+        ]
+      }
+    ],
+    "rubyreaction3": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "flustered",
+        "text": "W-wait!@ I mean— you already gave it to me!@ Taking it back would be...@ rude!@ Y-yeah, that's it!"
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "softBlush",
+        "text": "Ugh... fine.@ I'll keep it.@ But only because throwing it away would be wasteful!",
+        "options": [
+          {
+            "text": "You're welcome.",
+            "score": 3,
+            "next": "rubyflusterlove"
+          }
+        ]
+      }
+    ],
+    "rubytease": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "eyeroll",
+        "text": "Tch. Figures you'd think that way.@ Typical surface-dweller logic— shiny equals valuable."
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "smirk",
+        "text": "Still...@ you *did* pick a nice one.@ Even if you don't know why.",
+        "options": [
+          {
+            "text": "Maybe I picked it because it reminded me of you.",
+            "score": 4,
+            "next": "rubyflusterlove"
+          }
+        ]
+      }
+    ],
+    "rubyflusterlove": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "angryBlush",
+        "text": "Y-you...@ you can't just say things like that!@ What's wrong with you?!",
+        "options": [
+          {
+            "text": "You're blushing again.",
+            "score": 5,
+            "next": "rubyconfession1"
+          },
+          {
+            "text": "Don't tell me the ruby's glow is making *you* warm now.",
+            "score": 6,
+            "next": "rubyconfession1"
+          }
+        ]
+      }
+    ],
+    "rubyconfession1": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "flustered",
+        "text": "I-it's not me!@ It's the reflection!@ This stupid gem just makes everything look red, okay?!",
+        "options": [
+          {
+            "text": "You really do have a fiery side, huh?",
+            "score": 5,
+            "next": "rubybondfinal"
+          },
+          {
+            "text": "You wear it better than the ruby does.",
+            "score": 6,
+            "next": "rubybondfinal"
+          }
+        ]
+      }
+    ],
+    "rubybondfinal": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "softBlush",
+        "text": "You really...@ never stop teasing, do you?",
+        "options": [
+          {
+            "text": "Only when it makes you smile.",
+            "score": 5,
+            "next": "rubyloveend"
+          },
+          {
+            "text": "It's fun watching you try not to smile.",
+            "score": 4,
+            "next": "rubyloveend"
+          }
+        ]
+      }
+    ],
+    "rubyloveend": [
+      {
+        "speaker": "Lion-chan",
+        "sprite": "shySmile",
+        "text": "Heh...@ You're ridiculous.@ But maybe...@ a little bit charming too."
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "softSmile",
+        "text": "Still...@ I...@ No ones ever done something like this for me before..."
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "softSmile",
+        "give": "magic scroll",
+        "text": "Here.@ Just take this magic scroll."
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "softBlush",
+        "text": "N-not because I want it or anything!@ I just...@ I don't want you get hurt...@ But only so your gems stay intact!@ That's all!"
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "smile",
+        "text": "You can use the scroll to see if there is danger down a pathway."
+      },
+      {
+        "speaker": "Lion-chan",
+        "sprite": "smile",
+        "text": "Just...@ use it if you don't feel safe"
+      }
+    ]
+  }
+}

@@ -24,6 +24,14 @@ function preload() {
   
   // Characters
   images.lion_chan_2 = loadImage("images/lion_chan_2.png");
+
+  videos = {};
+  videos.menu = createVideo("videos/menu.mp4");
+
+  for (let video of Object.values(videos)) {
+    video.hide();
+    video.loop();
+  }
   
   // gifs = {};
   // gifs.shipwreck = loadImage("images/shipwreck.gif");

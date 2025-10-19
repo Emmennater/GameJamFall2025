@@ -186,7 +186,7 @@ class Scene {
 class Menu extends Scene {
   constructor(parent) {
     super(parent);
-    this.setBackground(images.menu);
+    this.setBackground(videos.menu);
     this.nameText = "";
     this.nameSet = false;
   }

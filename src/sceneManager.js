@@ -85,7 +85,7 @@ class SceneManager {
   }
 
   run(dt) {
-    if (this.transition > 0.5 && this.currentScene.getLastScene() != null && !this.dialogue) {
+    if (this.transition > 0.5 && this.currentScene.getLastScene() != null && !this.dialogue && !player.isDead()) {
       this.backArrow.run(dt);
     }
 
@@ -112,7 +112,7 @@ class SceneManager {
     if (this.giftDialogue) this.giftDialogue.draw();
     else if (this.dialogue) this.dialogue.draw();
 
-    if (this.transition > 0.5 && this.currentScene.getLastScene() != null && !this.dialogue) {
+    if (this.transition > 0.5 && this.currentScene.getLastScene() != null && !this.dialogue && !player.isDead()) {
       this.backArrow.draw();
     }
 

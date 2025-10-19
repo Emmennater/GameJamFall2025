@@ -10,7 +10,20 @@ class Character {
     this.giftedItem = "No item";
     // this.currentDialogue = "done";
     this.speaking = false;
+    this.dead = false;
     this.dialogue = new DialogueManager(this);
+  }
+
+  isDead() {
+    return this.dead;
+  }
+
+  kill() {
+    this.dead = true;
+
+    if (this.name == "Takara") {
+      setTimeout(() => sceneManager.transitionToScene(new GameOverKill(), true), 2000);
+    }
   }
 
   giveItem(item) {
@@ -101,12 +114,14 @@ class CharacterEntity extends Entity {
   }
 
   onClick() {
+    if (this.character.isDead()) return;
     if (!busy["dialogue"]) {
       this.character.startSpeaking();
     }
   }
-
+  
   render(x, y, w, h) {
+    if (this.character.isDead()) return;
     if (this.img) {
       imageMode(CENTER);
       image(this.img, x, y, w, h);

@@ -246,10 +246,18 @@ class Menu extends Scene {
   }
 }
 
-class EndScreen extends Scene {
+class GameOverShark extends Scene {
   constructor(parent) {
     super(parent);
-    this.setBackground(images.empty_floor);
+    this.setBackground(images.shark_game_over);
+  }
+
+  run(dt) {
+    super.run(dt);
+
+    if (keys.pressed) {
+      sceneManager.transitionToScene(new Menu(), true);
+    }
   }
 
   draw(layer) {
@@ -261,7 +269,81 @@ class EndScreen extends Scene {
       textAlign(CENTER, CENTER);
       textSize(width*0.05);
       textFont(fonts.main);
-      text("Game Over", width/2, height/2 - 100);
+      text("Game Over", width/2, height * 0.1);
+    }
+  }
+}
+
+class GameOverDark extends Scene {
+  constructor(parent) {
+    super(parent);
+    // this.setBackground(images.shark_game_over);
+  }
+
+  run(dt) {
+    if (keys.pressed) {
+      sceneManager.transitionToScene(new Menu(), true);
+    }
+  }
+
+  draw(layer) {
+    // super.draw(layer);
+
+    if (layer == 5) {
+      background(0);
+
+      // Menu Text
+      fill(255);
+      textAlign(CENTER, CENTER);
+      textSize(width*0.05);
+      textFont(fonts.main);
+      text("Game Over", width/2, height * 0.5);
+    }
+  }
+}
+
+class GameOverKill extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.empty_floor);
+    this.addCharacter("Lumi", "lumi-neutral", 0.2, 0.6);
+    this.addCharacter("Lion-chan", "lion-neutral", 0.8, 0.6);
+  }
+
+  run(dt) {
+    super.run(dt);
+    
+    if (keys.pressed) {
+      sceneManager.transitionToScene(new Menu(), true);
+    }
+  }
+
+  draw(layer) {
+    super.draw(layer);
+
+    if (layer == 5) {
+      const lumiAlive = !characters["Lumi"].isDead();
+      const lionAlive = !characters["Lion-chan"].isDead();
+      let txt = "You win!";
+
+      if (lumiAlive && lionAlive) {
+        txt = "Eternal Happiness!";
+      } else if (!lumiAlive && !lionAlive) {
+        txt = "Forever Alone.";
+      } else if (lumiAlive) {
+        txt = "Lion-chan is dead";
+      } else if (lionAlive) {
+        txt = "Lumi is dead";
+      }
+
+      // Menu Text
+      fill(255);
+      stroke(0);
+      strokeWeight(4);
+      textAlign(CENTER, CENTER);
+      textSize(width*0.04);
+      textFont(fonts.main);
+      text(txt, width/2, height * 0.5);
     }
   }
 }
@@ -319,7 +401,7 @@ class CaveOpening extends Scene {
   }
 
   addScenes() {
-    this.addScene([ShipArea, CaveFloorDark], 0.49, 0.57);
+    this.addScene([CaveFloorDark, CoralArea], 0.49, 0.57);
   }
 }
 
@@ -330,7 +412,7 @@ class CaveFloorDark extends Scene {
   }
 
   addScenes() {
-    let areas = [ShipArea, ShopDistance]
+    let areas = [ShipArea, ShopDistance, SharkArea];
     this.addScene(areas, 0.79, 0.19);
     this.addScene(areas, 0.14, 0.26);
   }
@@ -365,7 +447,7 @@ class ShipArea2 extends Scene {
   constructor(parent) {
     super(parent);
     this.setBackground(images.ship2);
-    this.addItem(["moonjellycandy", "driftglass"], 0.94, 0.92);
+    this.addItem(["moonjellycandy", "driftglass","poisonedcoralmilk"], 0.94, 0.92, {}, 0.4);
   }
 }
 
@@ -374,7 +456,7 @@ class ShipArea3 extends Scene {
     super(parent);
     this.setBackground(images.ship3);
     this.addCharacter("Lion-chan", "lion-neutral", 0.8, 0.6);
-    this.addItem(["moonjellycandy", "driftglass"], 0.16, 0.87);
+    this.addItem(["moonjellycandy", "ruby"], 0.16, 0.87);
   }
 }
 
@@ -383,7 +465,7 @@ class ShipArea4 extends Scene {
     super(parent);
     this.setBackground(images.ship4);
     this.addCharacter("Lion-chan", "lion-neutral", 0.18, 0.7, 0.8, 0.7);
-    this.addItem(["moonjellycandy", "driftglass"], 0.78, 0.8, {}, 0.4);
+    this.addItem(["moonjellycandy", "ruby"], 0.78, 0.8, {}, 0.4);
   }
 }
 
@@ -392,8 +474,8 @@ class CoralArea extends Scene {
     super(parent);
     this.setBackground(images.coral1);
     this.addItem(["pearl"], 0.9, 0.75, {}, 0.1);
-    this.addItem(["pearl"], 0.26, 0.74, {}, 0.1);
-    this.addCharacter("Takara", null, 0.23, 0.7);
+    // this.addItem(["pearl"], 0.26, 0.74, {}, 0.1);
+    this.addCharacter("Takara", "takara-neutral", 0.23, 0.7);
   }
 
   addScenes() {
@@ -418,7 +500,7 @@ class CoralArea3 extends Scene {
   constructor(parent) {
     super(parent);
     this.setBackground(images.coral3);
-    this.addItem(["pearl"], 0.49, 0.6, {}, 0.5);
+    this.addItem(["pearl","driftglass","ruby","poisonedcoralmilk"], 0.49, 0.6, {}, 0.5);
   }
 }
 
@@ -448,10 +530,11 @@ class DarkArea2 extends Scene {
   constructor(parent) {
     super(parent);
     this.setBackground(images.dark2);
+    this.addItem(["magicscroll","poisonedcoralmilk"], 0.4, 0.92, {}, 0.3);
   }
 
   addScenes() {
-    this.addScene([DarkArea3], 0.25, 0.74);
+    this.addScene([DarkArea3, DarkArea3, DarkArea3, SharkArea], 0.25, 0.74);
   }
 }
 
@@ -459,11 +542,22 @@ class DarkArea3 extends Scene {
   constructor(parent) {
     super(parent);
     this.setBackground(images.dark3);
-    this.addItem(["pearl", "magicscroll"], 0.4, 0.92, {}, 0.2);
+    this.addItem(["pearl", "magicscroll","ruby","poisonedcoralmilk"], 0.4, 0.92, {}, 0.2);
   }
 
   addScenes() {
-    this.addScene([CoralArea, CaveFloorDark], 0.71, 0.72);
+    this.addScene([CoralArea, CaveFloorDark, CoralArea, CaveFloorDark, SharkArea], 0.71, 0.72);
+  }
+}
+
+class SharkArea extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.shark);
+  }
+
+  onEnter() {
+    player.kill(GameOverShark);
   }
 }
 
@@ -483,10 +577,10 @@ class Shop extends Scene {
     super(parent);
     let tags = {forSale: true};
     this.setBackground(images.shop);
-    this.addItem("ruby", 0.39, 0.52, tags);
-    this.addItem("ruby", 0.46, 0.52, tags);
-    this.addItem("ruby", 0.53, 0.52, tags);
-    this.addItem("ruby", 0.61, 0.52, tags);
+    this.addItem(["ruby"], 0.39, 0.52, tags, 1);
+    this.addItem(["moonjellycandy"], 0.46, 0.52, tags, 1);
+    this.addItem(["magicscroll", "driftglass"], 0.53, 0.52, tags, 1);
+    this.addItem(["pearl", "poisonedcoralmilk"], 0.61, 0.52, tags, 1);
     this.addCharacter("Nerissa", null, 0.85, 0.6);
   }
 }

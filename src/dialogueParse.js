@@ -4,6 +4,7 @@ function getCharacters() {
   let defaultSprites = {
     "Lion-chan": "lion-neutral",
     "Lumi": "lumi-neutral",
+    "Takara": "takara-neutral"
   }
 
   for (const [filename, json] of Object.entries(dialogueJSON)) {
@@ -29,6 +30,8 @@ function getCharacters() {
         const checkTrue = obj["check-true"]; // Next diagouge
         const checkFalse = obj["check-false"]; // Next dialogue
         const next = obj.next;
+        const kill = obj.kill;
+        const event = obj.event;
         
         let sprite = defaultSprites[speaker];
         if (obj.sprite && images[obj.sprite]) sprite = obj.sprite;
@@ -51,6 +54,16 @@ function getCharacters() {
 
           if (give) player.addItem(give);
           if (remove) player.removeItem(remove);
+          if (kill) characters[kill].kill();
+
+          if (event) {
+            if (event === "the-good-ending") {
+              sceneManager.transitionToScene(new GameOverKill(), true);
+            }
+            if (event === "death") {
+              player.kill(GameOverDark);
+            }
+          }
         };
         
         if (options) {

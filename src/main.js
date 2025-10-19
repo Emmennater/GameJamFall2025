@@ -35,6 +35,7 @@ function preload() {
   images.dark2 = loadImage("images/dark2.png");
   images.dark3 = loadImage("images/dark3.png");
   images.shark = loadImage("images/shark.png");
+  images.shark_game_over = loadImage("images/shark_game_over.png");
   
   // Characters
   images["lion-neutral"] = loadImage("images/lion-neutral.png");
@@ -42,6 +43,9 @@ function preload() {
   images["lion-pout"] = loadImage("images/lion-pout.png");
   images["lion-upset"] = loadImage("images/lion-upset.png");
   images["lumi-neutral"] = loadImage("images/lumi-neutral.png");
+  images["lumi-smile"] = loadImage("images/lumi-smile.png");
+  images["takara-neutral"] = loadImage("images/takara-neutral.png");
+  images["takara-intense"] = loadImage("images/takara-intense.png");
 
   // Items
   images.driftglass = loadImage("images/driftglass.png");
@@ -49,7 +53,9 @@ function preload() {
   images.pearl = loadImage("images/pearl.png");
   images.magicscroll = loadImage("images/magicscroll.png");
   // images.glowrod = loadImage("images/glowrod.png");
-  // images.ruby = loadImage("images/ruby.png");
+  images.ruby = loadImage("images/ruby.png");
+  images.poisonedcoralmilk = loadImage("images/poisonedcoralmilk.png");
+  images.coralmilk = loadImage("images/poisonedcoralmilk.png");
 
   // Videos
   videos = {};
@@ -77,7 +83,7 @@ function setup() {
   soundManager = getSoundManager();
   sceneManager = new SceneManager();
   sceneManager.setScene(new Menu());
-  // sceneManager.setScene(new CaveArea());
+  // sceneManager.setScene(new GameOverKill());
 }
 
 function draw() {

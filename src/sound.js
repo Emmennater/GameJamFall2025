@@ -49,7 +49,7 @@ class SoundManager {
   constructor() {
     this.sounds = new Map(); // name → SoundPlayer
     this.globalVolume = 1.0;
-    this.setGlobalVolume(0); // mute
+    this.setGlobalVolume(0); // mute by default
   }
 
   add(name, src, options = {}) {
@@ -58,7 +58,8 @@ class SoundManager {
     }
     const player = new SoundPlayer(src, options);
     this.sounds.set(name, player);
-    player.setVolume(this.globalVolume);
+    // Adjust volume relative to global
+    player.setVolume(this.globalVolume * (options.volume ?? 1.0));
     return player;
   }
 
@@ -70,6 +71,16 @@ class SoundManager {
     const sound = this.sounds.get(name);
     if (sound) sound.play();
     else console.warn(`Sound "${name}" not found.`);
+  }
+
+  loopSound(name) {
+    const sound = this.sounds.get(name);
+    if (!sound) {
+      console.warn(`Sound "${name}" not found.`);
+      return;
+    }
+    sound.setLoop(true);
+    sound.play();
   }
 
   pause(name) {
@@ -93,7 +104,10 @@ class SoundManager {
 
   setGlobalVolume(volume) {
     this.globalVolume = volume;
-    for (const sound of this.sounds.values()) sound.setVolume(volume);
+    for (const sound of this.sounds.values()) {
+      // Scale each sound by its original relative volume if needed
+      sound.setVolume(volume);
+    }
   }
 
   remove(name) {
@@ -113,8 +127,7 @@ class SoundManager {
 function getSoundManager() {
   const soundManager = new SoundManager();
 
-  soundManager.add('transition', 'sounds/bruh.mp3', { volume: 0.6 });
-  // soundManager.add('bgm', 'sounds/background.mp3', { loop: true, volume: 0.4 });
+  soundManager.add('bgm', 'sounds/background.mp3', { loop: true, volume: 0.4 });
 
   return soundManager;
 }

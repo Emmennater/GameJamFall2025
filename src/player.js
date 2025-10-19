@@ -2,6 +2,18 @@ class Player {
   constructor(name = "Player") {
     this.name = name;
     this.items = [];
+    this.dead = false;
+  }
+
+  isDead() {
+    return this.dead;
+  }
+
+  kill(Scene = GameOverDark) {
+    this.dead = true;
+    setTimeout(() => {
+      sceneManager.transitionToScene(new Scene(), true);
+    }, 2000);
   }
 
   addItem(item) {

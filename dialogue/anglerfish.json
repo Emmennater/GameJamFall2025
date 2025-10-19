@@ -1,11 +1,11 @@
 {
-  "name": "Anglerfish",
+  "name": "Lumi",
   "color": "#2e2b5f",
-  "likes": ["dark places", "quiet currents", "bioluminescence"],
+  "likes": ["driftglass", "moonjellycandy"],
   "dialogues": {
     "first-greeting": [
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "shy",
         "text": "Ah—!@ I-I didn't see you there...@ You shouldn't sneak up like that in the dark.",
         "options": [
@@ -29,7 +29,7 @@
     ],
     "intro1": [
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "neutral",
         "text": "O-oh… it's okay.@ I'm just not used to company down here.@ Most creatures avoid the deep.",
         "options": [
@@ -53,7 +53,7 @@
     ],
     "different": [
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "shy",
         "text": "I… I can tell.@ Most creatures swim away the moment they see my light.@ But you didn’t.@ You came closer.",
         "options": [
@@ -72,7 +72,7 @@
     ],
     "fluster1": [
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "blush",
         "text": "Y-you noticed?@ I mean—of course you did, I have this light and everything...@ um...",
         "options": [
@@ -91,7 +91,7 @@
     ],
     "fluster2": [
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "blush",
         "text": "B-beautiful?@ N-no one's ever called it that before.@ Most think it's...@ scary.",
         "options": [
@@ -110,7 +110,7 @@
     ],
     "soft1": [
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "shy",
         "text": "Sometimes it does get quiet... but the dark feels safe. It hides all the parts of me that might scare others.",
         "options": [
@@ -129,7 +129,7 @@
     ],
     "neutral1": [
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "neutral",
         "text": "Maybe... it's easier that way. Fewer eyes staring, fewer words to trip over.",
         "options": [
@@ -148,7 +148,7 @@
     ],
     "bond1": [
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "smile",
         "text": "You really are strange... but maybe that's not a bad thing.",
         "options": [
@@ -167,7 +167,7 @@
     ],
     "bond2": [
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "soft-smile",
         "text": "Heh... you make the dark feel a little less heavy. That's... new for me.",
         "options": [
@@ -186,7 +186,7 @@
     ],
     "driftglass_hint": [
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "neutral",
         "text": "Hehe...@ you know... its funny.@ The last time I felt like this was...",
         "options": [
@@ -205,36 +205,36 @@
     ],
     "driftglass_fail": [
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "neutral",
         "text": "What!? No...@ you know what, never mind..."
       }
     ],
     "driftglass_hint2": [
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "blush",
         "text": "Oh its nothing,@ It's…@ just some pieces of glass.@ Old, broken things that drifted down from the surface."
       },
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "shy",
         "text": "I just…@ like how the current polishes them smooth again.@ Even sharp things can become gentle, given enough time."
       },
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "shy",
         "text": "I…@ keep them close. It makes the dark feel softer somehow."
       },
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "shy",
         "text": "If you ever find shards like this…@ um…@ maybe…@ bring it here?"
       }
     ],
     "moonjellycandy_hint": [
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "neutral",
         "text": "Hehe...@ you know... its funny.@ The last time I saw a human when I got...@ well that doesn't matter.",
         "options": [
@@ -248,22 +248,22 @@
     ],
     "moonjellycandy_hint2": [
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "blush",
         "text": "Oh its nothing, its just occasionally surface traders drop this sweet substance down occasionally."
       },
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "shy",
         "text": "I-I like how it glows a little…@ like it's alive..."
       },
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "shy",
         "text": "And…@ it tastes nice.@ Soft.@ Sweet."
       },
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "shy",
         "text": "But don't tell anyone I said that.@ It's… embarrassing.",
         "options": [
@@ -277,34 +277,34 @@
     ],
     "moonjellycandy_hint3": [
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "blush",
         "text": "Because...@ creatures down here aren't supposed to like “cute” things."
       },
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "shy",
         "text": "They expect teeth and shadows, not sugar and light."
       },
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "shy",
         "text": "But… I can't help it."
       },
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "shy",
         "text": "She glances at you shyly."
       },
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "blush",
         "text": "If you ever find more of that candy…@ maybe…@ bring some by?"
       }
     ],
     "ending": [
       {
-        "speaker": "Anglerfish",
+        "speaker": "Lumi",
         "sprite": "soft-smile",
         "text": "If you ever get lost again... just follow the glow. I'll be waiting."
       }

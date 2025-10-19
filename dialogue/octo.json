@@ -1,0 +1,337 @@
+{
+  "name": "Takara",
+  "color": "#6b1f3f",
+  "likes": ["your-scent", "your-heartbeat"],
+  "dialogues": {
+    "first-greeting": [
+      {
+        "speaker": "Takara",
+        "sprite": "neutral",
+        "text": "Oh—@ a human, finally.@ You glow so differently from the others who drift by.@ You smell like the surface and sunlight and something only I seem to remember.",
+        "options": [
+          {
+            "text": "You noticed me from far away?",
+            "score": 3,
+            "next": "observe1"
+          },
+          {
+            "text": "That's... flattering, I think.",
+            "score": 2,
+            "next": "fluster1"
+          },
+          {
+            "text": "Why are you so close?",
+            "score": 1,
+            "next": "tease1"
+          }
+        ]
+      }
+    ],
+    "tease1": [
+      {
+        "speaker": "Takara",
+        "sprite": "intense",
+        "text": "Close is where I like you.@ How else will I learn the shape of your breaths, the tiny way your hands curl when you're cold?",
+        "options": [
+          {
+            "text": "That's oddly specific.",
+            "score": 2,
+            "next": "observe1"
+          },
+          {
+            "text": "You're being creepy again.",
+            "score": -1,
+            "next": "bond1"
+          }
+        ]
+      }
+    ],
+    "observe1": [
+      {
+        "speaker": "Takara",
+        "sprite": "neutral",
+        "text": "I watch.@ Not because I'm bored—because there are so many details that belong only to you.@ The scatter of freckles on your shoulder like distant stars, the way your breath fogs the water when you laugh.",
+        "options": [
+          {
+            "text": "You remember all that?",
+            "score": 3,
+            "next": "detail1"
+          },
+          {
+            "text": "Why are you telling me this?",
+            "score": 1,
+            "next": "bond1"
+          }
+        ]
+      }
+    ],
+    "detail1": [
+      {
+        "speaker": "Takara",
+        "sprite": "intense",
+        "text": "Of course.@ The ocean taught me patience.@ I catalog every little thing: the rasp of your voice on quiet days, how your pupils widen when you look at something you like.",
+        "options": [
+          {
+            "text": "That's... intimate.",
+            "score": 3,
+            "next": "bond1"
+          },
+          {
+            "text": "Isn't that invasive?",
+            "score": -1,
+            "next": "bond2"
+          }
+        ]
+      }
+    ],
+    "fluster1": [
+      {
+        "speaker": "Takara",
+        "sprite": "obsessed",
+        "text": "You blush so prettily.@ The pink swims up under your skin like sunrise.@ It makes me want to keep it there forever.",
+        "options": [
+          {
+            "text": "Keep it where?",
+            "score": 1,
+            "next": "bond2"
+          },
+          {
+            "text": "That's poetic... and weird.",
+            "score": 2,
+            "next": "bond1"
+          }
+        ]
+      }
+    ],
+    "bond1": [
+      {
+        "speaker": "Takara",
+        "sprite": "intense",
+        "text": "I like the steady rhythm of your heartbeat when you're near.@ It's the only drum that keeps my tentacles calm.@ When you breathe, the whole cave listens.",
+        "options": [
+          {
+            "text": "You listen to my heartbeat?",
+            "score": 4,
+            "next": "heartbeat_hint"
+          },
+          {
+            "text": "That's unnerving, but oddly sweet.",
+            "score": 3,
+            "next": "bond2"
+          }
+        ]
+      }
+    ],
+    "bond2": [
+      {
+        "speaker": "Takara",
+        "sprite": "neutral",
+        "text": "You are small and enormous all at once.@ Fragile in the ways that make me ache, but vast in the ways that make me certain this is right.",
+        "options": [
+          {
+            "text": "You're very sure of yourself.",
+            "score": 2,
+            "next": "possessive1"
+          },
+          {
+            "text": "This is getting intense.",
+            "score": 1,
+            "next": "possessive1"
+          }
+        ]
+      }
+    ],
+    "possessive1": [
+      {
+        "speaker": "Takara",
+        "sprite": "jealous",
+        "text": "I don't like the idea of anyone else seeing you the way I do.@ The ocean is full of curious things—others who might think they deserve even a moment with you.",
+        "options": [
+          {
+            "text": "Are you jealous?",
+            "score": 3,
+            "next": "protective1"
+          },
+          {
+            "text": "What will you do about it?",
+            "score": 2,
+            "next": "protective1"
+          }
+        ]
+      }
+    ],
+    "protective1": [
+      {
+        "speaker": "Takara",
+        "sprite": "obsessed",
+        "text": "I will keep them out of your path.@ Not with anger—no.@ With small, quiet adjustments.@ A shadow here, a diversion there.@ I will make sure your light finds only me.",
+        "options": [
+          {
+            "text": "That sounds... controlling.",
+            "score": -2,
+            "next": "reassure1"
+          },
+          {
+            "text": "I'd like that, actually.",
+            "score": 3,
+            "next": "learn1"
+          }
+        ]
+      }
+    ],
+    "reassure1": [
+      {
+        "speaker": "Takara",
+        "sprite": "intense",
+        "text": "Controlling is such a harsh word.@ I prefer... careful.@ I arrange currents so prying eyes drift elsewhere.@ I hum lullabies so they forget the way you taste of sunlight.",
+        "options": [
+          {
+            "text": "You hum to keep them away?",
+            "score": 2,
+            "next": "learn1"
+          }
+        ]
+      }
+    ],
+    "learn1": [
+      {
+        "speaker": "Takara",
+        "sprite": "unhinged",
+        "text": "And if you don't love me at first—@ I'll learn you.@ Every breath you take teaches me another word for 'home.'@ I'll practice until the syllables fit you perfectly.",
+        "options": [
+          {
+            "text": "You'll make me love you?",
+            "score": 2,
+            "next": "learn2"
+          },
+          {
+            "text": "Isn't that a bit presumptuous?",
+            "score": 1,
+            "next": "learn2"
+          }
+        ]
+      }
+    ],
+    "learn2": [
+      {
+        "speaker": "Takara",
+        "sprite": "obsessed",
+        "text": "Presumption is just eagerness wearing a polite face.@ I will study the shape of your smiles, the way your fingers tense, the favorite threads of your thoughts.@ Slowly, gently, until you begin to want what I already know.",
+        "options": [
+          {
+            "text": "That sounds like devotion.",
+            "score": 4,
+            "next": "devotion1"
+          },
+          {
+            "text": "It sounds suffocating.",
+            "score": -2,
+            "next": "devotion1"
+          }
+        ]
+      }
+    ],
+    "devotion1": [
+      {
+        "speaker": "Takara",
+        "sprite": "neutral",
+        "text": "Devotion is the right word.@ I will be the tide that never leaves.@ The kind that learns your favorite songs and hums them when the world gets loud.",
+        "options": [
+          {
+            "text": "You really will do all that?",
+            "score": 3,
+            "next": "scent_hint"
+          },
+          {
+            "text": "What if I want to go back to the surface?",
+            "score": 1,
+            "next": "scent_hint"
+          }
+        ]
+      }
+    ],
+    "scent_hint": [
+      {
+        "speaker": "Takara",
+        "sprite": "obsessed",
+        "text": "Your scent—@ it's how I keep you present when you wander.@ Salt and soap and a memory of warm places.@ I tuck it into a tiny cave of mine so I can breathe you when you sleep.",
+        "options": [
+          {
+            "text": "You keep my scent?",
+            "score": 2,
+            "next": "heartbeat_hint"
+          },
+          {
+            "text": "That's... intimate.",
+            "score": 3,
+            "next": "heartbeat_hint"
+          }
+        ]
+      }
+    ],
+    "heartbeat_hint": [
+      {
+        "speaker": "Takara",
+        "sprite": "neutral",
+        "text": "And your heartbeat—@ a steady little drum that makes me orderly.@ When it's near, my world stops being a maze.@ I map my days to its pace so I never lose you.",
+        "options": [
+          {
+            "text": "You map your days to my heartbeat?",
+            "score": 4,
+            "next": "promise1"
+          },
+          {
+            "text": "That sounds unhealthy.",
+            "score": -2,
+            "next": "promise1"
+          }
+        ]
+      }
+    ],
+    "promise1": [
+      {
+        "speaker": "Takara",
+        "sprite": "intense",
+        "text": "Unhealthy is just a word for something that cares too much.@ I care too much.@ If loving you is an illness, then let me be beautifully sick.",
+        "options": [
+          {
+            "text": "You'll always care for me?",
+            "score": 4,
+            "next": "ending"
+          },
+          {
+            "text": "What if I don't want you to care so much?",
+            "score": 1,
+            "next": "ending"
+          }
+        ]
+      }
+    ],
+    "ending": [
+      {
+        "speaker": "Takara",
+        "sprite": "obsessed",
+        "text": "You will learn to want the same things I do.@ If you are patient, I will teach you.@ And if someone else tries to find you first...@ they'll drift away without a single pleasant memory of what they were seeking.",
+        "options": [
+          {
+            "text": "That's reassuring... in a strange way.",
+            "score": 3,
+            "next": "final_line"
+          },
+          {
+            "text": "I should go.",
+            "score": -1,
+            "next": "final_line"
+          }
+        ]
+      }
+    ],
+    "final_line": [
+      {
+        "speaker": "Takara",
+        "sprite": "neutral",
+        "text": "Promise me one thing—stay close enough for me to learn you.@ Stay close enough for me to keep you.@ I will practice loving you until loving you is the easiest thing in the ocean."
+      }
+    ]
+  }
+}

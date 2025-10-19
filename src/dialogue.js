@@ -1,6 +1,7 @@
 class DialogueBox {
-  constructor(charName, sprite, text, prompt = null, finished = () => {}) {
+  constructor(charName, sprite, text, prompt = null, finished = () => {}, character = null) {
     this.charName = "";
+    this.character = character;
     this.sprite = sprite;
     this.text = "";
     this.rawText = "";
@@ -52,7 +53,8 @@ class DialogueBox {
   }
 
   formatText() {
-    this.text = substituteText(this.rawText);
+    this.text = substituteText(this.rawText, this.character);
+    this.charName = substituteText(this.charName, this.character);
     this.updatePauseIdx();
   }
 
@@ -129,8 +131,8 @@ class DialogueBox {
     if (this.sprite && images[this.sprite]) {
       const img = images[this.sprite];
       const aspect = img.width / img.height;
-      const w = width * 0.3;
-      const h = w / aspect;
+      const h = height;
+      const w = h * aspect;
       const x = width * 0.5;
       const y = height * 0.5;
       imageMode(CENTER);
@@ -403,8 +405,10 @@ function busyIfHovering(x, y, w, h, flag = "dialogue") {
   }
 }
 
-function substituteText(text) {
+function substituteText(text, character) {
   // {player} -> player.name
-  let newText = text.replace(/\{player\}/g, player.name);
-  return newText;
+  const gitedItem = character ? character.giftedItem : "item";
+  text = text.replace(/\{player\}/g, player.name);
+  text = text.replace(/\{item\}/g, gitedItem);
+  return text;
 }

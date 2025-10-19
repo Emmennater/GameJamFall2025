@@ -1,11 +1,16 @@
 function preload() {
   dialogueJSON = {};
-  dialogueJSON.lionfish = loadJSON("dialogue/lionfish.json");
-  dialogueJSON.lionfishLove = loadJSON("dialogue/lionfishLove.json");
   dialogueJSON.anglerfish = loadJSON("dialogue/anglerfish.json");
-  dialogueJSON.octo = loadJSON("dialogue/octo.json");
-  dialogueJSON.shopkeeper = loadJSON("dialogue/shopkeeper.json");
+  dialogueJSON.anglerfishgive = loadJSON("dialogue/anglerfishgive.json");
+  dialogueJSON.anglerfishlove = loadJSON("dialogue/anglerfishLove.json");
+  dialogueJSON.lionfish = loadJSON("dialogue/lionfish.json");
+  dialogueJSON.lionfishgive = loadJSON("dialogue/lionfishgive.json");
+  dialogueJSON.lionfishLove = loadJSON("dialogue/lionfishLove.json");
   dialogueJSON.nolight = loadJSON("dialogue/nolight.json");
+  dialogueJSON.octo = loadJSON("dialogue/octo.json");
+  // dialogueJSON.octolion = loadJSON("dialogue/octolion.json");
+  dialogueJSON.octolumi = loadJSON("dialogue/octolumi.json");
+  dialogueJSON.shopkeeper = loadJSON("dialogue/shopkeeper.json");
 
   images = {};
   images.menu = loadImage("images/menu.png");
@@ -32,7 +37,11 @@ function preload() {
   images.shark = loadImage("images/shark.png");
   
   // Characters
-  images.lion_chan_2 = loadImage("images/lion_chan_2.png");
+  images["lion-neutral"] = loadImage("images/lion-neutral.png");
+  images["lion-blush"] = loadImage("images/lion-blush.png");
+  images["lion-pout"] = loadImage("images/lion-pout.png");
+  images["lion-upset"] = loadImage("images/lion-upset.png");
+  images["lumi-neutral"] = loadImage("images/lumi-neutral.png");
 
   // Items
   images.driftglass = loadImage("images/driftglass.png");
@@ -47,6 +56,7 @@ function preload() {
   videos.menu = createVideo("videos/menu.mp4");
 
   for (let video of Object.values(videos)) {
+    video.volume(0);
     video.hide();
     video.loop();
   }
@@ -66,8 +76,8 @@ function setup() {
   characters = getCharacters();
   soundManager = getSoundManager();
   sceneManager = new SceneManager();
-  // sceneManager.setScene(new Menu());
-  sceneManager.setScene(new CaveArea());
+  sceneManager.setScene(new Menu());
+  // sceneManager.setScene(new CaveArea());
 }
 
 function draw() {

@@ -6,7 +6,7 @@
     "greeting": [
       {
         "speaker": "Lion-chan",
-        "sprite": "softSmile",
+        "sprite": "lion_neutral",
         "text": "Oh... it's you again.@ I was just... polishing the {likes} you gave me.@ It still catches the light so perfectly.",
         "options": [
           {
@@ -30,7 +30,7 @@
     "flusterlove": [
       {
         "speaker": "Lion-chan",
-        "sprite": "flustered",
+        "sprite": "lion_flustered",
         "text": "S-stop saying things like that!@ You can't just... compliment me out of nowhere like that!@ You'll make me lose focus!",
         "options": [
           {
@@ -49,7 +49,7 @@
     "playful1": [
       {
         "speaker": "Lion-chan",
-        "sprite": "blush",
+        "sprite": "lion_blush",
         "text": "Hmph...@ D-don't read too much into it.@ I just don't hate having you around anymore, that's all.",
         "options": [
           {
@@ -68,7 +68,7 @@
     "softbond": [
       {
         "speaker": "Lion-chan",
-        "sprite": "softSmile",
+        "sprite": "lion_neutral",
         "text": "You really are persistent...@ But maybe that's what I like about you.",
         "options": [
           {
@@ -87,7 +87,7 @@
     "askhint": [
       {
         "speaker": "Lion-chan",
-        "sprite": "neutral",
+        "sprite": "lion_neutral",
         "text": "Dangerous places, huh?@ You sure know how to pick your adventures.",
         "options": [
           {
@@ -106,17 +106,17 @@
     "dangerhint1": [
       {
         "speaker": "Lion-chan",
-        "sprite": "serious",
+        "sprite": "lion_neutral",
         "text": "Listen carefully, okay?@ The deeper zones — the ones where the light fades — aren't for the unprepared."
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "serious",
+        "sprite": "lion_neutral",
         "text": "If you go into the dark without something that glows...@ you won't come back.@ The creatures there hunt by sound and motion."
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "softBlush",
+        "sprite": "lion_blush",
         "text": "So promise me you won't do anything stupid.@ Not unless you have a light or... me by your side.",
         "options": [
           {
@@ -135,12 +135,12 @@
     "bondfluster": [
       {
         "speaker": "Lion-chan",
-        "sprite": "flustered",
+        "sprite": "lion_flustered",
         "text": "W-what?! I didn't say that!@ I just mean... someone should keep an eye on you so you don't get yourself killed!"
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "softSmile",
+        "sprite": "lion_blush",
         "text": "Besides...@ if you disappeared down there...@ things would get a lot quieter around here. And I... don't want that.",
         "options": [
           {
@@ -154,17 +154,17 @@
     "safehint": [
       {
         "speaker": "Lion-chan",
-        "sprite": "neutral",
+        "sprite": "lion_neutral",
         "text": "The coral fields near the east ridge are calm.@ Even small fish drift there to rest.@ If you need to recover, that's your best bet."
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "softSmile",
+        "sprite": "lion_neutral",
         "text": "Stay where the light reaches the sand.@ The current's weaker there... and I can keep an eye on you from the reef."
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "blush",
+        "sprite": "lion_blush",
         "text": "N-not because I care that much!@ I just don't want to waste a perfectly good {likes} on someone who can't swim straight.",
         "options": [
           {
@@ -183,12 +183,12 @@
     "bondfinal": [
       {
         "speaker": "Lion-chan",
-        "sprite": "shySmile",
+        "sprite": "lion_blush",
         "text": "Hmph... you're impossible.@ But... maybe that's what makes you interesting."
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "softBlush",
+        "sprite": "lion_blush",
         "text": "Just don't make me regret caring about you, alright?"
       }
     ]

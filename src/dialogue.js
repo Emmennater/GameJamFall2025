@@ -125,7 +125,7 @@ class DialogueBox {
     if (this.sprite && images[this.sprite]) {
       const img = images[this.sprite];
       const aspect = img.width / img.height;
-      const w = width * 0.2;
+      const w = width * 0.3;
       const h = w / aspect;
       const x = width * 0.5;
       const y = height * 0.5;

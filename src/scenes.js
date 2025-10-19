@@ -188,15 +188,17 @@ class Menu extends Scene {
     super(parent);
     this.setBackground(images.menu);
     this.nameText = "";
+    this.nameSet = false;
   }
 
   run(dt) {
-    if (keys.pressed) {
+    if (keys.pressed && !this.nameSet) {
       const k = key.toLowerCase();
       if (k == "backspace") {
         this.nameText = this.nameText.slice(0, -1);
       } else if (k == "enter") {
         player.name = this.nameText;
+        this.nameSet = true;
         sceneManager.transitionToScene(new StartingArea(), true);
       } else if (k.length == 1) {
         this.nameText += key;
@@ -216,11 +218,13 @@ class Menu extends Scene {
       text("Plenty of Fish in the Sea", width/2, height/2 - 100);
       
       // Enter name
-      const cursor = frameCount % 60 < 30 ? "_" : " ";
-      textSize(width*0.02);
-      textAlign(CENTER, CENTER);
-      textFont("monospace");
-      text("Enter name: " + this.nameText + cursor, width/2, height/2);
+      if (!this.nameSet) {
+        const cursor = frameCount % 60 < 30 ? "_" : " ";
+        textSize(width*0.02);
+        textAlign(CENTER, CENTER);
+        textFont("monospace");
+        text("Enter name: " + this.nameText + cursor, width/2, height/2);
+      }
     }
   }
 }
@@ -264,7 +268,7 @@ class StartingArea extends Scene {
 class CaveArea extends Scene {
   constructor(parent) {
     super(parent);
-    this.addCharacter("Lion-chan", null, 0.8, 0.6);
+    this.addCharacter("Lion-chan", "lion_chan_2", 0.8, 0.6);
     this.setBackground(images.cave);
     this.addItem("ruby", 0.08, 0.85);
   }

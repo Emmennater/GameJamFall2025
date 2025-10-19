@@ -22,6 +22,9 @@ function preload() {
   images.coral1 = loadImage("images/coral1.png");
   images.coral2 = loadImage("images/coral2.png");
   
+  // Characters
+  images.lion_chan_2 = loadImage("images/lion_chan_2.png");
+  
   // gifs = {};
   // gifs.shipwreck = loadImage("images/shipwreck.gif");
 }
@@ -37,8 +40,8 @@ function setup() {
   characters = getCharacters();
   soundManager = getSoundManager();
   sceneManager = new SceneManager();
-  // sceneManager.setScene(new Menu());
-  sceneManager.setScene(new Shop());
+  sceneManager.setScene(new Menu());
+  // sceneManager.setScene(new CaveArea());
 }
 
 function draw() {

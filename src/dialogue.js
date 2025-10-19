@@ -90,7 +90,10 @@ class DialogueBox {
         this.textSpeed = this.defaultTextSpeed + 0.5;
         this.textSpeedTimer = 4 * 60; // 4 seconds
       }
-      if (this.endOfText() && !this.prompt) this.continue = true;
+      if (this.endOfText() && !this.prompt) {
+        this.continue = true;
+        this.onDone();
+      }
     }
   }
   
@@ -347,7 +350,7 @@ class DialogueManager {
   }
 
   nextDialogue() {
-    this.schedule[this.currentIdx].onDone();
+    // this.schedule[this.currentIdx].onDone();
     this.schedule[this.currentIdx].restart();
     this.currentIdx += 1;
     // console.trace();

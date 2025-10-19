@@ -56,13 +56,14 @@ class Character {
   }
 
   updateFromChoice(choice, next) {
-    print(choice, next);
     if (!choice || !choice.next) {
       if (this.dialogue.isDone()) {
         this.currentDialogue = "done";
         this.speaking = false;
         this.dialogue.restart();
         return;
+      } else {
+        this.dialogue.nextDialogue();
       }
     }
 

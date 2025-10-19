@@ -53,7 +53,7 @@ function getCharacters() {
         };
         
         if (options) {
-          dialogueList.push(new DialogueBox(speaker, sprite, text, new Prompt("", options), onFinish));
+          dialogueList.push(new DialogueBox(speaker, sprite, text, new Prompt("", options, onFinish), onFinish));
         } else {
           dialogueList.push(new DialogueBox(speaker, sprite, text, null, onFinish));
         }

@@ -1,0 +1,136 @@
+{
+  "name": "Takara",
+  "color": "#6b1f3f",
+  "dialogues": {
+    "lion-reaction1": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-neutral",
+        "text": "Lion-chan…@ the little one with the bright fins?@ She talks too much about you.@ The way her colors flare whenever your name drifts through her mind—@ it's almost sweet.",
+        "options": [
+          {
+            "text": "She's a friend, that's all.",
+            "score": 1,
+            "next": "lion-reaction2"
+          },
+          {
+            "text": "You sound jealous again.",
+            "score": -1,
+            "next": "lion-jealous1"
+          }
+        ]
+      }
+    ],
+    "lion-reaction2": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-intense",
+        "text": "A friend?@ Hm.@ Friends shouldn't flutter so close to what's already claimed.@ It makes the currents restless.@ I might need to... calm them down.",
+        "options": [
+          {
+            "text": "What do you mean by that?",
+            "score": 0,
+            "next": "lion-leaves"
+          }
+        ]
+      }
+    ],
+    "lion-jealous1": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-obsessed",
+        "text": "Jealous?@ Maybe I am.@ I don't like sharing light.@ Some creatures don't understand boundaries until the tide shows them where to go.",
+        "options": [
+          {
+            "text": "You're worrying me again.",
+            "score": -1,
+            "next": "lion-leaves"
+          },
+          {
+            "text": "You'll handle it, won't you?",
+            "score": 1,
+            "next": "lion-leaves"
+          }
+        ]
+      }
+    ],
+    "lion-leaves": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-neutral",
+        "text": "Stay here.@ The currents are loud tonight.@ I'll quiet them and be right back.",
+        "options": [
+          {
+            "text": "[Wait]",
+            "score": 0,
+            "next": "lion-offscreen"
+          }
+        ]
+      }
+    ],
+    "lion-offscreen": [
+      {
+        "speaker": "System",
+        "sprite": "none",
+        "text": "[Takara glides away into the dark water.@ The ocean hums for a long while—@then the ripples fade.]"
+      },
+      {
+        "speaker": "Takara",
+        "sprite": "octo-neutral",
+        "text": "There.@ Everything feels still again.@ The currents won't tug you toward her cave anymore.",
+        "options": [
+          {
+            "text": "What happened to Lion-chan?",
+            "score": 0,
+            "next": "lion-press1"
+          },
+          {
+            "text": "You're back so calm.",
+            "score": 1,
+            "next": "lion-calm1"
+          }
+        ]
+      }
+    ],
+    "lion-calm1": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-obsessed",
+        "text": "Calm?@ Of course.@ Sometimes the sea just needs a little persuasion.@ Now it carries only your voice.",
+        "options": [
+          {
+            "text": "You frightened her away, didn't you?",
+            "score": -2,
+            "next": "lion-press1"
+          },
+          {
+            "text": "If you say it's fine…",
+            "score": 1,
+            "next": "lion-end"
+          }
+        ]
+      }
+    ],
+    "lion-press1": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-neutral",
+        "text": "Frightened?@ Perhaps.@ The ocean is vast, and some swim too close to storms they don't understand.@ She'll stay far away now.@ That's safer for everyone.",
+        "options": [
+          {
+            "text": "You mean she's gone?",
+            "score": 0,
+            "next": "lion-end"
+          }
+        ]
+      }
+    ],
+    "lion-end": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-intense",
+        "text": "No more interruptions.@ No more distractions.@ Just you and the quiet current that always leads back to me."
+      }
+    ]
+  }
+}

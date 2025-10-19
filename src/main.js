@@ -25,6 +25,7 @@ function setup() {
   busy = {};
   mouse = { clicked: false };
   keys = {};
+  player = new Player();
   characters = getCharacters();
   soundManager = getSoundManager();
   sceneManager = new SceneManager();

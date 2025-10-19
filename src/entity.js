@@ -1,6 +1,11 @@
 class Entity {
   constructor(getTransform) {
     this.getTransform = getTransform;
+    this.isDestroyed = false;
+  }
+
+  destroy() {
+    this.isDestroyed = true;
   }
 
   isHovered() {

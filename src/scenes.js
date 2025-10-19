@@ -8,6 +8,7 @@ class Scene {
     this.lastScene = null;
     this.scenes = []; // List of nested scenes
     this.characterEntities = [];
+    this.items = [];
     if (this.depth < MAX_DEPTH) {
       this.addScenes();
     }
@@ -34,23 +35,25 @@ class Scene {
   }
 
   addScene(scene, relativeX, relativeY) {
-    let relativeW = 0.2;
-    let relativeH = 0.2;
-    let relativeLeft = relativeX - relativeW / 2;
-    let relativeRight = relativeX + relativeW / 2;
-    let relativeTop = relativeY - relativeH / 2;
-    let relativeBottom = relativeY + relativeH / 2;
     const transform = () => {
-      const {x: left, y: top} = this.worldToScreen(relativeLeft, relativeTop);
-      const {x: right, y: bottom} = this.worldToScreen(relativeRight, relativeBottom);
-      const x = (left + right) / 2;
-      const y = (top + bottom) / 2;
-      const w = Math.abs(left - right);
-      const h = Math.abs(top - bottom);
+      const {x, y} = this.worldToScreen(relativeX, relativeY);
+      const w = 100;
+      const h = 100;
       return {x, y, w, h};
     }
     const entity = new SceneEntity(scene, transform);
     this.scenes.push(entity);
+  }
+
+  addItem(item, relativeX, relativeY) {
+    const transform = () => {
+      const {x, y} = this.worldToScreen(relativeX, relativeY);
+      const w = 50;
+      const h = 50;
+      return {x, y, w, h};
+    }
+    const entity = new ItemEntity(item, transform);
+    this.items.push(entity);
   }
 
   addScenes() {}
@@ -124,15 +127,19 @@ class Scene {
   run(dt) {
     this.characterEntities.forEach(entity => entity.run(dt));
     this.scenes.forEach(entity => entity.run(dt));
+    this.items.forEach(entity => entity.run(dt));
 
-    // if (debug) {
-    //   if (mouse.clicked) {
-    //     let { x, y } = this.screenToWorld(mouseX, mouseY);
-    //     x = Math.round(x * 100) / 100;
-    //     y = Math.round(y * 100) / 100;
-    //     print(x, y);
-    //   }
-    // }
+    // Destroy items that have been destroyed
+    this.items = this.items.filter(entity => !entity.isDestroyed);
+
+    if (debug) {
+      if (mouse.clicked) {
+        let { x, y } = this.screenToWorld(mouseX, mouseY);
+        x = Math.round(x * 100) / 100;
+        y = Math.round(y * 100) / 100;
+        print(x, y);
+      }
+    }
   }
 
   draw(layer) {
@@ -151,6 +158,9 @@ class Scene {
       this.scenes.forEach(entity => entity.draw());
     }
     if (layer == 2) {
+      this.items.forEach(entity => entity.draw());
+    }
+    if (layer == 3) {
       this.characterEntities.forEach(entity => {
         if (!entity.character.isSpeaking()) {
           entity.draw()
@@ -173,9 +183,10 @@ class StartingArea extends Scene {
   }
   
   addScenes() {
-    // this.addScene(this.createRandomScene([CaveArea, ShipArea]), 0.3, 0.3);
-    // this.addScene(this.createRandomScene([CaveArea, ShipArea]), 0.86, 0.32);
+    this.addScene(this.createRandomScene([CaveArea, ShipArea]), 0.3, 0.3);
+    this.addScene(this.createRandomScene([CaveArea, ShipArea]), 0.86, 0.32);
     this.addScene(this.createRandomScene([CaveArea]), 0.57, 0.78);
+    this.addScene(this.createRandomScene([ShipArea]), 0.15, 0.78);
   }
 }
 
@@ -184,6 +195,7 @@ class CaveArea extends Scene {
     super(parent);
     this.addCharacter("Lionfish", null, 0.8, 0.6);
     this.setBackground(images.cave);
+    this.addItem("ruby", 0.08, 0.85);
   }
 
   addScenes() {

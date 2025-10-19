@@ -47,7 +47,7 @@
             "next": "lion-leaves"
           },
           {
-            "text": "You'll handle it, won't you?",
+            "text": "What!? WHAT ARE YOU DOING!",
             "score": 1,
             "next": "lion-leaves"
           }
@@ -58,26 +58,24 @@
       {
         "speaker": "Takara",
         "sprite": "octo-neutral",
-        "text": "Stay here.@ The currents are loud tonight.@ I'll quiet them and be right back.",
-        "options": [
-          {
-            "text": "[Wait]",
-            "score": 0,
-            "next": "lion-offscreen"
-          }
-        ]
-      }
-    ],
-    "lion-offscreen": [
-      {
-        "speaker": "System",
-        "sprite": "none",
-        "text": "[Takara glides away into the dark water.@ The ocean hums for a long while—@then the ripples fade.]"
+        "text": "Stay here.@ The currents are loud tonight.@ I'll quiet them and be right back."
       },
       {
         "speaker": "Takara",
         "sprite": "octo-neutral",
-        "text": "There.@ Everything feels still again.@ The currents won't tug you toward her cave anymore.",
+        "enter-dialogue": "alone-together",
+        "kill": "Lion-chan",
+        "text": ".@.@."
+      },
+      {
+        "speaker": "System",
+        "sprite": "none",
+        "text": "[Takara slips away into the murk. You can't see her, but the water feels heavier. A faint pulse echoes once... then silence.]"
+      },
+      {
+        "speaker": "Takara",
+        "sprite": "octo-neutral",
+        "text": "There.@ Everything feels still again.@ The currents won't tug you toward her ship anymore.",
         "options": [
           {
             "text": "What happened to Lion-chan?",

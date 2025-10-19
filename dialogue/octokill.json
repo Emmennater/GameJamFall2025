@@ -1,0 +1,151 @@
+{
+  "name": "Takara",
+  "color": "#6b1f3f",
+  "dialogues": {
+    "receive-poisonedcoralmilk": [
+      {
+        "speaker": "Takara",
+        "sprite": "smile",
+        "text": "Oh...@ for me?@ You brought Coral Milk?@ How thoughtful...@ You remembered it's my favorite.",
+        "options": [
+          {
+            "text": "Of course. I wanted you to have it.",
+            "score": 3,
+            "next": "coralmilk_gift_accept"
+          },
+          {
+            "text": "I thought you'd enjoy it.",
+            "score": 2,
+            "next": "coralmilk_gift_accept"
+          }
+        ]
+      }
+    ],
+    "coralmilk_gift_accept": [
+      {
+        "speaker": "Takara",
+        "sprite": "blush",
+        "text": "It smells right.@ Soft and sweet.@ You even warmed it...@ you must have gone to such trouble just for me.",
+        "options": [
+          {
+            "text": "You deserve something nice.",
+            "score": 3,
+            "next": "coralmilk_gift_drink"
+          },
+          {
+            "text": "It's the least I could do.",
+            "score": 2,
+            "next": "coralmilk_gift_drink"
+          }
+        ]
+      }
+    ],
+    "coralmilk_gift_drink": [
+      {
+        "speaker": "Takara",
+        "sprite": "soft-smile",
+        "text": "Mmm... it tastes familiar.@ The coral's warmth, the little salt crystals on the rim...@ just like I make it...",
+        "options": [
+          {
+            "text": "(Say nothing.)",
+            "score": 0,
+            "next": "coralmilk_reaction"
+          }
+        ]
+      }
+    ],
+    "coralmilk_reaction": [
+      {
+        "speaker": "Takara",
+        "sprite": "neutral",
+        "text": "...But there's something different.@ The taste lingers strangely—@ sharper, colder.@ Like a word spoken with a smile that doesn't reach the eyes.",
+        "options": [
+          {
+            "text": "Maybe I made it wrong?",
+            "score": 2,
+            "next": "coralmilk_doubt"
+          },
+          {
+            "text": "Do you not like it?",
+            "score": 1,
+            "next": "coralmilk_doubt"
+          }
+        ]
+      }
+    ],
+    "coralmilk_doubt": [
+      {
+        "speaker": "Takara",
+        "sprite": "shy",
+        "text": "No... it's fine.@ It's just... when I drink Coral Milk, I usually feel peace.@ But now, I feel... distance.@ Like there's a wall of glass between us.",
+        "options": [
+          {
+            "text": "You're imagining it.",
+            "score": 1,
+            "next": "coralmilk_suspicion"
+          },
+          {
+            "text": "Maybe it's just different this time.",
+            "score": 2,
+            "next": "coralmilk_suspicion"
+          }
+        ]
+      }
+    ],
+    "coralmilk_suspicion": [
+      {
+        "speaker": "Takara",
+        "sprite": "neutral",
+        "text": "Different...@ yes.@ That's exactly what it is.@ Different tone, different warmth.@ Like the drink knows something I don't.",
+        "options": [
+          {
+            "text": "You're reading too much into it.",
+            "score": 1,
+            "next": "coralmilk_realization"
+          },
+          {
+            "text": "You're very perceptive.",
+            "score": 2,
+            "next": "coralmilk_realization"
+          }
+        ]
+      }
+    ],
+    "coralmilk_realization": [
+      {
+        "speaker": "Takara",
+        "sprite": "soft-smile",
+        "text": "Maybe it isn't the milk that's strange.@ Maybe it's you.@ There's a quiet in your voice that wasn't there before.@ Like you're holding a secret in your mouth along with my drink.",
+        "options": [
+          {
+            "text": "You're imagining things.",
+            "score": 0,
+            "next": "coralmilk_end"
+          },
+          {
+            "text": "Maybe I am.",
+            "score": 0,
+            "next": "coralmilk_end"
+          }
+        ]
+      }
+    ],
+    "coralmilk_end": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-natural",
+        "kill": "Takara",
+        "text": "It's almost like...@ ah...@ O..."
+      },
+      {
+        "speaker": "",
+        "text": "Takara, collapses on the floor."
+      },
+      {
+        "speaker": "",
+        "text": "You check, She is dead.",
+        "event": "the-good-ending"
+      }
+    ]
+  }
+}

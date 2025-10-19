@@ -2,7 +2,8 @@ function getCharacters() {
   let characters = {};
 
   let defaultSprites = {
-    "Lion-chan": "lion_chan_2",
+    "Lion-chan": "lion-neutral",
+    "Lumi": "lumi-neutral",
   }
 
   for (const [filename, json] of Object.entries(dialogueJSON)) {
@@ -53,9 +54,9 @@ function getCharacters() {
         };
         
         if (options) {
-          dialogueList.push(new DialogueBox(speaker, sprite, text, new Prompt("", options, onFinish), onFinish));
+          dialogueList.push(new DialogueBox(speaker, sprite, text, new Prompt("", options, onFinish), onFinish, character));
         } else {
-          dialogueList.push(new DialogueBox(speaker, sprite, text, null, onFinish));
+          dialogueList.push(new DialogueBox(speaker, sprite, text, null, onFinish, character));
         }
       }
       // characters[json.name] = new Character(json.name, json.likes, json.dialogues);

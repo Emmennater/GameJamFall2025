@@ -21,12 +21,14 @@ class Scene {
     const transform = () => {
       let {x, y} = this.worldToScreen(relativeX, relativeY);
       let s = this.worldToScreenScale(relativeScale);
-      let w = 300 * s;
-      let h = 700 * s;
+      let h = 1000 * s;
+      let w = 600 * s;
 
       if (sprite && images[sprite]) {
-        w = images[sprite].width * s;
-        h = images[sprite].height * s;
+        let aspect = images[sprite].width / images[sprite].height;
+        w = h * aspect;
+        // w = images[sprite].width * s;
+        // h = images[sprite].height * s;
       }
 
       return {x, y, w, h};
@@ -201,7 +203,7 @@ class Scene {
 class Menu extends Scene {
   constructor(parent) {
     super(parent);
-    this.setBackground(videos.menu);
+    this.setBackground(videos.menu || images.menu);
     this.nameText = "";
     this.nameSet = false;
   }
@@ -284,7 +286,7 @@ class CaveArea extends Scene {
   constructor(parent) {
     super(parent);
     this.setBackground(images.cave);
-    this.addCharacter("Lumi", null, 0.8, 0.6);
+    this.addCharacter("Lumi", "lumi-neutral", 0.8, 0.6);
     this.addItem(["moonjellycandy", "pearl", "driftglass"], 0.08, 0.85);
   }
 
@@ -371,7 +373,7 @@ class ShipArea3 extends Scene {
   constructor(parent) {
     super(parent);
     this.setBackground(images.ship3);
-    this.addCharacter("Lion-chan", "lion_chan_2", 0.8, 0.6);
+    this.addCharacter("Lion-chan", "lion-neutral", 0.8, 0.6);
     this.addItem(["moonjellycandy", "driftglass"], 0.16, 0.87);
   }
 }
@@ -380,7 +382,7 @@ class ShipArea4 extends Scene {
   constructor(parent) {
     super(parent);
     this.setBackground(images.ship4);
-    this.addCharacter("Lion-chan", "lion_chan_2", 0.18, 0.7, 0.8, 0.7);
+    this.addCharacter("Lion-chan", "lion-neutral", 0.18, 0.7, 0.8, 0.7);
     this.addItem(["moonjellycandy", "driftglass"], 0.78, 0.8, {}, 0.4);
   }
 }

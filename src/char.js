@@ -18,7 +18,7 @@ class Character {
     // Wrong item -> bad-item
     this.giftedItem = item;
     if (item === this.like) {
-      this.startSpeaking(`recieve-${item}`);
+      this.startSpeaking(`receive-${item}`);
     } else {
       this.startSpeaking("bad-item");
     }
@@ -57,13 +57,12 @@ class Character {
 
   updateFromChoice(choice, next) {
     if (!choice || !choice.next) {
+      this.dialogue.nextDialogue();
       if (this.dialogue.isDone()) {
         this.currentDialogue = "done";
         this.speaking = false;
         this.dialogue.restart();
         return;
-      } else {
-        this.dialogue.nextDialogue();
       }
     }
 

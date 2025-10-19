@@ -6,23 +6,27 @@
     "first-greeting": [
       {
         "speaker": "Lionfish",
-        "sprite": "neutral",
-        "text": "Oh? A surface-dweller wandering this deep? You're either brave or foolish.",
+        "sprite": "shy",
+        "text": "Oh! h-hi...@ what brings you here?",
         "options": [
           {
-            "text": "Maybe both. Who are you?",
+            "text": "Can you tell me about dangerous areas nearby?",
             "score": 2,
-            "next": "intro1"
-          },
+            "next": "info"
+          }
+        ]
+      }
+    ],
+    "info": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "",
+        "text": "Oh! h-hi...@ what brings you here?",
+        "options": [
           {
-            "text": "I'm just exploring. Why? Who are you?",
-            "score": 1,
-            "next": "intro1"
-          },
-          {
-            "text": "Should I be scared?",
-            "score": 0,
-            "next": "explain1"
+            "text": "Can you tell me about dangerous areas nearby?",
+            "score": 2,
+            "next": "info"
           }
         ]
       }

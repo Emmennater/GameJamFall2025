@@ -1,11 +1,11 @@
 {
-  "name": "Lionfish",
+  "name": "Lion-chan",
   "color": "#ff0000",
   "likes": ["blue", "shiny", "sea shells"],
   "dialogues": {
     "first-greeting": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "neutral",
         "text": "Oh? A surface-dweller wandering this deep? You're either brave or foolish.",
         "options": [
@@ -29,7 +29,7 @@
     ],
     "greeting2": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "neutral",
         "text": "Oh... It's you again.",
         "options": [
@@ -48,17 +48,17 @@
     ],
     "explain1": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "neutral",
         "text": "These waters have many branching paths. Those unfamiliar don't tend to last long."
       },
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "neutral",
         "text": "Without a proper guide you'll likely parish if you dare explore to far."
       },
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "neutral",
         "text": "You'd stay put if you know whats best for you.",
         "options": [
@@ -77,17 +77,17 @@
     ],
     "intro1": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "neutral",
-        "text": "They call me the Bubbles… but names don't matter much down here.",
+        "text": "They call me the Lion-chan… but names don't matter much down here.",
         "options": [
           {
-            "text": "I think Bubbles is a beautiful name.",
+            "text": "I think Lion-chan is a beautiful name.",
             "score": 2,
             "next": "fluster1"
           },
           {
-            "text": "Bubbles suits you.",
+            "text": "Lion-chan suits you.",
             "score": 1,
             "next": "fluster1"
           }
@@ -96,7 +96,7 @@
     ],
     "fluster1": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "blush",
         "text": "W-what?@ Don't say things like that so easily… it's embarrassing.",
         "options": [
@@ -120,12 +120,12 @@
     ],
     "soft1": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "upset",
         "text": "Well you better watch what you say, ok!"
       },
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "blush",
         "text": "...You cant just say things like that.",
         "options": [
@@ -139,19 +139,19 @@
     ],
     "norizz1": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "upset",
         "text": "W-what?@ I barely know you.@ What do I look like to you? some sort of tour guide?"
       },
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "neutral",
         "text": "I'm not just going to stand around giving directions all day. I've got better things to do then wast anymore time no you.@ Get lost."
       }
     ],
     "tease2": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "blush",
         "text": "N-no! Fish don't blush!@ It's just… the reflection of the coral, okay?",
         "options": [
@@ -170,7 +170,7 @@
     ],
     "tease3": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "flustered",
         "text": "C-cute...@ How can you say something like that?@ I'm not flustered!!!",
         "options": [
@@ -184,7 +184,7 @@
     ],
     "bond1": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "flustered",
         "text": "Hmph. You're insufferable… but maybe not entirely unpleasant.",
         "options": [
@@ -203,36 +203,36 @@
     ],
     "introhint": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "neutral",
         "text": "You keep talking about compliments. Do you think words are all it takes to impress me?",
         "options": [
           {
             "text": "Then what *does* impress you?",
             "score": 2,
-            "next": "{item}hint"
+            "next": "{likes}hint"
           },
           {
             "text": "I bet I could find something shiny enough to change your mind.",
             "score": 4,
-            "next": "{item}hint"
+            "next": "{likes}hint"
           }
         ]
       }
     ],
     "pearlhint": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "neutral",
-        "text": "Shiny things... maybe@ ...N-not that I care about that sort of thing. Pearls, maybe. But only because they reflect the moonlight nicely. That's all!",
+        "text": "Shiny things... maybe@ ...N-not that I care about that sort of thing.@ Maybe those white shiny balls on the sea floor.@ But only because they reflect the moonlight nicely. That's all!",
         "options": [
           {
-            "text": "So you *do* like pearls.",
+            "text": "oh so you do have a thing for valuables I see",
             "score": 4,
             "next": "fluster2"
           },
           {
-            "text": "Moonlight and pearls… sounds poetic.",
+            "text": "I guess I'll just have to fine one for you. ;)",
             "score": 3,
             "next": "soft2"
           }
@@ -241,17 +241,17 @@
     ],
     "rubyhint": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "neutral",
-        "text": "Shiny things... maybe@ ...N-not that I care about that sort of thing. Rubies, maybe. But only because there reflective red glow goes nicely with my fins. That's all!",
+        "text": "Shiny things... maybe@ ...N-not that I care about that sort of thing.@ Maybe...@ Those red jewels...@ But only because there reflective red glow goes nicely with my fins. That's all!",
         "options": [
           {
-            "text": "So you *do* like rubies.",
+            "text": "Oh so you do have a thing for valuables I see",
             "score": 4,
             "next": "fluster2"
           },
           {
-            "text": "I can imagine rubies would go nicely with your style.",
+            "text": "I guess I'll just have to fine one for you. ;)",
             "score": 3,
             "next": "soft2"
           }
@@ -260,12 +260,12 @@
     ],
     "soft2": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "neutral",
         "text": "Don't think you can charm me with shiny talk, surface-dweller. I'm not that easy."
       },
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "flustered",
         "text": "But… keep talking like that, and I might start to believe you mean it.",
         "options": [
@@ -279,7 +279,7 @@
     ],
     "fluster2": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "angryBlush",
         "text": "I-I didn't say that! Stop twisting my words! It's not like I like you or your dumb gifts or anything!",
         "options": [
@@ -293,7 +293,7 @@
     ],
     "bond2": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "eyeroll",
         "text": "You're impossible… maybe that's why I can't stop talking to you.",
         "options": [
@@ -312,21 +312,21 @@
     ],
     "ending_hint": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "flustered",
         "text": "Hmph. Don't get cocky.@ Bring me something that I like, and *maybe* I'll help you get around…"
       }
     ],
     "dead_pearl": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "neutral",
         "text": "What is this?! A PEARL!@ I hate pearls!@ I don't want to hear anything you have to say! Get lost"
       }
     ],
     "dead_end": [
       {
-        "speaker": "Lionfish",
+        "speaker": "Lion-chan",
         "sprite": "neutral",
         "text": "Get lost!@ I dont want to hear anything you have to say!"
       }

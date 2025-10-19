@@ -1,0 +1,313 @@
+{
+  "name": "Lumi",
+  "color": "#2e2b5f",
+  "likes": ["driftglass", "moonjellycandy"],
+  "dialogues": {
+    "first-greeting": [
+      {
+        "speaker": "Lumi",
+        "sprite": "shy",
+        "text": "Ah—!@ I-I didn't see you there...@ You shouldn't sneak up like that in the dark.",
+        "options": [
+          {
+            "text": "Sorry, I didn't mean to startle you.",
+            "score": 2,
+            "next": "intro1"
+          },
+          {
+            "text": "You blend in so well… I almost missed you.",
+            "score": 3,
+            "next": "fluster1"
+          },
+          {
+            "text": "Relax, I'm not dangerous.",
+            "score": 1,
+            "next": "intro1"
+          }
+        ]
+      }
+    ],
+    "intro1": [
+      {
+        "speaker": "Lumi",
+        "sprite": "neutral",
+        "text": "O-oh… it's okay.@ I'm just not used to company down here.@ Most creatures avoid the deep.",
+        "options": [
+          {
+            "text": "I guess I'm not like most creatures.",
+            "score": 3,
+            "next": "different"
+          },
+          {
+            "text": "It must get lonely down here.",
+            "score": 2,
+            "next": "soft1"
+          },
+          {
+            "text": "Do you prefer it that way?",
+            "score": 1,
+            "next": "neutral1"
+          }
+        ]
+      }
+    ],
+    "different": [
+      {
+        "speaker": "Lumi",
+        "sprite": "shy",
+        "text": "I… I can tell.@ Most creatures swim away the moment they see my light.@ But you didn’t.@ You came closer.",
+        "options": [
+          {
+            "text": "It must get lonely down here.",
+            "score": 2,
+            "next": "soft1"
+          },
+          {
+            "text": "Do you prefer it that way?",
+            "score": 1,
+            "next": "neutral1"
+          }
+        ]
+      }
+    ],
+    "fluster1": [
+      {
+        "speaker": "Lumi",
+        "sprite": "blush",
+        "text": "Y-you noticed?@ I mean—of course you did, I have this light and everything...@ um...",
+        "options": [
+          {
+            "text": "It's a beautiful light.",
+            "score": 3,
+            "next": "fluster2"
+          },
+          {
+            "text": "It suits you. Gentle, but hard to ignore.",
+            "score": 4,
+            "next": "bond1"
+          }
+        ]
+      }
+    ],
+    "fluster2": [
+      {
+        "speaker": "Lumi",
+        "sprite": "blush",
+        "text": "B-beautiful?@ N-no one's ever called it that before.@ Most think it's...@ scary.",
+        "options": [
+          {
+            "text": "I think it's mesmerizing.",
+            "score": 4,
+            "next": "bond1"
+          },
+          {
+            "text": "Maybe they just don't look closely enough.",
+            "score": 3,
+            "next": "soft1"
+          }
+        ]
+      }
+    ],
+    "soft1": [
+      {
+        "speaker": "Lumi",
+        "sprite": "shy",
+        "text": "Sometimes it does get quiet... but the dark feels safe. It hides all the parts of me that might scare others.",
+        "options": [
+          {
+            "text": "You don't need to hide from me.",
+            "score": 4,
+            "next": "bond2"
+          },
+          {
+            "text": "Maybe I like a little mystery.",
+            "score": 3,
+            "next": "bond2"
+          }
+        ]
+      }
+    ],
+    "neutral1": [
+      {
+        "speaker": "Lumi",
+        "sprite": "neutral",
+        "text": "Maybe... it's easier that way. Fewer eyes staring, fewer words to trip over.",
+        "options": [
+          {
+            "text": "I don't mind the quiet.",
+            "score": 2,
+            "next": "bond2"
+          },
+          {
+            "text": "I'll stay, even if you don't talk much.",
+            "score": 3,
+            "next": "bond2"
+          }
+        ]
+      }
+    ],
+    "bond1": [
+      {
+        "speaker": "Lumi",
+        "sprite": "smile",
+        "text": "You really are strange... but maybe that's not a bad thing.",
+        "options": [
+          {
+            "text": "Strange is just another word for interesting.",
+            "score": 3,
+            "next": "bond2"
+          },
+          {
+            "text": "Coming from you, I'll take that as a compliment.",
+            "score": 2,
+            "next": "bond2"
+          }
+        ]
+      }
+    ],
+    "bond2": [
+      {
+        "speaker": "Lumi",
+        "sprite": "soft-smile",
+        "text": "Heh... you make the dark feel a little less heavy. That's... new for me.",
+        "options": [
+          {
+            "text": "Then I'll stay a little longer.",
+            "score": 4,
+            "next": "{likes}_hint"
+          },
+          {
+            "text": "Maybe light isn't so scary after all.",
+            "score": 3,
+            "next": "{likes}_hint"
+          }
+        ]
+      }
+    ],
+    "driftglass_hint": [
+      {
+        "speaker": "Lumi",
+        "sprite": "neutral",
+        "text": "Hehe...@ you know... its funny.@ The last time I felt like this was...",
+        "options": [
+          {
+            "text": "What? Do you like your ex more then me or something?",
+            "score": -4,
+            "next": "driftglass_fail"
+          },
+          {
+            "text": "What is it?",
+            "score": 2,
+            "next": "driftglass_hint2"
+          }
+        ]
+      }
+    ],
+    "driftglass_fail": [
+      {
+        "speaker": "Lumi",
+        "sprite": "neutral",
+        "text": "What!? No...@ you know what, never mind..."
+      }
+    ],
+    "driftglass_hint2": [
+      {
+        "speaker": "Lumi",
+        "sprite": "blush",
+        "text": "Oh its nothing,@ It's…@ just some pieces of glass.@ Old, broken things that drifted down from the surface."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "shy",
+        "text": "I just…@ like how the current polishes them smooth again.@ Even sharp things can become gentle, given enough time."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "shy",
+        "text": "I…@ keep them close. It makes the dark feel softer somehow."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "shy",
+        "text": "If you ever find shards like this…@ um…@ maybe…@ bring it here?"
+      }
+    ],
+    "moonjellycandy_hint": [
+      {
+        "speaker": "Lumi",
+        "sprite": "neutral",
+        "text": "Hehe...@ you know... its funny.@ The last time I saw a human when I got...@ well that doesn't matter.",
+        "options": [
+          {
+            "text": "Got what?",
+            "score": 4,
+            "next": "moonjellycandy_hint2"
+          }
+        ]
+      }
+    ],
+    "moonjellycandy_hint2": [
+      {
+        "speaker": "Lumi",
+        "sprite": "blush",
+        "text": "Oh its nothing, its just occasionally surface traders drop this sweet substance down occasionally."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "shy",
+        "text": "I-I like how it glows a little…@ like it's alive..."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "shy",
+        "text": "And…@ it tastes nice.@ Soft.@ Sweet."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "shy",
+        "text": "But don't tell anyone I said that.@ It's… embarrassing.",
+        "options": [
+          {
+            "text": "Why would that be embarrassing?",
+            "score": 4,
+            "next": "moonjellycandy_hint3"
+          }
+        ]
+      }
+    ],
+    "moonjellycandy_hint3": [
+      {
+        "speaker": "Lumi",
+        "sprite": "blush",
+        "text": "Because...@ creatures down here aren't supposed to like “cute” things."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "shy",
+        "text": "They expect teeth and shadows, not sugar and light."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "shy",
+        "text": "But… I can't help it."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "shy",
+        "text": "She glances at you shyly."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "blush",
+        "text": "If you ever find more of that candy…@ maybe…@ bring some by?"
+      }
+    ],
+    "ending": [
+      {
+        "speaker": "Lumi",
+        "sprite": "soft-smile",
+        "text": "If you ever get lost again... just follow the glow. I'll be waiting."
+      }
+    ]
+  }
+}

@@ -3,6 +3,34 @@
   "color": "#ff0000",
   "likes": ["blue", "shiny", "sea shells"],
   "dialogues": {
-    
+    "first-greeting": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "shy",
+        "text": "Oh! h-hi...@ what brings you here?",
+        "options": [
+          {
+            "text": "Can you tell me about dangerous areas nearby?",
+            "score": 2,
+            "next": "info"
+          }
+        ]
+      }
+    ],
+    "info": [
+      {
+        "speaker": "Lionfish",
+        "sprite": "",
+        "text": "Oh! h-hi...@ what brings you here?",
+        "options": [
+          {
+            "text": "Can you tell me about dangerous areas nearby?",
+            "score": 2,
+            "next": "info"
+          }
+        ]
+      }
+    ]
+
   }
 }

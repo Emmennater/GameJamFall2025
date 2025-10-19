@@ -52,16 +52,16 @@ class SceneManager {
   }
 
   run(dt) {
-    if (this.transition > 0.5 && this.currentScene.getLastScene() != null) {
+    if (this.transition > 0.5 && this.currentScene.getLastScene() != null && !this.dialogue) {
       this.backArrow.run(dt);
     }
 
     if (this.dialogue) this.returnArrow.run(dt);
 
     this.runTransitions(dt);
-    this.currentScene.run(dt);
     this.runSpeaking();
-    if (this.dialogue) this.dialogue.run(dt);
+    if (this.dialogue) this.dialogue.run(dt); // Must be before scene because of busy wait
+    this.currentScene.run(dt);
   }
   
   draw() {
@@ -76,7 +76,7 @@ class SceneManager {
 
     if (this.dialogue) this.dialogue.draw();
 
-    if (this.transition > 0.5 && this.currentScene.getLastScene() != null) {
+    if (this.transition > 0.5 && this.currentScene.getLastScene() != null && !this.dialogue) {
       this.backArrow.draw();
     }
 

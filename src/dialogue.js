@@ -155,7 +155,6 @@ class DialogueBox {
     stroke(0);
     strokeWeight(4);
     rect(boxLeft, boxTop, boxW, boxH, 20);
-    busyIfHovering(boxLeft, boxTop, boxW, boxH, "dialogue");
     
     // Wrap text
     fill(0);
@@ -177,7 +176,6 @@ class DialogueBox {
     stroke(0);
     strokeWeight(4);
     rect(nameLeft, nameTop, nameW, nameH, 10);
-    busyIfHovering(nameLeft, nameTop, nameW, nameH, "dialogue");
     
     fill(0);
     noStroke();
@@ -268,7 +266,6 @@ class Prompt {
       stroke(0);
       strokeWeight(2);
       rect(optionLeft, promptTop, optionWidth, promptBoxH, 20);
-      busyIfHovering(optionLeft, promptTop, optionWidth, promptBoxH, "dialogue");
       
       noStroke();
       fill(0);
@@ -290,8 +287,7 @@ class Prompt {
       stroke(0);
       strokeWeight(2);
       rect(optionLeft, optionTop, optionWidth, optionHeights[i], 20);
-      busyIfHovering(optionLeft, optionTop, optionWidth, optionHeights[i], "dialogue");
-
+      
       noStroke();
       fill(0);
       textSize(fontSize);
@@ -343,6 +339,7 @@ class DialogueManager {
       return;
     }
 
+    busy["dialogue"] = true;
     const currentDialogue = this.schedule[this.currentIdx];
     currentDialogue.run(dt);
   }
@@ -376,6 +373,6 @@ function wrapText(str, maxWidth) {
 
 function busyIfHovering(x, y, w, h, flag = "dialogue") {
   if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
-    hovered[flag] = true;
+    busy[flag] = true;
   }
 }

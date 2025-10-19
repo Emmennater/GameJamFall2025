@@ -244,7 +244,7 @@ class SceneEntity extends Entity {
   }
 
   onClick() {
-    if (hovered["dialogue"]) return;
+    if (busy["dialogue"]) return;
     sceneManager.transitionToScene(this.scene);
   }
 

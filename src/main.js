@@ -22,7 +22,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   debug = false;
-  hovered = {};
+  busy = {};
   mouse = { clicked: false };
   keys = {};
   characters = getCharacters();
@@ -33,8 +33,8 @@ function setup() {
 
 function draw() {
   const dt = min(frameRate() / 60, 1);
+  busy = {};
   sceneManager.run(dt);
-  hovered = {};
   sceneManager.draw();
   mouse.clicked = false;
   keys = {};

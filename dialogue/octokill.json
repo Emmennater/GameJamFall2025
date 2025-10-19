@@ -121,17 +121,17 @@
           {
             "text": "You're imagining things.",
             "score": 0,
-            "next": "coralmilk_end"
+            "next": "coralmilk_end2"
           },
           {
             "text": "Maybe I am.",
             "score": 0,
-            "next": "coralmilk_end"
+            "next": "coralmilk_end2"
           }
         ]
       }
     ],
-    "coralmilk_end": [
+    "coralmilk_end2": [
       {
         "speaker": "Takara",
         "sprite": "octo-natural",

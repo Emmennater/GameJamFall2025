@@ -112,7 +112,7 @@
     "flusterlove1": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-angryBlush",
+        "sprite": "lion-upset",
         "text": "Y-you really don't know when to stop, do you!?@ I'm not blushing! It's the coral again!@ The coral!!",
         "options": [
           {
@@ -150,7 +150,7 @@
     "confession-denial": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-angryBlush",
+        "sprite": "lion-upset",
         "text": "C-confession?!@ Don't make me laugh!@ As if I'd fall for some clueless surface-dweller like you!"
       },
       {

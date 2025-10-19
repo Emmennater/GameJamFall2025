@@ -304,6 +304,15 @@ class Prompt {
       strokeWeight(2);
       rect(optionLeft, optionTop, optionWidth, optionHeights[i], 20);
       
+      if (mouseX > optionLeft && mouseX < optionLeft + optionWidth && mouseY > optionTop && mouseY < optionTop + optionHeights[i]) {
+        this.selected = i;
+        if (mouse.clicked) {
+          this.done = true;
+          this.choice = option;
+          this.onChoice(option);
+        }
+      }
+
       noStroke();
       fill(0);
       textSize(fontSize);

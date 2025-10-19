@@ -28,6 +28,11 @@
             "text": "Come on, I'm not that special. There are other unique fish. Like Lumi",
             "score": 1,
             "next": "lumi-reaction1"
+          },
+          {
+            "text": "How are you?",
+            "score": 1,
+            "next": "coralmilk_intro"
           }
         ]
       }

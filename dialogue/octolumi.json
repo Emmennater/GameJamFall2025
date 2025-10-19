@@ -52,19 +52,13 @@
       {
         "speaker": "Takara",
         "sprite": "octo-neutral",
-        "text": "Just stay here.@ I'll take care of it.@ I always take care of what's ours.",
-        "options": [
-          {
-            "text": "[Wait]",
-            "score": 0,
-            "next": "lumi-offscreen"
-          }
-        ]
+        "text": "Just stay here.@ I'll take care of it.@ I always take care of what's ours."
       },
       {
         "speaker": "Takara",
         "sprite": "octo-neutral",
         "enter-dialogue": "lumi-greeting",
+        "kill": "Lumi",
         "text": ".@.@."
       },
       {

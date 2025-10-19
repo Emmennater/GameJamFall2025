@@ -1,0 +1,151 @@
+{
+  "name": "Takara",
+  "color": "#6b1f3f",
+  "dialogues": {
+    "coralmilk_intro": [
+      {
+        "speaker": "Takara",
+        "sprite": "smile",
+        "text": "Mmm... the currents feel softer today.@ It's a good day for coral milk.@ Have you ever tasted it, human?",
+        "options": [
+          {
+            "text": "No, what's that?",
+            "score": 3,
+            "next": "coralmilk_explain"
+          },
+          {
+            "text": "Sounds... fancy.",
+            "score": 2,
+            "next": "coralmilk_explain"
+          },
+          {
+            "text": "Do you drink that often?",
+            "score": 2,
+            "next": "coralmilk_meaning"
+          }
+        ]
+      }
+    ],
+    "coralmilk_explain": [
+      {
+        "speaker": "Takara",
+        "sprite": "neutral",
+        "text": "It's made from soft coral.@ I crush it gently with my arms until it releases a pale pink essence.@ Then I stir in warm currents until it turns smooth and silky.",
+        "options": [
+          {
+            "text": "That sounds... soothing.",
+            "score": 3,
+            "next": "coralmilk_meaning"
+          },
+          {
+            "text": "You make it yourself?",
+            "score": 2,
+            "next": "coralmilk_make"
+          }
+        ]
+      }
+    ],
+    "coralmilk_make": [
+      {
+        "speaker": "Takara",
+        "sprite": "shy",
+        "text": "Of course.@ I don't let anyone else touch it.@ The coral listens to me better when I hum to it.@ It releases more sweetness that way.",
+        "options": [
+          {
+            "text": "You sing to your ingredients?",
+            "score": 2,
+            "next": "coralmilk_meaning"
+          },
+          {
+            "text": "That's... kind of adorable.",
+            "score": 3,
+            "next": "coralmilk_meaning"
+          }
+        ]
+      }
+    ],
+    "coralmilk_meaning": [
+      {
+        "speaker": "Takara",
+        "sprite": "soft-smile",
+        "text": "When I drink it, it coats my throat, calms the restless parts of me.@ It tastes like warmth, like... someone breathing nearby.@ Like comfort I can keep.",
+        "options": [
+          {
+            "text": "That's a beautiful description.",
+            "score": 3,
+            "next": "coralmilk_obsession"
+          },
+          {
+            "text": "You really love it, huh?",
+            "score": 2,
+            "next": "coralmilk_obsession"
+          }
+        ]
+      }
+    ],
+    "coralmilk_obsession": [
+      {
+        "speaker": "Takara",
+        "sprite": "blush",
+        "text": "I think I love it because it reminds me of you.@ When I drink it, I imagine warmth that doesn't fade.@ I pretend I can taste sunlight, skin, laughter... all the things you bring here.",
+        "options": [
+          {
+            "text": "You imagine me while drinking it?",
+            "score": 3,
+            "next": "coralmilk_confession"
+          },
+          {
+            "text": "That's... intense.",
+            "score": 1,
+            "next": "coralmilk_confession"
+          }
+        ]
+      }
+    ],
+    "coralmilk_confession": [
+      {
+        "speaker": "Takara",
+        "sprite": "smile",
+        "text": "Mmm.@ I like to imagine you'd share it with me someday.@ You'd hold the shell cup, and I'd guide your hand so you don't spill a drop.@ It would leave a pink sheen on your lips... I'd remember that forever.",
+        "options": [
+          {
+            "text": "You really think about that a lot, huh?",
+            "score": 2,
+            "next": "coralmilk_end"
+          },
+          {
+            "text": "You make it sound romantic.",
+            "score": 3,
+            "next": "coralmilk_end"
+          }
+        ]
+      }
+    ],
+    "coralmilk_end": [
+      {
+        "speaker": "Takara",
+        "sprite": "soft-smile",
+        "text": "Romantic?@ Maybe.@ Or maybe I just like the thought of you tasting something that only I could prepare.@ Something that settles inside you and never quite fades.",
+        "options": [
+          {
+            "text": "You'd make it just for me?",
+            "score": 3,
+            "next": "coralmilk_final"
+          },
+          {
+            "text": "You talk about it like it's alive.",
+            "score": 2,
+            "next": "coralmilk_final"
+          }
+        ]
+      }
+    ],
+    "coralmilk_final": [
+      {
+        "speaker": "Takara",
+        "sprite": "blush",
+        "text": "Maybe it is.@ Maybe it's my way of keeping a little piece of you close.@ If you ever taste it, you'll understand—@ it's not just a drink.@ It's how I remember you when you're gone."
+      }
+    ]
+  }
+}

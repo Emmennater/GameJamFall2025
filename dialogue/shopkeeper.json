@@ -1,0 +1,272 @@
+{
+  "name": "Nerissa",
+  "color": "#3a8fa3",
+  "likes": ["driftglass", "moonjellycandy"],
+  "dialogues": {
+    "first-greeting": [
+      {
+        "speaker": "Nerissa",
+        "sprite": "smile",
+        "text": "Oh—!@ A new face in my shop?@ Welcome, traveler.@ Careful not to knock anything over—some of these pieces are older than tides themselves.",
+        "options": [
+          {
+            "text": "I'll be careful. Do you sell all of this yourself?",
+            "score": 2,
+            "next": "intro1"
+          },
+          {
+            "text": "Depends—what's worth buying here?",
+            "score": 1,
+            "next": "intro1"
+          },
+          {
+            "text": "I wasn't planning to buy… just to look.",
+            "score": 3,
+            "next": "fluster1"
+          }
+        ]
+      }
+    ],
+    "intro1": [
+      {
+        "speaker": "Nerissa",
+        "sprite": "neutral",
+        "text": "Everything you see drifted down from somewhere—lost, forgotten, waiting for another story.@ I just give them a place to rest for a while.@ Are you looking for something particular?",
+        "options": [
+          {
+            "text": "Something shiny, maybe. Got anything rare?",
+            "score": 2,
+            "next": "collector1"
+          },
+          {
+            "text": "Something that reminds me of the surface.",
+            "score": 1,
+            "next": "collector1"
+          },
+          {
+            "text": "Maybe I already found what I was looking for.",
+            "score": 4,
+            "next": "fluster2"
+          }
+        ]
+      }
+    ],
+    "fluster1": [
+      {
+        "speaker": "Nerissa",
+        "sprite": "blush",
+        "text": "Just looking?@ Hah… I suppose I can't complain.@ A merchant's shop isn't much without an audience to admire her wares.",
+        "options": [
+          {
+            "text": "Or admire the merchant herself.",
+            "score": 4,
+            "next": "fluster2"
+          },
+          {
+            "text": "Then I'll make sure to look carefully.",
+            "score": 2,
+            "next": "collector1"
+          }
+        ]
+      }
+    ],
+    "fluster2": [
+      {
+        "speaker": "Nerissa",
+        "sprite": "blush",
+        "text": "You're going to ruin my professional image with talk like that.@ I'm supposed to charm my customers, not the other way around.",
+        "options": [
+          {
+            "text": "Guess I'm just good at haggling for attention.",
+            "score": 3,
+            "next": "bond1"
+          },
+          {
+            "text": "Then consider this my first successful trade.",
+            "score": 4,
+            "next": "bond1"
+          }
+        ]
+      }
+    ],
+    "collector1": [
+      {
+        "speaker": "Nerissa",
+        "sprite": "neutral",
+        "text": "Rarity's a funny thing.@ Some buy jewels, others buy stories.@ Me? I like the pieces that shine because they've survived.",
+        "options": [
+          {
+            "text": "You see the beauty in broken things.",
+            "score": 3,
+            "next": "soft1"
+          },
+          {
+            "text": "Sounds like you've got a soft spot for survivors.",
+            "score": 2,
+            "next": "soft1"
+          },
+          {
+            "text": "That's a poetic way to run a shop.",
+            "score": 4,
+            "next": "fluster3"
+          }
+        ]
+      }
+    ],
+    "soft1": [
+      {
+        "speaker": "Nerissa",
+        "sprite": "shy",
+        "text": "Maybe I do.@ Even shattered shells can still catch the light.@ You just have to look from the right angle.",
+        "options": [
+          {
+            "text": "You talk about treasures like they're people.",
+            "score": 3,
+            "next": "bond1"
+          },
+          {
+            "text": "I think that's what makes you special.",
+            "score": 4,
+            "next": "fluster3"
+          }
+        ]
+      }
+    ],
+    "fluster3": [
+      {
+        "speaker": "Nerissa",
+        "sprite": "blush",
+        "text": "Wh-what? You can't say things like that while I'm trying to sound mysterious!@ You'll make me forget my prices!",
+        "options": [
+          {
+            "text": "Then I'll take that as a discount.",
+            "score": 3,
+            "next": "bond1"
+          },
+          {
+            "text": "Maybe I like seeing you flustered more than your wares.",
+            "score": 4,
+            "next": "bond1"
+          }
+        ]
+      }
+    ],
+    "bond1": [
+      {
+        "speaker": "Nerissa",
+        "sprite": "smile",
+        "text": "You really are strange.@ Most customers just ask for a price list.@ You… make it feel like a story instead.",
+        "options": [
+          {
+            "text": "Every good deal needs a little adventure.",
+            "score": 3,
+            "next": "bond2"
+          },
+          {
+            "text": "Maybe I just wanted to learn yours.",
+            "score": 4,
+            "next": "bond2"
+          }
+        ]
+      }
+    ],
+    "bond2": [
+      {
+        "speaker": "Nerissa",
+        "sprite": "soft-smile",
+        "text": "You've got a way with words.@ Keep that up and I might start giving away secrets instead of trinkets.",
+        "options": [
+          {
+            "text": "I'd rather earn them.",
+            "score": 4,
+            "next": "{likes}_hint"
+          },
+          {
+            "text": "Maybe I already have.",
+            "score": 3,
+            "next": "{likes}_hint"
+          }
+        ]
+      }
+    ],
+    "driftglass_hint": [
+      {
+        "speaker": "Nerissa",
+        "sprite": "neutral",
+        "text": "Hehe… you know, there's one thing I always keep behind the counter.@ Not for sale.",
+        "options": [
+          {
+            "text": "Oh? Something valuable?",
+            "score": 2,
+            "next": "driftglass_hint2"
+          },
+          {
+            "text": "Something sentimental, maybe?",
+            "score": 3,
+            "next": "driftglass_hint2"
+          }
+        ]
+      }
+    ],
+    "driftglass_hint2": [
+      {
+        "speaker": "Nerissa",
+        "sprite": "shy",
+        "text": "It's just driftglass.@ Broken bottles smoothed by time and tide.@ They catch light so softly it feels like holding a memory."
+      },
+      {
+        "speaker": "Nerissa",
+        "sprite": "smile",
+        "text": "I like to think even sharp things can become gentle, if given enough patience.@ Maybe that's why I keep them."
+      },
+      {
+        "speaker": "Nerissa",
+        "sprite": "shy",
+        "text": "If you ever find any…@ bring them here, okay?@ I'll make it worth your while."
+      }
+    ],
+    "moonjellycandy_hint": [
+      {
+        "speaker": "Nerissa",
+        "sprite": "neutral",
+        "text": "Hah… have you ever heard of moon jelly candy?@ It sometimes drifts down from the surface, glowing like little lanterns.",
+        "options": [
+          {
+            "text": "Candy? Underwater?",
+            "score": 2,
+            "next": "moonjellycandy_hint2"
+          },
+          {
+            "text": "Sounds sweet and beautiful. Like you.",
+            "score": 4,
+            "next": "moonjellycandy_hint2"
+          }
+        ]
+      }
+    ],
+    "moonjellycandy_hint2": [
+      {
+        "speaker": "Nerissa",
+        "sprite": "blush",
+        "text": "You're… far too smooth.@ But yes, it's real.@ It glows softly in the dark—sweet, but fragile."
+      },
+      {
+        "speaker": "Nerissa",
+        "sprite": "shy",
+        "text": "I suppose I have a weakness for it.@ Something about it reminds me of how fleeting warmth can be."
+      },
+      {
+        "speaker": "Nerissa",
+        "sprite": "smile",
+        "text": "If you ever come across any, bring it by.@ Maybe we'll share a piece."
+      }
+    ],
+    "ending": [
+      {
+        "speaker": "Nerissa",
+        "sprite": "soft-smile",
+        "text": "Take care out there, traveler.@ And remember—every current brings something lost, and someone found.@ Maybe next time, it'll be both of us."
+      }
+    ]
+  }
+}

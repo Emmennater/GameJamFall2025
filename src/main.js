@@ -8,6 +8,9 @@ function preload() {
   images.menu = loadImage("images/menu.png");
   images.empty_floor = loadImage("images/empty_floor.png");
   images.cave = loadImage("images/cave.png");
+  
+  // gifs = {};
+  // gifs.shipwreck = loadImage("images/shipwreck.gif");
 }
 
 function setup() {

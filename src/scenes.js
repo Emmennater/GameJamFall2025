@@ -64,7 +64,7 @@ class Scene {
   worldToScreenScale(x) {
     let {x: a, y: b} = this.worldToScreen(0, 0);
     let {x: c, y: d} = this.worldToScreen(x, 0);
-    return (c - a) / this.bgImg.width;
+    return (c - a) / 2000;
   }
 
   worldToScreen(x, y) {
@@ -156,9 +156,8 @@ class StartingArea extends Scene {
   constructor(parent) {
     super(parent);
     this.setBackground(images.empty_floor);
-    this.addCharacter("Lionfish", null, 0.8, 0.6);
   }
-
+  
   addScenes() {
     this.addScene(new CaveArea(this), 0.2, 0.4, 0.0, 0.2);
   }
@@ -167,6 +166,7 @@ class StartingArea extends Scene {
 class CaveArea extends Scene {
   constructor(parent) {
     super(parent);
+    this.addCharacter("Lionfish", null, 0.8, 0.6);
     this.setBackground(images.cave);
   }
 

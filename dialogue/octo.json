@@ -112,7 +112,7 @@
           {
             "text": "You listen to my heartbeat?",
             "score": 4,
-            "next": "heartbeat_hint"
+            "next": "heartbeat-hint"
           },
           {
             "text": "That's unnerving, but oddly sweet.",
@@ -240,17 +240,17 @@
           {
             "text": "You really will do all that?",
             "score": 3,
-            "next": "scent_hint"
+            "next": "scent-hint"
           },
           {
             "text": "What if I want to go back to the surface?",
             "score": 1,
-            "next": "scent_hint"
+            "next": "scent-hint"
           }
         ]
       }
     ],
-    "scent_hint": [
+    "scent-hint": [
       {
         "speaker": "Takara",
         "sprite": "obsessed",
@@ -259,17 +259,17 @@
           {
             "text": "You keep my scent?",
             "score": 2,
-            "next": "heartbeat_hint"
+            "next": "heartbeat-hint"
           },
           {
             "text": "That's... intimate.",
             "score": 3,
-            "next": "heartbeat_hint"
+            "next": "heartbeat-hint"
           }
         ]
       }
     ],
-    "heartbeat_hint": [
+    "heartbeat-hint": [
       {
         "speaker": "Takara",
         "sprite": "neutral",
@@ -316,17 +316,17 @@
           {
             "text": "That's reassuring... in a strange way.",
             "score": 3,
-            "next": "final_line"
+            "next": "final-line"
           },
           {
             "text": "I should go.",
             "score": -1,
-            "next": "final_line"
+            "next": "final-line"
           }
         ]
       }
     ],
-    "final_line": [
+    "final-line": [
       {
         "speaker": "Takara",
         "sprite": "neutral",

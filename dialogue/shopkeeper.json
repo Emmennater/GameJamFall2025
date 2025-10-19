@@ -179,17 +179,17 @@
           {
             "text": "I'd rather earn them.",
             "score": 4,
-            "next": "{likes}_hint"
+            "next": "{likes}-hint"
           },
           {
             "text": "Maybe I already have.",
             "score": 3,
-            "next": "{likes}_hint"
+            "next": "{likes}-hint"
           }
         ]
       }
     ],
-    "driftglass_hint": [
+    "driftglass-hint": [
       {
         "speaker": "Nerissa",
         "sprite": "neutral",
@@ -198,17 +198,17 @@
           {
             "text": "Oh? Something valuable?",
             "score": 2,
-            "next": "driftglass_hint2"
+            "next": "driftglass-hint2"
           },
           {
             "text": "Something sentimental, maybe?",
             "score": 3,
-            "next": "driftglass_hint2"
+            "next": "driftglass-hint2"
           }
         ]
       }
     ],
-    "driftglass_hint2": [
+    "driftglass-hint2": [
       {
         "speaker": "Nerissa",
         "sprite": "shy",
@@ -225,7 +225,7 @@
         "text": "If you ever find any…@ bring them here, okay?@ I'll make it worth your while."
       }
     ],
-    "moonjellycandy_hint": [
+    "moonjellycandy-hint": [
       {
         "speaker": "Nerissa",
         "sprite": "neutral",
@@ -234,17 +234,17 @@
           {
             "text": "Candy? Underwater?",
             "score": 2,
-            "next": "moonjellycandy_hint2"
+            "next": "moonjellycandy-hint2"
           },
           {
             "text": "Sounds sweet and beautiful. Like you.",
             "score": 4,
-            "next": "moonjellycandy_hint2"
+            "next": "moonjellycandy-hint2"
           }
         ]
       }
     ],
-    "moonjellycandy_hint2": [
+    "moonjellycandy-hint2": [
       {
         "speaker": "Nerissa",
         "sprite": "blush",

@@ -6,8 +6,9 @@
     "receive-pearl": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion_neutral",
+        "sprite": "lion-neutral",
         "text": "W-what's this?@ A pearl?@ You actually… brought it?",
+        "remove": "pearl",
         "options": [
           {
             "text": "I thought you might like it.",
@@ -25,7 +26,7 @@
     "pearlreaction1": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion_flustered",
+        "sprite": "lion-flustered",
         "text": "I-I never said I wanted one!@ You really don't listen, do you?",
         "options": [
           {
@@ -44,17 +45,17 @@
     "pearlreaction2": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion_blush",
+        "sprite": "lion-blush",
         "text": "W-wait!@ I mean—@ you already gave it to me.@ It'd be rude to just— take it back now!@ Right?!"
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "lion_flustered",
+        "sprite": "lion-flustered",
         "text": "Ugh, you're so annoying...@ Fine, I'll keep it. But only because it'd be a waste to throw it away."
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "lion_blush",
+        "sprite": "lion-blush",
         "text": "It's...@ actually kind of pretty.",
         "options": [
           {
@@ -73,7 +74,7 @@
     "pearlreaction3": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion_flustered",
+        "sprite": "lion-flustered",
         "text": "Wha— I— No!@ I'm just—!@ It's slippery, okay?! I'm holding it so it doesn't float away!",
         "options": [
           {
@@ -92,7 +93,7 @@
     "pearlreaction4": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion_blush",
+        "sprite": "lion-blush",
         "text": "It's...@ smooth.@ And the way it catches the light...@ kind of like...@ the moon through the water.",
         "options": [
           {
@@ -111,7 +112,7 @@
     "flusterlove1": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion_angryBlush",
+        "sprite": "lion-angryBlush",
         "text": "Y-you really don't know when to stop, do you!?@ I'm not blushing! It's the coral again!@ The coral!!",
         "options": [
           {
@@ -130,31 +131,31 @@
     "bondfinal1": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion_blush",
+        "sprite": "lion-blush",
         "text": "Hmph…@ You're impossible.@ But...@ maybe you're not completely terrible to be around.",
         "options": [
           {
             "text": "I'll take that as a confession.",
             "score": 6,
-            "next": "confession_denial"
+            "next": "confession-denial"
           },
           {
             "text": "That's the nicest thing you've said to me.",
             "score": 4,
-            "next": "confession_denial"
+            "next": "confession-denial"
           }
         ]
       }
     ],
-    "confession_denial": [
+    "confession-denial": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion_angryBlush",
+        "sprite": "lion-angryBlush",
         "text": "C-confession?!@ Don't make me laugh!@ As if I'd fall for some clueless surface-dweller like you!"
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "lion_blush",
+        "sprite": "lion-blush",
         "text": "I mean...@ even if you *did* bring me a gift.@ A perfect one.@ And said all those stupid, nice things...",
         "options": [
           {
@@ -173,7 +174,7 @@
     "lovehint": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion_blush",
+        "sprite": "lion-blush",
         "text": "I...@ I said stop looking at me like that.@ It makes my fins twitch.",
         "options": [
           {
@@ -192,33 +193,33 @@
     "loveend1": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion_blush",
+        "sprite": "lion-blush",
         "text": "G-glowing?@ I...@ maybe it's just the pearl's reflection...@ yeah, that's it."
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "lion_flustered",
+        "sprite": "lion-flustered",
         "text": "Still...@ I...@ No ones ever done something like this for me before..."
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "lion_blush",
+        "sprite": "lion-blush",
         "give": "magic scroll",
         "text": "Here.@ Just take this magic scroll."
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "lion_blush",
+        "sprite": "lion-blush",
         "text": "N-not because I want it or anything!@ I just...@ I don't want you get hurt...@ But only so your gems stay intact!@ That's all!"
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "lion_neutral",
+        "sprite": "lion-neutral",
         "text": "You can use the scroll to see if there is danger down a pathway."
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "lion_blush",
+        "sprite": "lion-blush",
         "text": "Just...@ use it if you don't feel safe"
       }
     ],
@@ -231,6 +232,7 @@
         "speaker": "Lion-chan",
         "sprite": "neutral",
         "text": "Huh...?@ What's this supposed to be?@ A ruby?@ You actually found one down here?",
+        "remove": "ruby",
         "options": [
           {
             "text": "I thought the color would suit you.",

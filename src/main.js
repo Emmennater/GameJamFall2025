@@ -48,8 +48,8 @@ function setup() {
   characters = getCharacters();
   soundManager = getSoundManager();
   sceneManager = new SceneManager();
-  sceneManager.setScene(new Menu());
-  // sceneManager.setScene(new CaveArea());
+  // sceneManager.setScene(new Menu());
+  sceneManager.setScene(new CaveArea());
 }
 
 function draw() {

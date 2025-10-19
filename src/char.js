@@ -7,9 +7,21 @@ class Character {
     this.sprite = new Sprite(name);
     this.currentDialogue = "first-greeting";
     this.enterDialogue = "first-greeting";
+    this.giftedItem = "No item";
     // this.currentDialogue = "done";
     this.speaking = false;
     this.dialogue = new DialogueManager(this);
+  }
+
+  giveItem(item) {
+    // Correct item -> receive-item
+    // Wrong item -> bad-item
+    this.giftedItem = item;
+    if (item === this.like) {
+      this.startSpeaking(`recieve-${item}`);
+    } else {
+      this.startSpeaking("bad-item");
+    }
   }
 
   isSpeaking() {
@@ -37,6 +49,7 @@ class Character {
 
   setNextDialogue(next) {
     next = next.replace("{likes}", this.like);
+    next = next.replace("{item}", this.giftedItem);
     this.currentDialogue = next;
     this.speaking = true;
   }

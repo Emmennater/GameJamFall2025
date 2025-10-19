@@ -3,6 +3,7 @@ class SceneManager {
     this.currentScene = null;
     this.nextScene = null;
     this.dialogue = null;
+    this.giftDialogue = null;
     this.transition = 1; // 0 - 1 (0 = transparent, 1 = opaque)
     this.fadeSpeed = 1/60; // 1 / # frames
     this.nlayers = 10;
@@ -14,7 +15,8 @@ class SceneManager {
     this.returnArrow = new ReturnArrow(() => {
       // On Click
       if (this.dialogue) this.dialogue.exit();
-    })
+    });
+    this.giveButton = new GiveButton()
   }
 
   setScene(scene) {
@@ -39,6 +41,35 @@ class SceneManager {
     }
   }
 
+  getSpeakingCharacter() {
+    for (const characterEntity of this.currentScene.characterEntities) {
+      const character = characterEntity.character;
+      if (!character.speaking) continue;
+      return character;
+    }
+    return null;
+  }
+
+  getGift(callback) {
+    let options = [];
+
+    for (const item of player.items) {
+      options.push({text: item});
+    }
+
+    if (options.length == 0) {
+      callback(null);
+      return null;
+    }
+
+    this.giftDialogue = new DialogueBox('', null, 'What do you want to gift?',
+      new Prompt('', options, (choice) => {
+        this.giftDialogue = null;
+        callback(choice.text);
+      }),
+    );
+  }
+
   runTransitions(dt) {
     if (this.transition < 1) {
       this.transition += this.fadeSpeed * dt;
@@ -57,10 +88,12 @@ class SceneManager {
     }
 
     if (this.dialogue) this.returnArrow.run(dt);
+    if (this.dialogue) this.giveButton.run(dt);
 
     this.runTransitions(dt);
     this.runSpeaking();
-    if (this.dialogue) this.dialogue.run(dt); // Must be before scene because of busy wait
+    if (this.giftDialogue) this.giftDialogue.run(dt);
+    else if (this.dialogue) this.dialogue.run(dt); // Must be before scene because of busy wait
     this.currentScene.run(dt);
   }
   
@@ -74,13 +107,15 @@ class SceneManager {
       this.currentScene.draw(layer);
     }
 
-    if (this.dialogue) this.dialogue.draw();
+    if (this.giftDialogue) this.giftDialogue.draw();
+    else if (this.dialogue) this.dialogue.draw();
 
     if (this.transition > 0.5 && this.currentScene.getLastScene() != null && !this.dialogue) {
       this.backArrow.draw();
     }
 
     if (this.dialogue) this.returnArrow.draw();
+    if (this.dialogue) this.giveButton.draw();
 
     background(0, 0, 0, fade * 255);
   }

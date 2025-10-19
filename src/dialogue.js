@@ -44,6 +44,7 @@ class DialogueBox {
     this.displayedText = "";
     this.textTime = 0;
     this.updatePauseIdx();
+    this.formatText();
   }
 
   endOfText() {
@@ -171,23 +172,25 @@ class DialogueBox {
     text(wrappedText, textX, textY);
 
     // Name box
-    const nameSize = 30;
-    textSize(nameSize);
-    textAlign(LEFT, TOP);
-    
-    const name = this.charName;
-    const nameLeft = boxLeft + 20;
-    const nameTop = boxTop - nameSize;
-    const nameW = textWidth(name) + 20;
-    const nameH = nameSize + 10;
-    fill(255);
-    stroke(0);
-    strokeWeight(4);
-    rect(nameLeft, nameTop, nameW, nameH, 10);
-    
-    fill(0);
-    noStroke();
-    text(name, nameLeft + 10, nameTop + 5);
+    if (this.charName && this.charName != "Null") {
+      const nameSize = 30;
+      textSize(nameSize);
+      textAlign(LEFT, TOP);
+      
+      const name = this.charName;
+      const nameLeft = boxLeft + 20;
+      const nameTop = boxTop - nameSize;
+      const nameW = textWidth(name) + 20;
+      const nameH = nameSize + 10;
+      fill(255);
+      stroke(0);
+      strokeWeight(4);
+      rect(nameLeft, nameTop, nameW, nameH, 10);
+      
+      fill(0);
+      noStroke();
+      text(name, nameLeft + 10, nameTop + 5);
+    }
 
     if (this.endOfText() && this.prompt) {
       this.prompt.draw();
@@ -368,6 +371,7 @@ class DialogueManager {
 }
 
 function wrapText(str, maxWidth) {
+  if (!str) return '';
   const words = str.split(' ');
   let line = '';
   let output = '';

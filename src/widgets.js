@@ -152,3 +152,35 @@ class ReturnArrow extends Button {
     super.draw();
   }
 }
+
+class GiveButton extends Button {
+  constructor() {
+    super(
+      () => "Give",
+      () => {
+        return {
+          x: 10,
+          y: 10,
+          w: 80,
+          h: 40,
+          marginX: 10,
+          marginY: 10,
+          paddingX: 20,
+          paddingY: 10,
+          fontSize: 20,
+          strokeWeight: 2
+        };
+      },
+      () => {
+        // On Click
+        sceneManager.getGift((item) => {
+          if (!item) return;
+          const char = sceneManager.getSpeakingCharacter();
+          char.giveItem(item);
+        });
+        // Correct item -> receive-item
+        // Wrong item -> bad-item
+      }
+    );
+  }
+}

@@ -6,7 +6,7 @@
     "first-greeting": [
       {
         "speaker": "Takara",
-        "sprite": "neutral",
+        "sprite": "octo-neutral",
         "text": "Oh—@ a human, finally.@ You glow so differently from the others who drift by.@ You smell like the surface and sunlight and something only I seem to remember.",
         "options": [
           {
@@ -23,6 +23,11 @@
             "text": "Why are you so close?",
             "score": 1,
             "next": "tease1"
+          },
+          {
+            "text": "Come on, I'm not that special. There are other unique fish. Like Lumi",
+            "score": 1,
+            "next": "lumi-reaction1"
           }
         ]
       }
@@ -30,7 +35,7 @@
     "tease1": [
       {
         "speaker": "Takara",
-        "sprite": "intense",
+        "sprite": "octo-intense",
         "text": "Close is where I like you.@ How else will I learn the shape of your breaths, the tiny way your hands curl when you're cold?",
         "options": [
           {
@@ -49,7 +54,7 @@
     "observe1": [
       {
         "speaker": "Takara",
-        "sprite": "neutral",
+        "sprite": "octo-neutral",
         "text": "I watch.@ Not because I'm bored—because there are so many details that belong only to you.@ The scatter of freckles on your shoulder like distant stars, the way your breath fogs the water when you laugh.",
         "options": [
           {
@@ -68,7 +73,7 @@
     "detail1": [
       {
         "speaker": "Takara",
-        "sprite": "intense",
+        "sprite": "octo-intense",
         "text": "Of course.@ The ocean taught me patience.@ I catalog every little thing: the rasp of your voice on quiet days, how your pupils widen when you look at something you like.",
         "options": [
           {
@@ -87,7 +92,7 @@
     "fluster1": [
       {
         "speaker": "Takara",
-        "sprite": "obsessed",
+        "sprite": "octo-obsessed",
         "text": "You blush so prettily.@ The pink swims up under your skin like sunrise.@ It makes me want to keep it there forever.",
         "options": [
           {
@@ -106,7 +111,7 @@
     "bond1": [
       {
         "speaker": "Takara",
-        "sprite": "intense",
+        "sprite": "octo-intense",
         "text": "I like the steady rhythm of your heartbeat when you're near.@ It's the only drum that keeps my tentacles calm.@ When you breathe, the whole cave listens.",
         "options": [
           {
@@ -125,7 +130,7 @@
     "bond2": [
       {
         "speaker": "Takara",
-        "sprite": "neutral",
+        "sprite": "octo-neutral",
         "text": "You are small and enormous all at once.@ Fragile in the ways that make me ache, but vast in the ways that make me certain this is right.",
         "options": [
           {
@@ -144,7 +149,7 @@
     "possessive1": [
       {
         "speaker": "Takara",
-        "sprite": "jealous",
+        "sprite": "octo-jealous",
         "text": "I don't like the idea of anyone else seeing you the way I do.@ The ocean is full of curious things—others who might think they deserve even a moment with you.",
         "options": [
           {
@@ -163,7 +168,7 @@
     "protective1": [
       {
         "speaker": "Takara",
-        "sprite": "obsessed",
+        "sprite": "octo-obsessed",
         "text": "I will keep them out of your path.@ Not with anger—no.@ With small, quiet adjustments.@ A shadow here, a diversion there.@ I will make sure your light finds only me.",
         "options": [
           {
@@ -182,7 +187,7 @@
     "reassure1": [
       {
         "speaker": "Takara",
-        "sprite": "intense",
+        "sprite": "octo-intense",
         "text": "Controlling is such a harsh word.@ I prefer... careful.@ I arrange currents so prying eyes drift elsewhere.@ I hum lullabies so they forget the way you taste of sunlight.",
         "options": [
           {
@@ -196,7 +201,7 @@
     "learn1": [
       {
         "speaker": "Takara",
-        "sprite": "unhinged",
+        "sprite": "octo-unhinged",
         "text": "And if you don't love me at first—@ I'll learn you.@ Every breath you take teaches me another word for 'home.'@ I'll practice until the syllables fit you perfectly.",
         "options": [
           {
@@ -215,7 +220,7 @@
     "learn2": [
       {
         "speaker": "Takara",
-        "sprite": "obsessed",
+        "sprite": "octo-obsessed",
         "text": "Presumption is just eagerness wearing a polite face.@ I will study the shape of your smiles, the way your fingers tense, the favorite threads of your thoughts.@ Slowly, gently, until you begin to want what I already know.",
         "options": [
           {
@@ -234,7 +239,7 @@
     "devotion1": [
       {
         "speaker": "Takara",
-        "sprite": "neutral",
+        "sprite": "octo-neutral",
         "text": "Devotion is the right word.@ I will be the tide that never leaves.@ The kind that learns your favorite songs and hums them when the world gets loud.",
         "options": [
           {
@@ -253,7 +258,7 @@
     "scent-hint": [
       {
         "speaker": "Takara",
-        "sprite": "obsessed",
+        "sprite": "octo-obsessed",
         "text": "Your scent—@ it's how I keep you present when you wander.@ Salt and soap and a memory of warm places.@ I tuck it into a tiny cave of mine so I can breathe you when you sleep.",
         "options": [
           {
@@ -272,7 +277,7 @@
     "heartbeat-hint": [
       {
         "speaker": "Takara",
-        "sprite": "neutral",
+        "sprite": "octo-neutral",
         "text": "And your heartbeat—@ a steady little drum that makes me orderly.@ When it's near, my world stops being a maze.@ I map my days to its pace so I never lose you.",
         "options": [
           {
@@ -291,7 +296,7 @@
     "promise1": [
       {
         "speaker": "Takara",
-        "sprite": "intense",
+        "sprite": "octo-intense",
         "text": "Unhealthy is just a word for something that cares too much.@ I care too much.@ If loving you is an illness, then let me be beautifully sick.",
         "options": [
           {
@@ -310,7 +315,7 @@
     "ending": [
       {
         "speaker": "Takara",
-        "sprite": "obsessed",
+        "sprite": "octo-obsessed",
         "text": "You will learn to want the same things I do.@ If you are patient, I will teach you.@ And if someone else tries to find you first...@ they'll drift away without a single pleasant memory of what they were seeking.",
         "options": [
           {
@@ -329,7 +334,7 @@
     "final-line": [
       {
         "speaker": "Takara",
-        "sprite": "neutral",
+        "sprite": "octo-neutral",
         "text": "Promise me one thing—stay close enough for me to learn you.@ Stay close enough for me to keep you.@ I will practice loving you until loving you is the easiest thing in the ocean."
       }
     ]

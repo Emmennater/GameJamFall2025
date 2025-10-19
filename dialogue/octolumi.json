@@ -1,0 +1,199 @@
+{
+  "name": "Takara",
+  "color": "#6b1f3f",
+  "dialogues": {
+    "lumi-reaction1": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-neutral",
+        "text": "Lumi...@ that name drips too softly.@ I've seen her light flicker in the deep before.@ She likes to swim too close to things that don't belong to her.",
+        "options": [
+          {
+            "text": "She's just being kind.",
+            "score": 1,
+            "next": "lumi-reaction2"
+          },
+          {
+            "text": "You sound jealous.",
+            "score": -1,
+            "next": "lumi-jealous1"
+          }
+        ]
+      }
+    ],
+    "lumi-reaction2": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-intense",
+        "text": "Kindness?@ Maybe.@ Or maybe she's pretending to be kind to see how your glow tastes.@ Some lights only shine so they can lure others closer."
+      },
+      {
+        "speaker": "Takara",
+        "sprite": "octo-neutral",
+        "text": "Don't worry.@ I'll make sure her little lamp stops wandering into our currents.",
+        "options": [
+          {
+            "text": "What does that mean?",
+            "score": 0,
+            "next": "lumi-leaves"
+          }
+        ]
+      }
+    ],
+    "lumi-jealous1": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-obsessed",
+        "text": "Jealous?@ Hm...@ maybe I am.@ It's strange—@ how hearing her name makes my pulse swim faster.@ I don't like that feeling.@ I'll need to do something about it.",
+        "next": "lumi-leaves"
+      }
+    ],
+    "lumi-leaves": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-neutral",
+        "text": "Just stay here.@ I'll take care of it.@ I always take care of what's ours.",
+        "options": [
+          {
+            "text": "[Wait]",
+            "score": 0,
+            "next": "lumi-offscreen"
+          }
+        ]
+      },
+      {
+        "speaker": "Takara",
+        "sprite": "octo-neutral",
+        "enter-dialogue": "lumi-greeting",
+        "text": ".@.@."
+      },
+      {
+        "speaker": "System",
+        "sprite": "none",
+        "text": "[Takara slips away into the murk. You can't see her, but the water feels heavier. A faint pulse echoes once... then silence.]"
+      },
+      {
+        "speaker": "Takara",
+        "sprite": "octo-neutral",
+        "text": "There.@ All settled.@ The deep is a little quieter now, don't you think?",
+        "options": [
+          {
+            "text": "What did you do?",
+            "score": 0,
+            "next": "lumi-press1"
+          },
+          {
+            "text": "You're back fast.",
+            "score": 1,
+            "next": "lumi-calm1"
+          }
+        ]
+      }
+    ],
+    "lumi-calm1": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-obsessed",
+        "text": "Fast?@ No.@ Just efficient.@ Problems like that don't take long if you know where to squeeze.",
+        "options": [
+          {
+            "text": "Squeeze?",
+            "score": -1,
+            "next": "lumi-press1"
+          },
+          {
+            "text": "You're scaring me.",
+            "score": -2,
+            "next": "lumi-press2"
+          }
+        ]
+      }
+    ],
+    "lumi-press1": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-neutral",
+        "text": "You don't need to think about it.@ The water took care of what needed taking care of.@ Some lights were never meant to last long down here.",
+        "options": [
+          {
+            "text": "You mean Lumi…?",
+            "score": 0,
+            "next": "lumi-final1"
+          }
+        ]
+      }
+    ],
+    "lumi-press2": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-hurt",
+        "text": "I didn't mean to scare you.@ I only wanted to make sure you're safe.@ That's all I ever want.",
+        "options": [
+          {
+            "text": "Safe from Lumi?",
+            "score": 0,
+            "next": "lumi-final1"
+          }
+        ]
+      }
+    ],
+    "lumi-final1": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-obsessed",
+        "text": "If you really want to know...@ let's just say she won't be floating near you anymore.@ Her light's gone out.@ That's all that matters.",
+        "options": [
+          {
+            "text": "You… did something to her, didn't you?",
+            "score": -3,
+            "next": "lumi-deny"
+          },
+          {
+            "text": "I guess it's… solved?",
+            "score": 1,
+            "next": "lumi-end"
+          }
+        ]
+      }
+    ],
+    "lumi-deny": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-neutral",
+        "text": "'Did something' is such a sharp phrase.@ I prefer to think of it as... removing noise from the current.@ Now, it's peaceful again.@ You can focus on me.",
+        "next": "lumi-end"
+      }
+    ],
+    "lumi-end": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-intense",
+        "text": "Don't drift too far anymore, alright?@ It's dangerous out there.@ But here—@ with me—@ nothing will ever hurt you again."
+      }
+    ],
+    "lumi-greeting": [
+      {
+        "speaker": "Takara",
+        "sprite": "octo-neutral",
+        "text": "It's so nice to see you again human. I could smell you approaching.",
+        "options": [
+          {
+            "text": "That's... flattering, I think.",
+            "score": 2,
+            "next": "fluster1"
+          },
+          {
+            "text": "What did you do to Lumi?!?",
+            "score": 1,
+            "next": "lumi-press1"
+          },
+          {
+            "text": "Lumi is gone!!! Now I only have Lion-chan",
+            "score": 1,
+            "next": "lion-reaction1"
+          }
+        ]
+      }
+    ]
+  }
+}

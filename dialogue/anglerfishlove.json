@@ -1,0 +1,124 @@
+{
+  "name": "Lumi",
+  "color": "#2e2b5f",
+  "state": "in-love",
+  "dialogues": {
+    "after-love-visit": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-soft-smile",
+        "text": "Oh… it's you again.@ I was hoping you'd come back.@ It feels strange when your light isn't here.",
+        "options": [
+          {
+            "text": "I couldn't stay away.",
+            "score": 4,
+            "next": "love1"
+          },
+          {
+            "text": "Missed me already?",
+            "score": 3,
+            "next": "love1"
+          },
+          {
+            "text": "You sound worried… something wrong?",
+            "score": 2,
+            "next": "love2"
+          }
+        ]
+      }
+    ],
+    "love1": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-blush",
+        "text": "Heh… maybe a little.@ The current feels colder without you around.@ But that's not the only thing bothering me.",
+        "next": "love2"
+      }
+    ],
+    "love2": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-shy",
+        "text": "There's… something you should know.@ Something dangerous.",
+        "options": [
+          {
+            "text": "Dangerous? What do you mean?",
+            "score": 3,
+            "next": "octopus-warning"
+          },
+          {
+            "text": "You're starting to sound like you're jealous.",
+            "score": -2,
+            "next": "jealous-accuse"
+          }
+        ]
+      }
+    ],
+    "octopus-warning": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-neutral",
+        "text": "Down near the trench… there's an octopus that doesn't belong here.@ He moves like a shadow, and everything around him goes silent."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-shy",
+        "text": "He's clever.@ He pretends to be friendly.@ But there's something behind his eyes—something hungry."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-soft-blush",
+        "text": "If he ever talks to you… please, don't trust him.@ Promise me?",
+        "options": [
+          {
+            "text": "I promise.",
+            "score": 4,
+            "next": "love-end"
+          },
+          {
+            "text": "I can handle myself.",
+            "score": 2,
+            "next": "love-end"
+          },
+          {
+            "text": "Are you sure you're not overreacting?",
+            "score": -1,
+            "next": "jealous-accuse"
+          }
+        ]
+      }
+    ],
+    "jealous-accuse": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-blush",
+        "text": "W-what?@ No! It's not like that!@ I'm not jealous— I just don't want you getting hurt."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-shy",
+        "text": "He's dangerous, I can feel it.@ You think I'd lie just to keep you here?",
+        "options": [
+          {
+            "text": "I'm sorry. I shouldn't have said that.",
+            "score": 3,
+            "next": "love-end"
+          },
+          {
+            "text": "Maybe I'll see for myself.",
+            "score": 0,
+            "next": "love-end"
+          }
+        ]
+      }
+    ],
+    "love-end": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-soft-smile",
+        "text": "Just… be careful, alright?@ The deep has a way of hiding things that don't want to be found.",
+        "next": "end"
+      }
+    ]
+  }
+}

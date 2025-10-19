@@ -1,0 +1,436 @@
+{
+  "name": "Lumi",
+  "color": "#2e2b5f",
+  "likes": ["driftglass", "moonjellycandy"],
+  "dialogues": {
+    "receive-moonjellycandy": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-shy",
+        "text": "Oh…@ is that…@ moon jelly candy…?",
+        "remove": "moonjellycandy",
+        "options": [
+          {
+            "text": "Yeah. I remembered you said you liked it.",
+            "score": 4,
+            "next": "mooncandy1"
+          },
+          {
+            "text": "Thought you could use something sweet down here.",
+            "score": 3,
+            "next": "mooncandy1"
+          },
+          {
+            "text": "Don't worry, I didn't eat any… probably.",
+            "score": 2,
+            "next": "mooncandy-tease"
+          }
+        ]
+      }
+    ],
+    "mooncandy1": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-blush",
+        "text": "Y-you actually found some…?@ No one's ever… brought me something like this before."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-soft-smile",
+        "text": "It's glowing so gently… like a tiny piece of the surface light.@ It's beautiful.",
+        "options": [
+          {
+            "text": "Not as beautiful as the one holding it.",
+            "score": 5,
+            "next": "mooncandy2"
+          },
+          {
+            "text": "You really like shiny things, huh?",
+            "score": 3,
+            "next": "mooncandy2"
+          }
+        ]
+      }
+    ],
+    "mooncandy-tease": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-blush",
+        "text": "H-hey!@ You shouldn't joke about that!@ This is…@ special.",
+        "options": [
+          {
+            "text": "I know. That's why it's for you.",
+            "score": 4,
+            "next": "mooncandy2"
+          }
+        ]
+      }
+    ],
+    "mooncandy2": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-blush",
+        "text": "You're always saying things like that…@ and I never know what to say back.",
+        "options": [
+          {
+            "text": "Just say what you feel.",
+            "score": 4,
+            "next": "mooncandy3"
+          },
+          {
+            "text": "Then don't say anything. Just smile.",
+            "score": 3,
+            "next": "mooncandy3"
+          }
+        ]
+      }
+    ],
+    "mooncandy3": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-shy",
+        "text": "What I feel…?@ I… I feel warm.@ Even down here in the cold.@ That's not supposed to happen.",
+        "options": [
+          {
+            "text": "Maybe that's what love feels like.",
+            "score": 6,
+            "next": "mooncandy4"
+          },
+          {
+            "text": "Guess I'm good at breaking the rules.",
+            "score": 4,
+            "next": "mooncandy4"
+          }
+        ]
+      }
+    ],
+    "mooncandy4": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-blush",
+        "text": "L-love?!@ You… you can't just say that so suddenly…!"
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-soft-blush",
+        "text": "But… maybe you're right.@ Because every time you come close, my light gets brighter…@ and I can't stop it.",
+        "options": [
+          {
+            "text": "Then don't stop it.",
+            "score": 5,
+            "next": "mooncandy5"
+          },
+          {
+            "text": "I like seeing you shine.",
+            "score": 5,
+            "next": "mooncandy5"
+          }
+        ]
+      }
+    ],
+    "mooncandy5": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-blush",
+        "text": "You really mean it… don't you?@ You're not afraid of the dark.@ Not even of me."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-soft-smile",
+        "text": "Then… I won't hide anymore.@ Not from you.",
+        "options": [
+          {
+            "text": "Lumi…",
+            "score": 6,
+            "next": "mooncandy6"
+          }
+        ]
+      }
+    ],
+    "mooncandy6": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-glow",
+        "text": "Her lure brightens softly, painting the dark with gentle light.@ It feels calm. Safe. Warm."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-blush",
+        "text": "I don't know what happens next…@ but… if you're here, I think I'll be okay."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-smile",
+        "give": "glowrod",
+        "text": "Here,@ take this.@ Its a glowrod."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-smile",
+        "give": "glowrod",
+        "text": "It will allow you to say in the dark like me...",
+        "next": "get-item"
+      }
+    ],
+    "get-item": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-smile",
+        "give": "glowrod",
+        "text": "Here,@ take this.@ Its a glowrod."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-soft-smile",
+        "text": "It will allow you to say in the dark like me...",
+        "enter-dialogue": "after-love-visit",
+        "next": "ending"
+      }
+    ],
+
+
+
+
+
+    "receive-driftglass": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-shy",
+        "text": "Is that…@ driftglass…?",
+        "remove": "driftglass",
+        "options": [
+          {
+            "text": "Yeah. I remembered you said you liked it.",
+            "score": 4,
+            "next": "drift1"
+          },
+          {
+            "text": "It reminded me of you.",
+            "score": 5,
+            "next": "drift1"
+          },
+          {
+            "text": "Found it shining in the current. Figured you'd want it.",
+            "score": 3,
+            "next": "drift1"
+          }
+        ]
+      }
+    ],
+    "drift1": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-blush",
+        "text": "You… remembered that?@ I didn't think anyone listened when I talked about things like that."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-soft-smile",
+        "text": "It's beautiful.@ Look at how the water's worn it smooth.@ It used to be sharp… dangerous…@ and now it's gentle.",
+        "options": [
+          {
+            "text": "Kind of like you.",
+            "score": 5,
+            "next": "drift2"
+          },
+          {
+            "text": "Funny how time can heal even glass.",
+            "score": 4,
+            "next": "drift2"
+          }
+        ]
+      }
+    ],
+    "drift2": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-blush",
+        "text": "M-me?@ I'm not gentle.@ I just learned how to hide the sharp edges better.",
+        "options": [
+          {
+            "text": "You don't need to hide them from me.",
+            "score": 5,
+            "next": "drift3"
+          },
+          {
+            "text": "Even sharp things can be beautiful.",
+            "score": 4,
+            "next": "drift3"
+          }
+        ]
+      }
+    ],
+    "drift3": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-shy",
+        "text": "Beautiful…?@ You really think that?@ Even if I'm a little broken inside?",
+        "options": [
+          {
+            "text": "Especially because you are.",
+            "score": 6,
+            "next": "drift4"
+          },
+          {
+            "text": "Everyone's a little broken. You just glow through it better.",
+            "score": 5,
+            "next": "drift4"
+          }
+        ]
+      }
+    ],
+    "drift4": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-soft-blush",
+        "text": "Heh…@ You really shouldn't say things like that.@ I don't know what to do when you look at me like that."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-shy",
+        "text": "When I hold this driftglass… it feels like I'm holding something that understands me.",
+        "options": [
+          {
+            "text": "Maybe that's because I understand you too.",
+            "score": 6,
+            "next": "drift5"
+          },
+          {
+            "text": "Maybe you just needed someone to see you the way you see this glass.",
+            "score": 5,
+            "next": "drift5"
+          }
+        ]
+      }
+    ],
+    "drift5": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-blush",
+        "text": "I… I think you might be right.@ Every time you visit, the dark doesn't feel so cold anymore."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-soft-smile",
+        "text": "And now… it's like the pieces of me I tried to hide are glowing again."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-soft-blush",
+        "text": "Here…@ take this.@ I've been saving it for someone special.",
+        "give": "glowrod"
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-glow",
+        "text": "It's a glowrod.@ It'll help you see in the dark like I do.@ Just don't forget where that light came from."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-blush",
+        "text": "When you hold it, maybe you'll think of me…@ like I'll think of you whenever I see the light move across the glass."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-soft-smile",
+        "text": "You… really changed something in me.@ Thank you, for reminding me that broken things can shine again.",
+        "enter-dialogue": "after-love-visit",
+        "next": "ending"
+      }
+    ],
+
+
+
+
+
+
+
+    "bad-item": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-neutral",
+        "text": "Oh…@ you brought me something?",
+        "remove": "{item}",
+        "enter-dialogue": "wrong-end",
+        "options": [
+          {
+            "text": "Yeah, thought you'd like it.",
+            "score": -7,
+            "next": "wrong1"
+          }
+        ]
+      }
+    ],
+    "wrong1": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-shy",
+        "text": "I…@ see.@ It's… not what I expected.",
+        "options": [
+          {
+            "text": "You don't like it?",
+            "score": -3,
+            "next": "wrong2"
+          },
+          {
+            "text": "Come on, it's not that bad.",
+            "score": -5,
+            "next": "wrong3"
+          }
+        ]
+      }
+    ],
+    "wrong2": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-hurt",
+        "text": "It's not just that.@ It's…@ this thing… it hurts to look at.@ It feels… wrong."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-hurt",
+        "text": "Did you even think before bringing it here?"
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-neutral",
+        "text": "I thought… maybe you understood me.@ I guess I was wrong.",
+        "next": "wrong-end"
+      }
+    ],
+    "wrong3": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-hurt",
+        "text": "You don't get it…@ do you?@ It's not about whether it's ‘that bad'.@ It's about what it *means*."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-neutral",
+        "text": "You brought the deep into my light and called it a gift.@ I… can't do this anymore."
+      },
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-hurt",
+        "text": "Please… just go."
+      },
+      {
+        "speaker": "System",
+        "text": "[Your bond with Lumi has been broken.]",
+        "score": -10
+      }
+    ],
+    "wrong-end": [
+      {
+        "speaker": "Lumi",
+        "sprite": "lumi-shy",
+        "text": "I…@ need some time alone.@ Please."
+      },
+      {
+        "speaker": "System",
+        "text": "[Your bond with Lumi has been broken.]",
+        "score": -10
+      }
+    ]
+  }
+}

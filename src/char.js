@@ -44,6 +44,7 @@ class Character {
   }
 
   getRandomLike() {
+    if (!this.likes) return "";
     return this.likes[Math.floor(Math.random() * this.likes.length)];
   }
 
@@ -54,15 +55,21 @@ class Character {
     this.speaking = true;
   }
 
-  updateFromChoice(choice) {
+  updateFromChoice(choice, next) {
+    print(choice, next);
     if (!choice || !choice.next) {
-      this.currentDialogue = "done";
-      this.speaking = false;
-      this.dialogue.restart();
-      return;
+      if (this.dialogue.isDone()) {
+        this.currentDialogue = "done";
+        this.speaking = false;
+        this.dialogue.restart();
+        return;
+      }
     }
 
-    this.setNextDialogue(choice.next);
+    if (choice) {
+      this.setNextDialogue(choice.next);
+      this.updateDialogue();
+    }
   }
 
   updateDialogue() {

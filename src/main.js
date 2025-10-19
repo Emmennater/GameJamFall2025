@@ -5,6 +5,7 @@ function preload() {
   dialogueJSON.anglerfish = loadJSON("dialogue/anglerfish.json");
   dialogueJSON.octo = loadJSON("dialogue/octo.json");
   dialogueJSON.shopkeeper = loadJSON("dialogue/shopkeeper.json");
+  dialogueJSON.nolight = loadJSON("dialogue/nolight.json");
 
   images = {};
   images.menu = loadImage("images/menu.png");
@@ -16,15 +17,32 @@ function preload() {
   images.cave_lit = loadImage("images/cave_lit.png");
   images.ship = loadImage("images/ship.png");
   images.ship2 = loadImage("images/ship2.png");
+  images.ship3 = loadImage("images/ship3.png");
+  images.ship4 = loadImage("images/ship4.png");
   images.ship_arriving = loadImage("images/ship_arriving.png");
   images.shop_distance = loadImage("images/shop_distance.png");
   images.shop = loadImage("images/shop.png");
   images.coral1 = loadImage("images/coral1.png");
   images.coral2 = loadImage("images/coral2.png");
+  images.coral3 = loadImage("images/coral3.png");
+  images.coral4 = loadImage("images/coral4.png");
+  images.dark1 = loadImage("images/dark1.png");
+  images.dark2 = loadImage("images/dark2.png");
+  images.dark3 = loadImage("images/dark3.png");
+  images.shark = loadImage("images/shark.png");
   
   // Characters
   images.lion_chan_2 = loadImage("images/lion_chan_2.png");
 
+  // Items
+  images.driftglass = loadImage("images/driftglass.png");
+  images.moonjellycandy = loadImage("images/moonjellycandy.png");
+  images.pearl = loadImage("images/pearl.png");
+  images.magicscroll = loadImage("images/magicscroll.png");
+  // images.glowrod = loadImage("images/glowrod.png");
+  // images.ruby = loadImage("images/ruby.png");
+
+  // Videos
   videos = {};
   videos.menu = createVideo("videos/menu.mp4");
 

@@ -132,7 +132,7 @@ class DialogueBox {
       const y = height * 0.5;
       imageMode(CENTER);
       image(img, x, y, w, h);
-    } else {
+    } else if (this.sprite !== "none") {
       const aspect = 0.6;
       const w = width * 0.2;
       const h = w / aspect;
@@ -326,6 +326,9 @@ class DialogueManager {
   }
 
   restart() {
+    // Print call stack trace
+    // print("R")
+
     this.currentIdx = 0;
     for (const dialogueBox of this.schedule) {
       dialogueBox.restart();
@@ -335,6 +338,8 @@ class DialogueManager {
   scheduleDialogue(dialogueBoxes) {
     this.schedule = dialogueBoxes;
     this.currentIdx = 0;
+    // console.trace("Restarting dialogue");
+    // print('schedule', this.schedule[0].text);
 
     for (const dialogueBox of this.schedule) {
       dialogueBox.formatText();
@@ -345,15 +350,16 @@ class DialogueManager {
     this.schedule[this.currentIdx].onDone();
     this.schedule[this.currentIdx].restart();
     this.currentIdx += 1;
+    // console.trace();
   }
-
+  
   run(dt) {
     if (this.isDone()) return;
-
-    if (this.schedule[this.currentIdx].isDone()) {
-      this.nextDialogue();
-      return;
-    }
+    
+    // if (this.schedule[this.currentIdx].isDone()) {
+    //   this.nextDialogue();
+    //   return;
+    // }
 
     busy["dialogue"] = true;
     const currentDialogue = this.schedule[this.currentIdx];
@@ -361,9 +367,9 @@ class DialogueManager {
   }
 
   draw() {
-    if (this.isDone()) {
-      this.character.updateDialogue();
-    }
+    // if (this.isDone()) {
+      // this.character.updateDialogue();
+    // }
 
     const currentDialogue = this.schedule[this.currentIdx];
     if (currentDialogue) currentDialogue.draw();

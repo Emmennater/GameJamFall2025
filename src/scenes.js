@@ -9,12 +9,14 @@ class Scene {
     this.scenes = []; // List of nested scenes
     this.characterEntities = [];
     this.items = [];
+    this.isDark = false;
     if (this.depth < MAX_DEPTH) {
       this.addScenes();
     }
   }
   
-  addCharacter(characterName, sprite, relativeX, relativeY, relativeScale = 1) {
+  addCharacter(characterName, sprite, relativeX, relativeY, relativeScale = 1, rarity = 1) {
+    if (Math.random() > rarity) return;
     const character = getCharacter(characterName);
     const transform = () => {
       let {x, y} = this.worldToScreen(relativeX, relativeY);
@@ -52,11 +54,14 @@ class Scene {
     }
   }
 
-  addItem(item, relativeX, relativeY, tags={}) {
+  addItem(items, relativeX, relativeY, tags={}, rarity=0.5) {
+    const item = items[Math.floor(Math.random() * items.length)];
+    if (!item) return;
+    if (Math.random() > rarity) return;
     const transform = () => {
       const {x, y} = this.worldToScreen(relativeX, relativeY);
-      const w = 50;
-      const h = 50;
+      const w = 100;
+      const h = 100;
       return {x, y, w, h};
     }
     const entity = new ItemEntity(item, transform, tags);
@@ -64,6 +69,8 @@ class Scene {
   }
 
   addScenes() {}
+
+  onEnter() {}
 
   setBackground(img) {
     this.bgImg = img;
@@ -132,9 +139,11 @@ class Scene {
   }
 
   run(dt) {
-    this.characterEntities.forEach(entity => entity.run(dt));
-    this.scenes.forEach(entity => entity.run(dt));
-    this.items.forEach(entity => entity.run(dt));
+    if (!this.isDark) {
+      this.characterEntities.forEach(entity => entity.run(dt));
+      this.scenes.forEach(entity => entity.run(dt));
+      this.items.forEach(entity => entity.run(dt));
+    }
 
     // Destroy items that have been destroyed
     this.items = this.items.filter(entity => !entity.isDestroyed);
@@ -160,9 +169,15 @@ class Scene {
         h = height;
       }
       image(this.bgImg, width/2, height/2, w, h);
+      if (this.isDark) {
+        fill(0, 0, 0, 200);
+        rect(0, 0, width, height);
+      }
     }
     if (layer == 1) {
-      this.scenes.forEach(entity => entity.draw());
+      if (!this.isDark) {
+        this.scenes.forEach(entity => entity.draw());
+      }
     }
     if (layer == 2) {
       this.items.forEach(entity => entity.draw());
@@ -268,9 +283,18 @@ class StartingArea extends Scene {
 class CaveArea extends Scene {
   constructor(parent) {
     super(parent);
-    this.addCharacter("Lion-chan", "lion_chan_2", 0.8, 0.6);
     this.setBackground(images.cave);
-    this.addItem("ruby", 0.08, 0.85);
+    this.addCharacter("Lumi", null, 0.8, 0.6);
+    this.addItem(["moonjellycandy", "pearl", "driftglass"], 0.08, 0.85);
+  }
+
+  run(dt) {
+    super.run(dt);
+    if (player.hasItem("glowrod")) {
+      this.setBackground(images.cave_lit);
+    } else {
+      this.setBackground(images.cave);
+    }
   }
 
   addScenes() {
@@ -282,6 +306,14 @@ class CaveOpening extends Scene {
   constructor(parent) {
     super(parent);
     this.setBackground(images.cave_opening);
+  }
+
+  onEnter() {
+    if (!player.hasItem("glowrod")) {
+      this.isDark = true;
+      this.addCharacter("{player}", null, 0.5, 0.5);
+      characters["{player}"].startSpeaking("dark-entry");
+    }
   }
 
   addScenes() {
@@ -322,6 +354,7 @@ class ShipArea extends Scene {
 
   addScenes() {
     this.addScene([ShipArea2], 0.73, 0.46);
+    this.addScene([ShipArea3, ShipArea4], 0.46, 0.61);
     this.addScene([CaveArea], 0.85, 0.12);
   }
 }
@@ -330,10 +363,25 @@ class ShipArea2 extends Scene {
   constructor(parent) {
     super(parent);
     this.setBackground(images.ship2);
+    this.addItem(["moonjellycandy", "driftglass"], 0.94, 0.92);
   }
+}
 
-  addScenes() {
-    // this.addScene(new ShipArea2(this), 0.73, 0.46);
+class ShipArea3 extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.ship3);
+    this.addCharacter("Lion-chan", "lion_chan_2", 0.8, 0.6);
+    this.addItem(["moonjellycandy", "driftglass"], 0.16, 0.87);
+  }
+}
+
+class ShipArea4 extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.ship4);
+    this.addCharacter("Lion-chan", "lion_chan_2", 0.18, 0.7, 0.8, 0.7);
+    this.addItem(["moonjellycandy", "driftglass"], 0.78, 0.8, {}, 0.4);
   }
 }
 
@@ -341,6 +389,13 @@ class CoralArea extends Scene {
   constructor(parent) {
     super(parent);
     this.setBackground(images.coral1);
+    this.addItem(["pearl"], 0.9, 0.75, {}, 0.1);
+    this.addItem(["pearl"], 0.26, 0.74, {}, 0.1);
+    this.addCharacter("Takara", null, 0.23, 0.7);
+  }
+
+  addScenes() {
+    this.addScene([CoralArea2, CoralArea4], 0.77, 0.38);
   }
 }
 
@@ -348,6 +403,65 @@ class CoralArea2 extends Scene {
   constructor(parent) {
     super(parent);
     this.setBackground(images.coral2);
+    this.addItem(["pearl"], 0.78, 0.61, {}, 0.1);
+  }
+
+  addScenes() {
+    this.addScene([CoralArea4, DarkArea], 0.25, 0.15);
+    this.addScene([CoralArea3], 0.75, 0.4);
+  }
+}
+
+class CoralArea3 extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.coral3);
+    this.addItem(["pearl"], 0.49, 0.6, {}, 0.5);
+  }
+}
+
+class CoralArea4 extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.coral4);
+  }
+
+  addScenes() {
+    this.addScene([CaveArea, CaveFloorDark], 0.25, 0.15);
+  }
+}
+
+class DarkArea extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.dark1);
+  }
+
+  addScenes() {
+    this.addScene([DarkArea2, DarkArea3], 0.46, 0.65);
+  }
+}
+
+class DarkArea2 extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.dark2);
+  }
+
+  addScenes() {
+    this.addScene([DarkArea3], 0.25, 0.74);
+  }
+}
+
+class DarkArea3 extends Scene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.dark3);
+    this.addItem(["pearl", "magicscroll"], 0.4, 0.92, {}, 0.2);
+  }
+
+  addScenes() {
+    this.addScene([CoralArea, CaveFloorDark], 0.71, 0.72);
   }
 }
 

@@ -34,8 +34,15 @@ class ItemEntity extends Entity {
   
   render(x, y, w, h) {
     const img = images[this.name];
-    fill(0, 0, 255);
-    noStroke();
-    rect(x - w / 2, y - h / 2, w, h);
+    if (img) {
+      let aspect = img.width / img.height;
+      h = w / aspect;
+      imageMode(CENTER);
+      image(img, x, y, w, h);
+    } else {
+      fill(0, 0, 255);
+      noStroke();
+      rect(x - w / 2, y - h / 2, w, h);
+    }
   }
 }

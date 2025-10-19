@@ -21,6 +21,7 @@ class SceneManager {
 
   setScene(scene) {
     this.currentScene = scene;
+    this.currentScene.onEnter();
     this.nextScene = null;
     this.transition = 1;
   }
@@ -62,7 +63,7 @@ class SceneManager {
       return null;
     }
 
-    this.giftDialogue = new DialogueBox('', null, 'What do you want to gift?',
+    this.giftDialogue = new DialogueBox('', 'none', 'What do you want to gift?',
       new Prompt('', options, (choice) => {
         this.giftDialogue = null;
         callback(choice.text);
@@ -78,6 +79,7 @@ class SceneManager {
     }
     if (this.nextScene != null && this.transition > 0.5) {
       this.currentScene = this.nextScene;
+      this.currentScene.onEnter();
       this.nextScene = null;
     }
   }
@@ -87,8 +89,8 @@ class SceneManager {
       this.backArrow.run(dt);
     }
 
-    if (this.dialogue) this.returnArrow.run(dt);
-    if (this.dialogue) this.giveButton.run(dt);
+    if (this.dialogue && !this.currentScene.isDark) this.returnArrow.run(dt);
+    if (this.dialogue && !this.currentScene.isDark) this.giveButton.run(dt);
 
     this.runTransitions(dt);
     this.runSpeaking();
@@ -114,8 +116,8 @@ class SceneManager {
       this.backArrow.draw();
     }
 
-    if (this.dialogue) this.returnArrow.draw();
-    if (this.dialogue) this.giveButton.draw();
+    if (this.dialogue && !this.currentScene.isDark) this.returnArrow.draw();
+    if (this.dialogue && !this.currentScene.isDark) this.giveButton.draw();
 
     background(0, 0, 0, fade * 255);
   }

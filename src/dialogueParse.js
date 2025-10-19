@@ -27,13 +27,15 @@ function getCharacters() {
         const check = obj.check; // List of necessary items
         const checkTrue = obj["check-true"]; // Next diagouge
         const checkFalse = obj["check-false"]; // Next dialogue
+        const next = obj.next;
         
         let sprite = defaultSprites[speaker];
         if (obj.sprite && images[obj.sprite]) sprite = obj.sprite;
+        if (!obj.sprite) sprite = "none";
         
         // Executes just before the next dialogue
         const onFinish = (choice) => {
-          character.updateFromChoice(choice);
+          character.updateFromChoice(choice, next);
           if (enterDialogue) character.setEnterDialogue(enterDialogue);
           
           if (check) {

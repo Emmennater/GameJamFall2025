@@ -38,6 +38,7 @@ class Entity {
   }
 
   draw() {
+    if (!this.transform) return;
     const { x, y, w, h } = this.transform;
     this.render(x, y, w, h);
   }

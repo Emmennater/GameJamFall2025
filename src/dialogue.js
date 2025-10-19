@@ -74,7 +74,7 @@ class DialogueBox {
 
   runInput() {
     const notAtStart = this.textTime > 5;
-    if (mouse.clicked && notAtStart) {
+    if ((mouse.clicked || keys['Enter']) && notAtStart) {
       const unpaused = this.updatePauseIdx();
       if (!unpaused) {
         // Speed up the text

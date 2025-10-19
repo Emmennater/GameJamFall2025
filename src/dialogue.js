@@ -14,6 +14,18 @@ class DialogueBox {
     this.continue = false;
     this.prompt = prompt;
 
+    if (this.sprite === "lion-neutral") {
+      if (Math.random() < 0.5) {
+        this.sprite = "lion-talk";
+      }
+    }
+
+    if (this.sprite === "lumi-neutral") {
+      if (Math.random() < 0.5) {
+        this.sprite = "lumi-talk";
+      }
+    }
+
     this.onDone = () => {
       if (this.prompt) {
         finished(this.prompt.getChoice());

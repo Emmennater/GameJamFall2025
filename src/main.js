@@ -44,8 +44,11 @@ function preload() {
   images["lion-blush"] = loadImage("images/lion-blush.png");
   images["lion-pout"] = loadImage("images/lion-pout.png");
   images["lion-upset"] = loadImage("images/lion-upset.png");
+  images["lion-talk"] = loadImage("images/lion-talk.png");
   images["lumi-neutral"] = loadImage("images/lumi-neutral.png");
   images["lumi-smile"] = loadImage("images/lumi-smile.png");
+  // images["lumi-shy"] = loadImage("images/lumi-shy.png");
+  images["lumi-talk"] = loadImage("images/lumi-talk.png");
   images["takara-neutral"] = loadImage("images/takara-neutral.png");
   images["takara-intense"] = loadImage("images/takara-intense.png");
 
@@ -85,7 +88,7 @@ function setup() {
   soundManager = getSoundManager();
   sceneManager = new SceneManager();
   sceneManager.setScene(new Menu());
-  // sceneManager.setScene(new CoralArea());
+  // sceneManager.setScene(new CaveArea());
 }
 
 function draw() {

@@ -69,7 +69,9 @@ class Character {
   }
 
   updateFromChoice(choice, next) {
-    if (!choice || !choice.next) {
+    let next2 = choice ? choice.next : next;
+
+    if (!next2) {
       this.dialogue.nextDialogue();
       if (this.dialogue.isDone()) {
         this.currentDialogue = "done";
@@ -79,8 +81,8 @@ class Character {
       }
     }
 
-    if (choice) {
-      this.setNextDialogue(choice.next);
+    if (next2) {
+      this.setNextDialogue(next2);
       this.updateDialogue();
     }
   }

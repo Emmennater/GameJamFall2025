@@ -236,13 +236,16 @@ class Menu extends Scene {
   draw(layer) {
     super.draw(layer);
 
+    const titleHeight = isMobile() ? height * 0.25 : height * 0.35;
+    const nameHeight = isMobile() ? height * 0.35 : height * 0.425;
+
     if (layer == 5) {
       // Menu Text
       fill(255);
       textAlign(CENTER, CENTER);
       textSize(width*0.05);
       textFont(fonts.main);
-      text("Plenty of Fish in the Sea", width/2, height/2 - 100);
+      text("Plenty of Fish in the Sea", width/2, titleHeight);
       
       // Enter name
       if (!this.nameSet) {
@@ -250,7 +253,7 @@ class Menu extends Scene {
         textSize(width*0.02);
         textAlign(CENTER, CENTER);
         textFont("monospace");
-        text("Enter name: " + this.nameText + cursor, width/2, height/2);
+        text("Enter name: " + this.nameText + cursor, width/2, nameHeight);
       }
     }
   }

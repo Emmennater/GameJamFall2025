@@ -72,6 +72,11 @@ class SceneManager {
     );
   }
 
+  reset() {
+    player = new Player();
+    characters = getCharacters();
+  }
+
   runTransitions(dt) {
     if (this.transition < 1) {
       this.transition += this.fadeSpeed * dt;

@@ -212,6 +212,7 @@ class Menu extends Scene {
 
   onEnter() {
     if (isMobile()) showMobileKeyboard();
+    sceneManager.reset();
   }
 
   onExit() {
@@ -259,18 +260,32 @@ class Menu extends Scene {
   }
 }
 
-class GameOverShark extends Scene {
+class GameOverScene extends Scene {
   constructor(parent) {
     super(parent);
-    this.setBackground(images.shark_game_over);
+    this.continueButton = new ContinueButton(() => sceneManager.transitionToScene(new Menu(), true));
   }
 
   run(dt) {
     super.run(dt);
 
+    if (!sceneManager.dialogue) this.continueButton.run(dt);
+
     if (keys.pressed) {
       sceneManager.transitionToScene(new Menu(), true);
     }
+  }
+
+  draw(layer) {
+    super.draw(layer);
+    if (layer == 6 && !sceneManager.dialogue) this.continueButton.draw();
+  }
+}
+
+class GameOverShark extends GameOverScene {
+  constructor(parent) {
+    super(parent);
+    this.setBackground(images.shark_game_over);
   }
 
   draw(layer) {
@@ -287,16 +302,9 @@ class GameOverShark extends Scene {
   }
 }
 
-class GameOverDark extends Scene {
+class GameOverDark extends GameOverScene {
   constructor(parent) {
     super(parent);
-    // this.setBackground(images.shark_game_over);
-  }
-
-  run(dt) {
-    if (keys.pressed) {
-      sceneManager.transitionToScene(new Menu(), true);
-    }
   }
 
   draw(layer) {
@@ -315,20 +323,12 @@ class GameOverDark extends Scene {
   }
 }
 
-class GameOverKill extends Scene {
+class GameOverKill extends GameOverScene {
   constructor(parent) {
     super(parent);
     this.setBackground(images.empty_floor);
     this.addCharacter("Lumi", "lumi-neutral", 0.2, 0.6);
     this.addCharacter("Lion-chan", "lion-neutral", 0.8, 0.6);
-  }
-
-  run(dt) {
-    super.run(dt);
-    
-    if (keys.pressed) {
-      sceneManager.transitionToScene(new Menu(), true);
-    }
   }
 
   draw(layer) {

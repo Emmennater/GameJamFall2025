@@ -2,10 +2,10 @@ function preload() {
   dialogueJSON = {};
   dialogueJSON.anglerfish = loadJSON("dialogue/anglerfish.json");
   dialogueJSON.anglerfishgive = loadJSON("dialogue/anglerfishgive.json");
-  dialogueJSON.anglerfishlove = loadJSON("dialogue/anglerfishLove.json");
+  dialogueJSON.anglerfishlove = loadJSON("dialogue/anglerfishlove.json");
   dialogueJSON.lionfish = loadJSON("dialogue/lionfish.json");
   dialogueJSON.lionfishgive = loadJSON("dialogue/lionfishgive.json");
-  dialogueJSON.lionfishLove = loadJSON("dialogue/lionfishLove.json");
+  dialogueJSON.lionfishLove = loadJSON("dialogue/lionfishlove.json");
   dialogueJSON.nolight = loadJSON("dialogue/nolight.json");
   dialogueJSON.octo = loadJSON("dialogue/octo.json");
   dialogueJSON.octokill = loadJSON("dialogue/octokill.json");
@@ -101,11 +101,18 @@ function draw() {
   keys = {};
 }
 
+function isLoaded() {
+  return document.getElementById("defaultCanvas0") !== null;
+}
+
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
 function mousePressed() {
+  // Exit if canvas not created
+  if (!isLoaded()) return;
+
   mouse.clicked = true;
   // if (sceneManager.currentScene instanceof CaveArea) return;
   // sceneManager.transitionToScene(new CaveArea);

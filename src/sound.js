@@ -128,7 +128,7 @@ function getSoundManager() {
   const soundManager = new SoundManager();
 
   // soundManager.add('transition', 'sounds/bruh.mp3', { volume: 0.6 });
-  soundManager.add('bgm', 'sounds/background.mp3', { loop: true, volume: 0.4 });
+  // soundManager.add('bgm', 'sounds/background.mp3', { loop: true, volume: 0.4 });
 
   return soundManager;
 }

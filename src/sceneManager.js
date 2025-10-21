@@ -14,7 +14,8 @@ class SceneManager {
     });
     this.returnArrow = new ReturnArrow(() => {
       // On Click
-      if (this.dialogue) this.dialogue.exit();
+      if (this.giftDialogue) this.giftDialogue = null;
+      else if (this.dialogue) this.dialogue.exit();
     });
     this.giveButton = new GiveButton()
   }

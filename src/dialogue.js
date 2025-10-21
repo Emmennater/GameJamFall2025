@@ -96,10 +96,10 @@ class DialogueBox {
   }
 
   runInput() {
-    const notAtStart = this.textTime > 1;
-    if ((mouse.clicked || keys['Enter']) && notAtStart) {
+    if ((mouse.clicked || keys['Enter'])) {
       const unpaused = this.updatePauseIdx();
-      if (!unpaused) {
+      const notAtStart = this.textTime > 0;
+      if (!unpaused && notAtStart) {
         // Speed up the text
         this.textSpeed = this.defaultTextSpeed + 0.5;
         this.textSpeedTimer = 4 * 60; // 4 seconds
@@ -431,5 +431,6 @@ function substituteText(text, character) {
   const gitedItem = character ? character.giftedItem : "item";
   text = text.replace(/\{player\}/g, player.name);
   text = text.replace(/\{item\}/g, gitedItem);
+  text = text.replace(/\{likes\}/g, character ? character.like : "thing");
   return text;
 }

@@ -165,7 +165,7 @@ class DialogueBox {
     this.drawCharacter();
 
     // Dialogue box
-    const fontSize = 20;
+    const fontSize = isMobile() ? 15 : 20;
     textSize(fontSize);
     textAlign(LEFT, TOP);
     
@@ -190,7 +190,7 @@ class DialogueBox {
 
     // Name box
     if (this.charName && this.charName != "Null") {
-      const nameSize = 30;
+      const nameSize = isMobile() ? 20 : 30;
       textSize(nameSize);
       textAlign(LEFT, TOP);
       
@@ -258,7 +258,7 @@ class Prompt {
   }
 
   draw() {
-    const fontSize = 20;
+    const fontSize = isMobile() ? 15 : 20;
     const marginY = 20;
     const paddingX = 20;
     const paddingY = 10;
@@ -417,6 +417,12 @@ function wrapText(str, maxWidth) {
     }
   }
   output += line.trim();
+
+  // Only display last 3 lines
+  if (output.split('\n').length > 3) {
+    output = output.split('\n').slice(-3).join('\n');
+  }
+
   return output;
 }
 

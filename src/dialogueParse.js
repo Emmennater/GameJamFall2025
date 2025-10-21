@@ -35,7 +35,7 @@ function getCharacters() {
         
         let sprite = defaultSprites[speaker];
         if (obj.sprite && images[obj.sprite]) sprite = obj.sprite;
-        if (!obj.sprite) sprite = "none";
+        if (!obj.sprite || obj.sprite == "none") sprite = "none";
         
         // Executes just before the next dialogue
         const onFinish = (choice) => {

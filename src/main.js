@@ -5,7 +5,7 @@ function preload() {
   dialogueJSON.anglerfishlove = loadJSON("dialogue/anglerfishlove.json");
   dialogueJSON.lionfish = loadJSON("dialogue/lionfish.json");
   dialogueJSON.lionfishgive = loadJSON("dialogue/lionfishgive.json");
-  dialogueJSON.lionfishLove = loadJSON("dialogue/lionfishlove.json");
+  dialogueJSON.lionfishlove = loadJSON("dialogue/lionfishlove.json");
   dialogueJSON.nolight = loadJSON("dialogue/nolight.json");
   dialogueJSON.octo = loadJSON("dialogue/octo.json");
   dialogueJSON.octokill = loadJSON("dialogue/octokill.json");

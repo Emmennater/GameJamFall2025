@@ -1,4 +1,4 @@
-const MAX_DEPTH = 10;
+const MAX_DEPTH = 30;
 
 class Scene {
   constructor(parent) {

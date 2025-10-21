@@ -89,7 +89,9 @@ function setup() {
   soundManager = getSoundManager();
   sceneManager = new SceneManager();
   sceneManager.setScene(new Menu());
-  // sceneManager.setScene(new CoralArea());
+  
+  // For mobile devices
+  if (isMobile()) initMobileKeyboard();
 }
 
 function draw() {
@@ -121,4 +123,37 @@ function mousePressed() {
 function keyPressed() {
   keys[key] = true;
   keys.pressed = true;
+}
+
+function isMobile() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+function initMobileKeyboard() {
+  keyboard = new SimpleKeyboard.SimpleKeyboard({
+    onChange: () => {},
+    onKeyPress: input => {
+      if (input == "{bksp}") input = "Backspace";
+      else if (input == "{enter}") input = "Enter";
+      else if (input == "{lock}") window.capsLock = !window.capsLock;
+      else if (input == "{shift}") window.keyShift = !window.keyShift;
+      
+      if (window.keyShift && input !== "{shift}") { input = input.toUpperCase(); window.keyShift = false; }
+      if (window.capsLock && input !== "{lock}") input = input.toUpperCase();
+      
+      key = input;
+      keys[input] = true;
+      keys.pressed = true;
+    }
+  });
+}
+
+function hideMobileKeyboard() {
+  document.getElementById("keyboard").style.display = "none";
+  delete window.keyShift;
+  delete window.capsLock;
+}
+
+function showMobileKeyboard() {
+  document.getElementById("keyboard").style.display = "block";
 }

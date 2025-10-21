@@ -74,6 +74,8 @@ class Scene {
 
   onEnter() {}
 
+  onExit() {}
+
   setBackground(img) {
     this.bgImg = img;
   }
@@ -206,6 +208,14 @@ class Menu extends Scene {
     this.setBackground(videos.menu || images.menu);
     this.nameText = "";
     this.nameSet = false;
+  }
+
+  onEnter() {
+    if (isMobile()) showMobileKeyboard();
+  }
+
+  onExit() {
+    if (isMobile()) hideMobileKeyboard();
   }
 
   run(dt) {

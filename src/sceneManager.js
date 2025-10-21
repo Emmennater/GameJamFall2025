@@ -21,6 +21,7 @@ class SceneManager {
   }
 
   setScene(scene) {
+    if (this.currentScene) this.currentScene.onExit();
     this.currentScene = scene;
     this.currentScene.onEnter();
     this.nextScene = null;
@@ -78,6 +79,7 @@ class SceneManager {
       this.transition = 1;
     }
     if (this.nextScene != null && this.transition > 0.5) {
+      if (this.currentScene) this.currentScene.onExit();
       this.currentScene = this.nextScene;
       this.currentScene.onEnter();
       this.nextScene = null;

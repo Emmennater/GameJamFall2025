@@ -87,7 +87,7 @@ function setup() {
   characters = getCharacters();
   soundManager = getSoundManager();
   sceneManager = new SceneManager();
-  sceneManager.setScene(new CaveArea());
+  sceneManager.setScene(new Menu());
   
   // For mobile devices
   if (isMobile()) initMobileKeyboard();

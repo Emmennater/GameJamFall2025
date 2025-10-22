@@ -1,10 +1,11 @@
 class DialogueBox {
   constructor(charName, sprite, text, prompt = null, finished = () => {}, character = null) {
+    this.rawCharName = "";
     this.charName = "";
     this.character = character;
     this.sprite = sprite;
-    this.text = "";
     this.rawText = "";
+    this.text = "";
     this.displayedText = "";
     this.defaultTextSpeed = 0.5;
     this.textSpeed = this.defaultTextSpeed;
@@ -66,7 +67,7 @@ class DialogueBox {
 
   formatText() {
     this.text = substituteText(this.rawText, this.character);
-    this.charName = substituteText(this.charName, this.character);
+    this.charName = substituteText(this.rawCharName, this.character);
     this.updatePauseIdx();
   }
 

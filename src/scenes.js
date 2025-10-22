@@ -474,7 +474,7 @@ class ShipArea2 extends Scene {
   constructor(parent) {
     super(parent);
     this.setBackground(images.ship2);
-    this.addItem(["moonjellycandy", "driftglass","poisonedcoralmilk"], 0.94, 0.92, {}, 0.4);
+    this.addItem(["moonjellycandy", "driftglass"], 0.94, 0.92, {}, 0.4);
   }
 }
 
@@ -506,7 +506,7 @@ class CoralArea extends Scene {
   }
 
   addScenes() {
-    this.addScene([CoralArea2, CoralArea4], 0.77, 0.38);
+    this.addScene([CoralArea2, DarkArea], 0.77, 0.38);
   }
 }
 
@@ -538,7 +538,7 @@ class CoralArea4 extends Scene {
   }
 
   addScenes() {
-    this.addScene([CaveArea, CaveFloorDark], 0.25, 0.15);
+    this.addScene([CaveArea, DarkArea], 0.25, 0.15);
   }
 }
 

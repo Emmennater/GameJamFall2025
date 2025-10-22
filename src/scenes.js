@@ -557,7 +557,7 @@ class DarkArea2 extends Scene {
   constructor(parent) {
     super(parent);
     this.setBackground(images.dark2);
-    this.addItem(["magicscroll","poisonedcoralmilk"], 0.4, 0.92, {}, 0.3);
+    this.addItem(["poisonedcoralmilk"], 0.4, 0.92, {}, 0.3);
   }
 
   addScenes() {
@@ -569,7 +569,7 @@ class DarkArea3 extends Scene {
   constructor(parent) {
     super(parent);
     this.setBackground(images.dark3);
-    this.addItem(["pearl", "magicscroll","ruby","poisonedcoralmilk"], 0.4, 0.92, {}, 0.2);
+    this.addItem(["pearl","ruby","poisonedcoralmilk"], 0.4, 0.92, {}, 0.2);
   }
 
   addScenes() {
@@ -612,7 +612,7 @@ class Shop extends Scene {
     this.setBackground(images.shop);
     this.addItem(["ruby"], 0.39, 0.52, tags, 0.5);
     this.addItem(["moonjellycandy"], 0.46, 0.52, tags, 0.5);
-    this.addItem(["magicscroll", "driftglass"], 0.53, 0.52, tags, 0.5);
+    this.addItem(["driftglass"], 0.53, 0.52, tags, 0.5);
     this.addItem(["pearl", "poisonedcoralmilk"], 0.61, 0.52, tags, 0.5);
     // this.addCharacter("Nerissa", null, 0.85, 0.6);
   }

@@ -186,7 +186,7 @@
     "bond1": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-flustered",
+        "sprite": "lion-blush",
         "text": "Hmph. You're insufferable… but maybe not entirely unpleasant.",
         "options": [
           {
@@ -267,7 +267,7 @@
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-flustered",
+        "sprite": "lion-neutral",
         "text": "But… keep talking like that, and I might start to believe you mean it.",
         "options": [
           {
@@ -281,7 +281,7 @@
     "fluster2": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-upset",
+        "sprite": "lion-flustered",
         "text": "I-I didn't say that! Stop twisting my words! It's not like I like you or your dumb gifts or anything!",
         "options": [
           {
@@ -314,7 +314,7 @@
     "ending-hint": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-flustered",
+        "sprite": "lion-upset",
         "text": "Hmph. Don't get cocky.@ Bring me something that I like, and *maybe* I'll help you get around…"
       }
     ],

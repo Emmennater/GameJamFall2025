@@ -42,7 +42,7 @@ function preload() {
   // Characters
   images["lion-neutral"] = loadImage("images/lion-neutral.png");
   images["lion-blush"] = loadImage("images/lion-blush.png");
-  images["lion-pout"] = loadImage("images/lion-pout.png");
+  images["lion-upset"] = loadImage("images/lion-upset.png");
   images["lion-upset"] = loadImage("images/lion-upset.png");
   images["lion-talk"] = loadImage("images/lion-talk.png");
   images["lumi-neutral"] = loadImage("images/lumi-neutral.png");
@@ -51,8 +51,7 @@ function preload() {
   images["lumi-talk"] = loadImage("images/lumi-talk.png");
   images["octo-neutral"] = loadImage("images/takara-neutral.png");
   images["octo-intense"] = loadImage("images/takara-intense.png");
-  images["octo-intense"] = loadImage("images/takara-intense.png");
-
+  
   // Items
   images.driftglass = loadImage("images/driftglass.png");
   images.moonjellycandy = loadImage("images/moonjellycandy.png");
@@ -88,7 +87,7 @@ function setup() {
   characters = getCharacters();
   soundManager = getSoundManager();
   sceneManager = new SceneManager();
-  sceneManager.setScene(new Menu());
+  sceneManager.setScene(new CaveArea());
   
   // For mobile devices
   if (isMobile()) initMobileKeyboard();

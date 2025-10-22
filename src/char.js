@@ -74,9 +74,9 @@ class Character {
     if (!next2) {
       this.dialogue.nextDialogue();
       if (this.dialogue.isDone()) {
-        this.currentDialogue = "done";
+        this.currentDialogue = null;
         this.speaking = false;
-        this.dialogue.restart();
+        // this.dialogue.restart();
         return;
       }
     }

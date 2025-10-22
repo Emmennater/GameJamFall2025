@@ -4,12 +4,14 @@ class Scene {
   constructor(parent) {
     this.parent = parent;
     this.depth = parent ? parent.depth + 1 : 0;
-    this.bgImg = image.menu;
+    this.bgImg = images.menu;
     this.lastScene = null;
     this.scenes = []; // List of nested scenes
     this.characterEntities = [];
     this.items = [];
     this.isDark = false;
+    this.scrollEffectiveness = 1.0; // How effective the magic scroll is at detecting danger in this scene
+    
     if (this.depth < MAX_DEPTH) {
       this.addScenes();
     }
@@ -71,6 +73,10 @@ class Scene {
   }
 
   addScenes() {}
+
+  isDangerous() {
+    return false;
+  }
 
   onEnter() {}
 
@@ -211,11 +217,13 @@ class Menu extends Scene {
   }
 
   onEnter() {
+    super.onEnter();
     if (isMobile()) showMobileKeyboard();
     sceneManager.reset();
   }
 
   onExit() {
+    super.onExit();
     if (isMobile()) hideMobileKeyboard();
   }
 
@@ -308,7 +316,7 @@ class GameOverDark extends GameOverScene {
   }
 
   draw(layer) {
-    // super.draw(layer);
+    super.draw(layer);
 
     if (layer == 5) {
       background(0);
@@ -381,7 +389,7 @@ class CaveArea extends Scene {
   constructor(parent) {
     super(parent);
     this.setBackground(images.cave);
-    this.addCharacter("Lumi", "lumi-neutral", 0.8, 0.6);
+    this.addCharacter("Lumi", "lumi-neutral", 0.8, 0.6, 1.0, 0.5);
     this.addItem(["moonjellycandy", "pearl", "driftglass"], 0.08, 0.85);
   }
 
@@ -405,7 +413,12 @@ class CaveOpening extends Scene {
     this.setBackground(images.cave_opening);
   }
 
+  isDangerous() {
+    return !player.hasItem("glowrod");
+  }
+
   onEnter() {
+    super.onEnter();
     if (!player.hasItem("glowrod")) {
       this.isDark = true;
       this.addCharacter("{player}", null, 0.5, 0.5);
@@ -421,11 +434,12 @@ class CaveOpening extends Scene {
 class CaveFloorDark extends Scene {
   constructor(parent) {
     super(parent);
+    this.scrollEffectiveness = 0.5;
     this.setBackground(images.cave_floor_dark);
   }
 
   addScenes() {
-    let areas = [ShipArea, ShopDistance, SharkArea];
+    let areas = [ShipArea, ShopDistance, CaveArea, CaveFloorDark, SharkArea];
     this.addScene(areas, 0.79, 0.19);
     this.addScene(areas, 0.14, 0.26);
   }
@@ -452,7 +466,7 @@ class ShipArea extends Scene {
   addScenes() {
     this.addScene([ShipArea2], 0.73, 0.46);
     this.addScene([ShipArea3, ShipArea4], 0.46, 0.61);
-    this.addScene([CaveArea], 0.85, 0.12);
+    this.addScene([CaveArea, CaveFloorDark], 0.85, 0.12);
   }
 }
 
@@ -569,7 +583,12 @@ class SharkArea extends Scene {
     this.setBackground(images.shark);
   }
 
+  isDangerous() {
+    return true;
+  }
+
   onEnter() {
+    super.onEnter();
     player.kill(GameOverShark);
   }
 }
@@ -603,11 +622,23 @@ class SceneEntity extends Entity {
   constructor(scene, getTransform) {
     super(getTransform);
     this.scene = scene;
+    this.scrollMalfunction = Math.random() < 0.5 - 0.5 * this.scene.parent.scrollEffectiveness;
+  }
+
+  onEnter() {
+    super.onEnter();
   }
 
   onClick() {
     if (busy["dialogue"]) return;
     sceneManager.transitionToScene(this.scene);
+  }
+
+  getDangerProbability() {
+    const eff = this.scene.parent.scrollEffectiveness;
+    const p = this.scene.isDangerous() ? 0.5 + 0.5 * eff : 0.5 - 0.5 * eff;
+    const d = this.scrollMalfunction ? 1 - p : p;
+    return d;
   }
 
   render(x, y, w, h) {
@@ -618,11 +649,20 @@ class SceneEntity extends Entity {
     //   rect(x - w / 2, y - h / 2, w, h);
     // }
 
+    let txt = "?";
+
+    if (player.hasItem("magicscroll")) {
+      const d = this.getDangerProbability();
+      txt = 1 ? `${d.toFixed(2) * 100}%` : "?";
+      textSize(40);
+    } else {
+      textSize(60);
+    }
+
     textFont(fonts.main)
-    textSize(60);
     fill(255, 40);
     noStroke();
     textAlign(CENTER, CENTER);
-    text("?", x, y);
+    text(txt, x, y);
   }
 }

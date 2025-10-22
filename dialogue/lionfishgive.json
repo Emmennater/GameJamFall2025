@@ -204,7 +204,7 @@
       {
         "speaker": "Lion-chan",
         "sprite": "lion-blush",
-        "give": "magic scroll",
+        "give": "magicscroll",
         "text": "Here.@ Just take this magic scroll."
       },
       {
@@ -405,7 +405,7 @@
       {
         "speaker": "Lion-chan",
         "sprite": "softSmile",
-        "give": "magic scroll",
+        "give": "magicscroll",
         "text": "Here.@ Just take this magic scroll."
       },
       {

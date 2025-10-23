@@ -6,7 +6,7 @@
     "first-greeting": [
       {
         "speaker": "Lumi",
-        "sprite": "lumi-shy",
+        "sprite": "lumi-blush",
         "text": "Ah—!@ I-I didn't see you there...@ You shouldn't sneak up like that in the dark.",
         "options": [
           {
@@ -54,7 +54,7 @@
     "different": [
       {
         "speaker": "Lumi",
-        "sprite": "lumi-shy",
+        "sprite": "lumi-talk",
         "text": "I… I can tell.@ Most creatures swim away the moment they see my light.@ But you didn’t.@ You came closer.",
         "options": [
           {
@@ -111,7 +111,7 @@
     "soft1": [
       {
         "speaker": "Lumi",
-        "sprite": "lumi-shy",
+        "sprite": "lumi-neutral",
         "text": "Sometimes it does get quiet... but the dark feels safe. It hides all the parts of me that might scare others.",
         "options": [
           {
@@ -130,7 +130,7 @@
     "neutral1": [
       {
         "speaker": "Lumi",
-        "sprite": "lumi-neutral",
+        "sprite": "lumi-talk",
         "text": "Maybe... it's easier that way. Fewer eyes staring, fewer words to trip over.",
         "options": [
           {
@@ -149,7 +149,7 @@
     "bond1": [
       {
         "speaker": "Lumi",
-        "sprite": "lumi-smile",
+        "sprite": "lumi-neutral",
         "text": "You really are strange... but maybe that's not a bad thing.",
         "options": [
           {
@@ -168,7 +168,7 @@
     "bond2": [
       {
         "speaker": "Lumi",
-        "sprite": "lumi-soft-smile",
+        "sprite": "lumi-talk",
         "text": "Heh... you make the dark feel a little less heavy. That's... new for me.",
         "options": [
           {
@@ -218,17 +218,17 @@
       },
       {
         "speaker": "Lumi",
-        "sprite": "lumi-shy",
+        "sprite": "lumi-talk",
         "text": "I just…@ like how the current polishes them smooth again.@ Even sharp things can become gentle, given enough time."
       },
       {
         "speaker": "Lumi",
-        "sprite": "lumi-shy",
+        "sprite": "lumi-neutral",
         "text": "I…@ keep them close. It makes the dark feel softer somehow."
       },
       {
         "speaker": "Lumi",
-        "sprite": "lumi-shy",
+        "sprite": "lumi-talk",
         "text": "If you ever find shards like this…@ um…@ maybe…@ bring it here?"
       }
     ],
@@ -254,12 +254,12 @@
       },
       {
         "speaker": "Lumi",
-        "sprite": "lumi-shy",
+        "sprite": "lumi-talk",
         "text": "I-I like how it glows a little…@ like it's alive..."
       },
       {
         "speaker": "Lumi",
-        "sprite": "lumi-shy",
+        "sprite": "lumi-blush",
         "text": "And…@ it tastes nice.@ Soft.@ Sweet."
       },
       {
@@ -283,7 +283,7 @@
       },
       {
         "speaker": "Lumi",
-        "sprite": "lumi-shy",
+        "sprite": "lumi-talk",
         "text": "They expect teeth and shadows, not sugar and light."
       },
       {
@@ -293,7 +293,7 @@
       },
       {
         "speaker": "Lumi",
-        "sprite": "lumi-shy",
+        "sprite": "lumi-neutral",
         "text": "She glances at you shyly."
       },
       {
@@ -305,7 +305,7 @@
     "ending": [
       {
         "speaker": "Lumi",
-        "sprite": "lumi-soft-smile",
+        "sprite": "lumi-neutral",
         "text": "If you ever get lost again... just follow the glow.@ I'll be waiting."
       }
     ]

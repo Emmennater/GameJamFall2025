@@ -52,9 +52,10 @@ class DialogueBox {
   }
 
   showText(charName, text) {
-    this.charName = charName || "Null";
+    this.rawCharName = charName || "Null";
     this.rawText = text || "Null";
     this.text = "";
+    this.charName = "";
     this.displayedText = "";
     this.textTime = 0;
     this.updatePauseIdx();
@@ -177,9 +178,14 @@ class DialogueBox {
     const textX = boxLeft + fontSize;
     const textY = boxTop + fontSize;
     const maxTextWidth = boxW - fontSize * 2;
-    
-    fill(255);
-    stroke(0);
+    const bCol = color(255);
+    const sCol = color(0);
+    // const col = this.character ? this.character.color : color(255);
+    // const bCol = color(col.levels[0], col.levels[1], col.levels[2]);
+    // const sCol = color(col.levels[0] * 0.5, col.levels[1] * 0.5, col.levels[2] * 0.5);
+
+    fill(bCol);
+    stroke(sCol);
     strokeWeight(4);
     rect(boxLeft, boxTop, boxW, boxH, 20);
     
@@ -200,8 +206,8 @@ class DialogueBox {
       const nameTop = boxTop - nameSize;
       const nameW = textWidth(name) + 20;
       const nameH = nameSize + 10;
-      fill(255);
-      stroke(0);
+      fill(bCol);
+      stroke(sCol);
       strokeWeight(4);
       rect(nameLeft, nameTop, nameW, nameH, 10);
       

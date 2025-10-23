@@ -1,5 +1,5 @@
 class Character {
-  constructor(name, likes, dialogues) {
+  constructor(name, likes, dialogues, col=color(255)) {
     this.name = name;
     this.likes = likes;
     this.like = this.getRandomLike();
@@ -12,6 +12,7 @@ class Character {
     this.speaking = false;
     this.dead = false;
     this.dialogue = new DialogueManager(this);
+    this.color = col;
   }
 
   isDead() {

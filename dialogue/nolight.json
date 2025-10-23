@@ -1,10 +1,10 @@
 {
   "name": "{player}",
-  "color": "#0d0d1a",
+  "color": "#ffffff",
   "dialogues": {
     "dark-entry": [
       {
-        "speaker": "{player}",
+        "speaker": "Narrator",
         "text": "You step into the dark...@ the water grows colder.@ Even your heartbeat sounds distant.",
         "options": [
           {
@@ -22,7 +22,7 @@
     ],
     "dark-deeper": [
       {
-        "speaker": "{player}",
+        "speaker": "Narrator",
         "text": "No light follows you.@ The world folds into ink.@ Something stirs—close, slow, and hungry.",
         "options": [
           {
@@ -40,7 +40,7 @@
     ],
     "dark-turnback": [
       {
-        "speaker": "{player}",
+        "speaker": "Narrator",
         "text": "You try to turn around, but the dark presses tighter.@ The current doesn't care which way you swim.",
         "options": [
           {
@@ -58,26 +58,26 @@
     ],
     "dark-end1": [
       {
-        "speaker": "{player}",
+        "speaker": "Narrator",
         "text": "A whisper brushes past your ear:@ \"No flame... no glow... you were not ready.\""
       },
       {
-        "speaker": "{player}",
+        "speaker": "Narrator",
         "text": "Something cold coils around your wrist.@ You don't feel fear—only stillness.@ Then nothing."
       },
       {
-        "speaker": "{player}",
+        "speaker": "System",
         "text": "[You were lost to the dark. Find a glowing item before entering again.]",
         "event": "death"
       }
     ],
     "dark-end2": [
       {
-        "speaker": "{player}",
+        "speaker": "Narrator",
         "text": "You swim until the pressure crushes thought.@ The dark doesn't swallow you—it just forgets you ever were."
       },
       {
-        "speaker": "{player}",
+        "speaker": "System",
         "text": "[The depths consume you. You need a light to survive here.]",
         "event": "death"
       }

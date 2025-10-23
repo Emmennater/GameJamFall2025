@@ -11,7 +11,7 @@ function getCharacters() {
     const name = json.name;
 
     if (!(name in characters)) {
-      characters[name] = new Character(name, json.likes, {});
+      characters[name] = new Character(name, json.likes, {}, color(json.color));
     }
 
     const character = characters[name];

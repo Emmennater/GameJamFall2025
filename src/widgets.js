@@ -89,6 +89,7 @@ class Button extends TextBox {
       const w = this.transform.w;
       const h = this.transform.h;
       if (this.isHovered()) {
+        soundManager.buttonClick();
         this.onClick(this.text);
       }
     }

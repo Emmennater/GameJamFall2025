@@ -257,6 +257,7 @@ class Prompt {
       this.done = true;
       this.choice = this.options[this.selected];
       this.onChoice(this.choice);
+      soundManager.buttonClick();
     }
   }
 
@@ -329,6 +330,7 @@ class Prompt {
           this.done = true;
           this.choice = option;
           this.onChoice(option);
+          soundManager.buttonClick();
         }
       }
 

@@ -71,9 +71,6 @@ function preload() {
     video.hide();
     video.loop();
   }
-  
-  // gifs = {};
-  // gifs.shipwreck = loadImage("images/shipwreck.gif");
 }
 
 function setup() {
@@ -85,7 +82,7 @@ function setup() {
   keys = {};
   player = new Player();
   characters = getCharacters();
-  soundManager = getSoundManager();
+  soundManager = new SoundManager();
   sceneManager = new SceneManager();
   sceneManager.setScene(new Menu());
   

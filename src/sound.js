@@ -1,134 +1,118 @@
-class SoundPlayer {
-  constructor(src, options = {}) {
-    this.audio = new Audio(src);
-    this.audio.loop = options.loop || false;
-    this.audio.volume = options.volume ?? 1.0;
-    this.isLoaded = false;
-
-    this.audio.addEventListener('canplaythrough', () => {
-      this.isLoaded = true;
-      if (options.onLoad) options.onLoad();
-    });
-
-    this.audio.addEventListener('ended', () => {
-      if (options.onEnd) options.onEnd();
-    });
-  }
-
-  play() {
-    if (!this.isLoaded) {
-      this.audio.addEventListener('canplaythrough', () => this.audio.play(), { once: true });
-    } else {
-      this.audio.play();
-    }
-  }
-
-  pause() {
-    this.audio.pause();
-  }
-
-  stop() {
-    this.audio.pause();
-    this.audio.currentTime = 0;
-  }
-
-  setVolume(volume) {
-    this.audio.volume = Math.max(0, Math.min(1, volume));
-  }
-
-  setLoop(loop) {
-    this.audio.loop = loop;
-  }
-
-  setPlaybackRate(rate) {
-    this.audio.playbackRate = rate;
-  }
-}
-
 class SoundManager {
   constructor() {
-    this.sounds = new Map(); // name → SoundPlayer
-    this.globalVolume = 1.0;
-    this.setGlobalVolume(0); // mute by default
+    this.currentBgSound = null;
+    this.currentBgSoundName = null;
+    this.stopQueue = {};
+    this.soundVolumes = {};
+    this.initSounds();
   }
 
-  add(name, src, options = {}) {
-    if (this.sounds.has(name)) {
-      console.warn(`Sound "${name}" already exists. Overwriting.`);
+  changeBackgroundSound(soundName) {
+    const fadeDuration = 500;
+    
+    if (soundName === this.currentBgSoundName) return;
+
+    // Fade out the current background sound
+    if (this.currentBgSound && this.currentBgSound.playing()) {
+      this.fadeAndAutoStop(this.currentBgSound, this.currentBgSound.volume(), 0, fadeDuration);
     }
-    const player = new SoundPlayer(src, options);
-    this.sounds.set(name, player);
-    // Adjust volume relative to global
-    player.setVolume(this.globalVolume * (options.volume ?? 1.0));
-    return player;
+    
+    if (!soundName) return;
+    if (!this.sounds[soundName]) throw new Error(`Unknown sound: ${soundName}`);
+
+    // Fade in the new background sound
+    const newSound = this.sounds[soundName];
+    newSound.volume(0);
+    newSound.play();
+    newSound.fade(0, this.soundVolumes[soundName], fadeDuration);
+
+    this.currentBgSound = newSound;
+    this.currentBgSoundName = soundName;
   }
 
-  get(name) {
-    return this.sounds.get(name);
+  fadeOutBackgroundSound() {
+    this.changeBackgroundSound(null);
   }
 
-  play(name) {
-    const sound = this.sounds.get(name);
-    if (sound) sound.play();
-    else console.warn(`Sound "${name}" not found.`);
-  }
+  initSounds() {    
+    const volume = 0.4;
+    this.sounds = {};
+    this.sounds['underwater-surface'] = new Howl({
+      src: ['sounds/underwater-ambience-surface.mp3'],
+      loop: true,
+      volume
+    });
+    this.sounds['underwater-deep'] = new Howl({
+      src: ['sounds/underwater-ambience-deep.mp3'],
+      loop: true,
+      volume
+    });
+    this.sounds['underwater-heavy'] = new Howl({
+      src: ['sounds/underwater-ambience-heavy.mp3'],
+      loop: true,
+      volume
+    });
+    this.sounds['button-click'] = new Howl({
+      src: ['sounds/button-click.mp3'],
+      volume
+    })
 
-  loopSound(name) {
-    const sound = this.sounds.get(name);
-    if (!sound) {
-      console.warn(`Sound "${name}" not found.`);
-      return;
-    }
-    sound.setLoop(true);
-    sound.play();
-  }
-
-  pause(name) {
-    const sound = this.sounds.get(name);
-    if (sound) sound.pause();
-  }
-
-  stop(name) {
-    const sound = this.sounds.get(name);
-    if (sound) sound.stop();
-  }
-
-  stopAll() {
-    for (const sound of this.sounds.values()) sound.stop();
-  }
-
-  setVolume(name, volume) {
-    const sound = this.sounds.get(name);
-    if (sound) sound.setVolume(volume);
-  }
-
-  setGlobalVolume(volume) {
-    this.globalVolume = volume;
-    for (const sound of this.sounds.values()) {
-      // Scale each sound by its original relative volume if needed
-      sound.setVolume(volume);
-    }
-  }
-
-  remove(name) {
-    const sound = this.sounds.get(name);
-    if (sound) {
-      sound.stop();
-      this.sounds.delete(name);
+    for (const soundName in this.sounds) {
+      this.soundVolumes[soundName] = this.sounds[soundName].volume();
     }
   }
 
-  clear() {
-    this.stopAll();
-    this.sounds.clear();
+  fadeAndAutoStop(sound, from, to, duration) {
+    if (!sound) return;
+
+    sound.fade(from, to, duration);
+
+    const handler = () => {
+      if (to <= 0) {
+        sound.stop(); // or sound.pause() if you prefer
+      }
+      sound.off('fade', handler); // cleanup listener
+    };
+
+    sound.on('fade', handler);
   }
-}
 
-function getSoundManager() {
-  const soundManager = new SoundManager();
+  getSceneSound(sceneName) {
+    switch (sceneName) {
+    case 'Menu': return null;
+    case 'GameOverScene': return 'underwater-surface';
+    case 'GameOverShark': return 'underwater-heavy';
+    case 'GameOverDark': return 'underwater-heavy';
+    case 'GameOverKill': return 'underwater-surface';
+    case 'StartingArea': return 'underwater-surface';
+    case 'CaveArea': return 'underwater-surface';
+    case 'CaveOpening': return 'underwater-heavy';
+    case 'CaveFloorDark': return 'underwater-deep';
+    case 'ShipArriving': return 'underwater-surface';
+    case 'ShipArea': return 'underwater-surface';
+    case 'ShipArea2': return 'underwater-surface';
+    case 'ShipArea3': return 'underwater-surface';
+    case 'ShipArea4': return 'underwater-surface';
+    case 'CoralArea': return 'underwater-surface';
+    case 'CoralArea2': return 'underwater-surface';
+    case 'CoralArea3': return 'underwater-surface';
+    case 'CoralArea4': return 'underwater-deep';
+    case 'DarkArea': return 'underwater-deep';
+    case 'DarkArea2': return 'underwater-deep';
+    case 'DarkArea3': return 'underwater-deep';
+    case 'SharkArea': return 'underwater-heavy';
+    case 'ShopDistance': return 'underwater-deep';
+    case 'Shop': return 'underwater-deep';
+    default: return 'underwater-surface';
+    }
+  }
 
-  // soundManager.add('transition', 'sounds/bruh.mp3', { volume: 0.6 });
-  // soundManager.add('bgm', 'sounds/background.mp3', { loop: true, volume: 0.4 });
+  enterScene(sceneName) {
+    let soundName = this.getSceneSound(sceneName);
+    this.changeBackgroundSound(soundName);
+  }
 
-  return soundManager;
+  buttonClick() {
+    this.sounds['button-click'].play();
+  }
 }

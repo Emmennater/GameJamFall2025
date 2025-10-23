@@ -78,7 +78,9 @@ class Scene {
     return false;
   }
 
-  onEnter() {}
+  onEnter() {
+    soundManager.enterScene(this.constructor.name);
+  }
 
   onExit() {}
 

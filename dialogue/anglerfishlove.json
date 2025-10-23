@@ -39,7 +39,7 @@
       {
         "speaker": "Lumi",
         "sprite": "lumi-shy",
-        "text": "There's… something you should know.@ Something dangerous.",
+        "text": "There's… something you should know.@ Someone you should stay away from.",
         "options": [
           {
             "text": "Dangerous? What do you mean?",
@@ -58,17 +58,17 @@
       {
         "speaker": "Lumi",
         "sprite": "lumi-neutral",
-        "text": "Down near the trench… there's an octopus that doesn't belong here.@ He moves like a shadow, and everything around him goes silent."
+        "text": "Down near the trench… there's an octopus that doesn't belong here.@ She moves like a shadow, and everything around her goes silent."
       },
       {
         "speaker": "Lumi",
         "sprite": "lumi-shy",
-        "text": "He's clever.@ He pretends to be friendly.@ But there's something behind his eyes—something hungry."
+        "text": "She's clever.@ She pretends to be friendly.@ But there's something behind her eyes—something hungry."
       },
       {
         "speaker": "Lumi",
         "sprite": "lumi-soft-blush",
-        "text": "If he ever talks to you… please, don't trust him.@ Promise me?",
+        "text": "If she ever talks to you… please, don't trust her.@ Promise me?",
         "options": [
           {
             "text": "I promise.",
@@ -97,7 +97,7 @@
       {
         "speaker": "Lumi",
         "sprite": "lumi-shy",
-        "text": "He's dangerous, I can feel it.@ You think I'd lie just to keep you here?",
+        "text": "She's dangerous, I can feel it.@ You think I'd lie just to keep you here?",
         "options": [
           {
             "text": "I'm sorry. I shouldn't have said that.",

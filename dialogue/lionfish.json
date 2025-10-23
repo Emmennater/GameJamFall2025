@@ -55,7 +55,7 @@
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-neutral",
+        "sprite": "lion-talk",
         "text": "Without a proper guide you'll likely parish if you dare explore to far."
       },
       {
@@ -79,7 +79,7 @@
     "intro1": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-neutral",
+        "sprite": "lion-talk",
         "text": "They call me the Lion-chan… but names don't matter much down here.",
         "options": [
           {
@@ -122,18 +122,23 @@
     "soft1": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-upset",
+        "sprite": "lion-pout",
         "text": "Well you better watch what you say, ok!"
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-blush",
+        "sprite": "lion-frown-blush",
         "text": "...You cant just say things like that.",
         "options": [
           {
             "text": "Can you help me find my way around here?",
             "score": -2,
             "next": "norizz1"
+          },
+          {
+            "text": "Did I make you blush?",
+            "score": 3,
+            "next": "tease2"
           }
         ]
       }
@@ -146,14 +151,14 @@
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-neutral",
+        "sprite": "lion-upset",
         "text": "I'm not just going to stand around giving directions all day. I've got better things to do then wast anymore time no you.@ Get lost."
       }
     ],
     "tease2": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-blush",
+        "sprite": "lion-frown-blush",
         "text": "N-no! Fish don't blush!@ It's just… the reflection of the coral, okay?",
         "options": [
           {
@@ -172,7 +177,7 @@
     "tease3": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-flustered",
+        "sprite": "lion-pout",
         "text": "C-cute...@ How can you say something like that?@ I'm not flustered!!!",
         "options": [
           {
@@ -186,7 +191,7 @@
     "bond1": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-blush",
+        "sprite": "lion-frown-blush",
         "text": "Hmph. You're insufferable… but maybe not entirely unpleasant.",
         "options": [
           {
@@ -205,17 +210,12 @@
     "introhint": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-neutral",
+        "sprite": "lion-pout",
         "text": "You keep talking about compliments. Do you think words are all it takes to impress me?",
         "options": [
           {
-            "text": "Then what *does* impress you?",
+            "text": "Then what does impress you?",
             "score": 2,
-            "next": "{likes}hint"
-          },
-          {
-            "text": "I bet I could find something shiny enough to change your mind.",
-            "score": 4,
             "next": "{likes}hint"
           }
         ]
@@ -224,7 +224,7 @@
     "pearlhint": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-neutral",
+        "sprite": "lion-frown-blush",
         "text": "Shiny things... maybe@ ...N-not that I care about that sort of thing.@ Maybe those white shiny balls on the sea floor.@ But only because they reflect the moonlight nicely. That's all!",
         "options": [
           {
@@ -243,7 +243,7 @@
     "rubyhint": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-neutral",
+        "sprite": "lion-frown-blush",
         "text": "Shiny things... maybe@ ...N-not that I care about that sort of thing.@ Maybe...@ Those red jewels...@ But only because there reflective red glow goes nicely with my fins. That's all!",
         "options": [
           {
@@ -262,12 +262,12 @@
     "soft2": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-neutral",
+        "sprite": "lion-pout",
         "text": "Don't think you can charm me with shiny talk, surface-dweller. I'm not that easy."
       },
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-neutral",
+        "sprite": "lion-blush",
         "text": "But… keep talking like that, and I might start to believe you mean it.",
         "options": [
           {
@@ -281,7 +281,7 @@
     "fluster2": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-flustered",
+        "sprite": "lion-frown-blush",
         "text": "I-I didn't say that! Stop twisting my words! It's not like I like you or your dumb gifts or anything!",
         "options": [
           {
@@ -295,7 +295,7 @@
     "bond2": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-eyeroll",
+        "sprite": "lion-pout",
         "text": "You're impossible… maybe that's why I can't stop talking to you.",
         "options": [
           {
@@ -314,8 +314,8 @@
     "ending-hint": [
       {
         "speaker": "Lion-chan",
-        "sprite": "lion-upset",
-        "text": "Hmph. Don't get cocky.@ Bring me something that I like, and *maybe* I'll help you get around…"
+        "sprite": "lion-pout",
+        "text": "Hmph. Don't get cocky.@ Bring me something that I like, and maybe I'll help you get around…"
       }
     ],
     "done": [

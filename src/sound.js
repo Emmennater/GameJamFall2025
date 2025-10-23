@@ -4,6 +4,7 @@ class SoundManager {
     this.currentBgSoundName = null;
     this.stopQueue = {};
     this.soundVolumes = {};
+    this.soundtrack = []; // List of music sounds
     this.initSounds();
   }
 
@@ -114,5 +115,87 @@ class SoundManager {
 
   buttonClick() {
     this.sounds['button-click'].play();
+  }
+
+  startMusic() {
+    if (this.soundtrack.length === 0) return;
+
+    // If music is currently fading out to stop, cancel that
+    if (this.musicFadeTimer) {
+      clearTimeout(this.musicFadeTimer);
+      this.musicFadeTimer = null;
+    }
+
+    // If music was paused, resume it from where it left off
+    if (this.musicStopped && this.currentMusic) {
+      this.musicStopped = false;
+      const sound = this.currentMusic;
+      const volume = this.soundVolumes[this.currentMusicName] ?? 1.0;
+
+      // Resume playback from stored position
+      sound.seek(this.musicPosition);
+      sound.play();
+      sound.fade(0, volume, this.musicFadeDuration);
+      return;
+    }
+
+    // If a song is already playing and not ending soon, do nothing
+    if (this.currentMusic && this.currentMusic.playing()) return;
+
+    // Pick a random new song different from the last one
+    const available = this.soundtrack.filter(name => name !== this.lastSongName);
+    const songName = available[Math.floor(Math.random() * available.length)];
+    this.lastSongName = songName;
+
+    const sound = this.sounds[songName];
+    if (!sound) return;
+
+    // Stop any old music that might still be playing
+    if (this.currentMusic && this.currentMusic.playing()) {
+      this.fadeAndAutoStop(this.currentMusic, this.currentMusic.volume(), 0, this.musicFadeDuration);
+    }
+
+    // Play the new one
+    sound.stop(); // Reset to start
+    sound.volume(0);
+    sound.play();
+    sound.fade(0, this.soundVolumes[songName] ?? 1.0, this.musicFadeDuration);
+
+    this.currentMusic = sound;
+    this.currentMusicName = songName;
+    this.musicStopped = false;
+    this.musicPosition = 0;
+
+    // When it finishes, pick another random song automatically
+    sound.once('end', () => {
+      if (!this.musicStopped) {
+        this.currentMusic = null;
+        this.currentMusicName = null;
+        this.startMusic(); // pick new random track
+      }
+    });
+  }
+
+  stopMusic() {
+    if (!this.currentMusic) return;
+
+    // Avoid stopping twice
+    if (this.musicStopped) return;
+    this.musicStopped = true;
+
+    const sound = this.currentMusic;
+    const fadeDuration = this.musicFadeDuration;
+
+    // Remember where the song stopped
+    this.musicPosition = sound.seek() ?? 0;
+
+    // Fade out
+    sound.fade(sound.volume(), 0, fadeDuration);
+
+    // Stop after fade finishes
+    this.musicFadeTimer = setTimeout(() => {
+      if (this.musicStopped) sound.pause();
+      this.musicFadeTimer = null;
+    }, fadeDuration);
   }
 }

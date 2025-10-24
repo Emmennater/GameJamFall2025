@@ -2,10 +2,13 @@ class SoundManager {
   constructor() {
     this.currentBgSound = null;
     this.currentBgSoundName = null;
+    this.currentSong = null;
+    this.currentSongName = null;
+    this.musicRunning = false;
     this.stopQueue = {};
     this.soundVolumes = {};
     this.soundtrack = []; // List of music sounds
-    this.musicFadeDuration = 1000; // ✅ fade duration in ms
+    this.musicFadeDuration = 1000;
     this.initSounds();
   }
 
@@ -60,17 +63,14 @@ class SoundManager {
     });
     this.sounds["music0"] = new Howl({
       src: ["sounds/music0.mp3"],
-      loop: true,
       volume: 0.2,
     });
     this.sounds["music1"] = new Howl({
       src: ["sounds/music1.mp3"],
-      loop: true,
       volume: 0.2,
     });
     this.sounds["music2"] = new Howl({
       src: ["sounds/music2.mp3"],
-      loop: true,
       volume: 0.2,
     });
 
@@ -164,145 +164,36 @@ class SoundManager {
     this.sounds["button-click"].play();
   }
 
-  fadeAndAutoStop(sound, from, to, duration) {
-    if (!sound) return;
+  startMusicHelper() {
+    if (this.musicRunning) return;
 
-    // Clamp to [0, 1] and ensure finite values
-    const safeFrom = Number.isFinite(from) ? Math.min(Math.max(from, 0), 1) : 0;
-    const safeTo = Number.isFinite(to) ? Math.min(Math.max(to, 0), 1) : 0;
-    const safeDuration = Number.isFinite(duration) ? duration : 500;
+    this.musicRunning = true;
+    
+    const songName = this.soundtrack[Math.floor(Math.random() * this.soundtrack.length)];
+    const song = this.sounds[songName];
+    
+    this.fadeAndAutoStop(song, 0, this.soundVolumes[songName], this.musicFadeDuration);
 
-    sound.fade(safeFrom, safeTo, safeDuration);
+    this.currentSong = song;
+    this.currentSongName = songName;
+    this.currentSong.play();
 
-    const handler = () => {
-      if (safeTo <= 0) sound.stop();
-      sound.off("fade", handler);
-    };
-    sound.on("fade", handler);
-  }
-
-  safeFade(sound, from, to, duration) {
-    if (!sound) return;
-
-    // Coerce to numbers and clamp to [0,1]
-    let start = Number(from);
-    let end = Number(to);
-    let time = Number(duration);
-
-    if (!Number.isFinite(start)) start = 0;
-    if (!Number.isFinite(end)) end = 0;
-    if (!Number.isFinite(time) || time < 0) time = 500;
-
-    start = Math.min(Math.max(start, 0), 1);
-    end = Math.min(Math.max(end, 0), 1);
-
-    // If sound isn’t loaded yet, defer
-    if (sound.state && sound.state() !== "loaded") {
-      sound.once("load", () => {
-        try {
-          sound.fade(start, end, time);
-        } catch (e) {
-          console.warn("safeFade (delayed) failed:", e);
-        }
-      });
-      return;
-    }
-
-    try {
-      sound.fade(start, end, time);
-    } catch (e) {
-      console.warn("safeFade failed:", e, { start, end, time, src: sound._src });
-    }
+    this.stopQueue[songName] = setTimeout(() => {
+      this.fadeAndAutoStop(song, this.soundVolumes[songName], 0, this.musicFadeDuration);
+      delete this.stopQueue[songName];
+      if (this.musicRunning) { this.musicRunning = false; this.startMusicHelper(); }
+    }, song.duration() * 1000 - this.musicFadeDuration);
   }
 
   startMusic() {
-    if (this.soundtrack.length === 0) return;
-
-    if (this.musicFadeTimer) {
-      clearTimeout(this.musicFadeTimer);
-      this.musicFadeTimer = null;
-    }
-
-    // Resume paused music
-    if (this.musicStopped && this.currentMusic) {
-      this.musicStopped = false;
-      const sound = this.currentMusic;
-      let volume = this.soundVolumes[this.currentMusicName];
-      if (!Number.isFinite(volume)) volume = 1.0;
-
-      try {
-        sound.seek(this.musicPosition);
-      } catch {
-        this.musicPosition = 0;
-      }
-
-      sound.play();
-
-      // ✅ use safeFade instead of sound.fade
-      this.safeFade(sound, 0, volume, this.musicFadeDuration);
-      return;
-    }
-
-    // Already playing
-    if (this.currentMusic && this.currentMusic.playing()) return;
-
-    // Pick a random new song different from the last one
-    const available = this.soundtrack.filter((name) => name !== this.lastSongName);
-    const songName = available[Math.floor(Math.random() * available.length)];
-    this.lastSongName = songName;
-
-    const sound = this.sounds[songName];
-    if (!sound) return;
-
-    // Stop old one
-    if (this.currentMusic && this.currentMusic.playing()) {
-      this.fadeAndAutoStop(this.currentMusic, this.currentMusic.volume(), 0, this.musicFadeDuration);
-    }
-
-    let targetVolume = this.soundVolumes[songName];
-    if (!Number.isFinite(targetVolume)) targetVolume = 1.0;
-
-    sound.stop(); // reset position
-    sound.volume(0);
-    sound.play();
-
-    // ✅ use safeFade instead of sound.fade
-    this.safeFade(sound, 0, targetVolume, this.musicFadeDuration);
-
-    this.currentMusic = sound;
-    this.currentMusicName = songName;
-    this.musicStopped = false;
-    this.musicPosition = 0;
-
-    sound.once("end", () => {
-      if (!this.musicStopped) {
-        this.currentMusic = null;
-        this.currentMusicName = null;
-        this.startMusic();
-      }
-    });
+    setTimeout(() => this.startMusicHelper(), 1000);
   }
 
   stopMusic() {
-    if (!this.currentMusic || this.musicStopped) return;
-    this.musicStopped = true;
+    this.musicRunning = false;
 
-    const sound = this.currentMusic;
-    const fadeDuration = this.musicFadeDuration;
-    const currentVol = Number.isFinite(sound.volume()) ? sound.volume() : 1.0;
+    if (this.stopQueue[this.currentSongName]) clearTimeout(this.stopQueue[this.currentSongName]);
 
-    try {
-      this.musicPosition = sound.seek() ?? 0;
-    } catch {
-      this.musicPosition = 0;
-    }
-
-    // ✅ use safeFade instead of sound.fade
-    this.safeFade(sound, currentVol, 0, fadeDuration);
-
-    this.musicFadeTimer = setTimeout(() => {
-      if (this.musicStopped) sound.pause();
-      this.musicFadeTimer = null;
-    }, fadeDuration);
+    this.fadeAndAutoStop(this.currentSong, this.soundVolumes[this.currentSongName], 0, this.musicFadeDuration);
   }
 }

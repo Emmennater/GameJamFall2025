@@ -90,7 +90,7 @@ function setup() {
 }
 
 function draw() {
-  const dt = min(frameRate() / 60, 1);
+  const dt = min(60 / frameRate(), 1);
   busy = {};
   sceneManager.run(dt);
   sceneManager.draw();

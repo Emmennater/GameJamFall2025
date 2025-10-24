@@ -55,7 +55,7 @@ class SceneManager {
   getGift(callback) {
     let options = [];
 
-    for (const item of player.items) {
+    for (const item of (new Set(player.items))) {
       options.push({text: item});
     }
 
